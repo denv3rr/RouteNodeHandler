@@ -11,23 +11,40 @@
 // Local
 #include "main.h"
 
-void initializeNodes(Node &node1, Node &node2, Node &node3)
+void initializeNodes(std::vector<Node> &nodes)
 {
     /* Creates circular connection between the current nodes
-    by adding the next node in the list to the node making
-    the call to add the neighbor. */
+       by adding the next node in the list. */
 
-    node1.addNeighbor(&node2);
-    node2.addNeighbor(&node3);
-    node3.addNeighbor(&node1);
+    for (size_t i = 0; i < nodes.size(); ++i)
+    {
+        nodes[i].addNeighbor(&nodes[(i + 1) % nodes.size()]);
+    }
 }
 
-void initializeNPCs(TrafficManager &trafficManager, Node &node1, Node &node2)
+void initializeNPCs(TrafficManager &trafficManager, std::vector<Node> &nodes)
 {
+    std::vector<NPC> npcs;
+    for (size_t i = 0; i < nodes.size(); ++i)
+    {
+        npcs.emplace_back(i + 1, &nodes[i]);
+        trafficManager.addNPC(&npcs.back());
+    }
 }
 
-void simulateTraffic(TrafficManager &trafficManager, NPC &npc1, NPC &npc2)
+void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs)
 {
+    for (int i = 0; i < 10; ++i)
+    {
+        trafficManager.updateTraffic();
+
+        // Check node for every npc in npcs
+        for (const auto &npc : npcs)
+        {
+            std::cout << "NPC" << npc.getId() << " is at Node ";
+            std::cout << npc.getCurrentNode()->getId() << std::endl;
+        }
+    }
 }
 
 int main()
