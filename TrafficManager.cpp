@@ -21,6 +21,8 @@ void TrafficManager::updateTraffic()
 
         if (!neighbors.empty())
         {
+            // move to a random neighbor within neighbors vector
+            // "%" makes sure the random index is within the vector
             npc->moveToNode(neighbors[rand() % neighbors.size()]);
         }
     }

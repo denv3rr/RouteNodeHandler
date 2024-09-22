@@ -17,7 +17,7 @@ public:
 
 private:
     int id;
-    std::vector<Node *> neighbors;
+    std::vector<Node *> neighbors; // Node neighbors vector
 };
 
 #endif // NODE_H
