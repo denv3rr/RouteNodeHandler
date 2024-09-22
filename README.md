@@ -11,38 +11,14 @@ Simple handling of traffic nodes for NPCs.
 - Version 1.0.0:
     - output should look like:
     >a.exe
-Starting program...
-Initializing nodes...
-Initializing NPCs...
-Simulating traffic...
-NPC1 is at Node 1
-NPC2 is at Node 2
-NPC3 is at Node 1
-NPC1 is at Node 1
-NPC2 is at Node 2
-NPC3 is at Node 2
-NPC1 is at Node 1
-NPC2 is at Node 2
-NPC3 is at Node 3
-NPC1 is at Node 1
-NPC2 is at Node 2
-NPC3 is at Node 1
-NPC1 is at Node 1
-NPC2 is at Node 2
-NPC3 is at Node 2
-NPC1 is at Node 1
-NPC2 is at Node 2
-NPC3 is at Node 3
-NPC1 is at Node 1
-NPC2 is at Node 2
-NPC3 is at Node 1
-NPC1 is at Node 1
-NPC2 is at Node 2
-NPC3 is at Node 2
-NPC1 is at Node 1
-NPC2 is at Node 2
-NPC3 is at Node 3
-NPC1 is at Node 1
-NPC2 is at Node 2
-NPC3 is at Node 1
-Program finished.
+    >Starting program...
+    >Initializing nodes...
+    >Initializing NPCs...
+    >Simulating traffic...
+    >NPC1 is at Node 1
+    >NPC2 is at Node 2
+    >NPC3 is at Node 1
+    >NPC1 is at Node 1
+    >NPC2 is at Node 2
+    >(more updates)
+    >Program finished.
