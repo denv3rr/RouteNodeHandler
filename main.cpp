@@ -38,7 +38,7 @@ void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs)
     {
         trafficManager.updateTraffic();
 
-        // Check node for every npc in npcs
+        // Check node for every npc in npcs and output its data
         for (const auto &npc : npcs)
         {
             std::cout << "NPC" << npc.getId() << " is at Node ";
@@ -49,4 +49,17 @@ void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs)
 
 int main()
 {
+    std::vector<Node> nodes; // Stores nodes
+    for (int i = 1; i <= 3; ++i)
+    {
+        nodes.emplace_back(i);
+    }
+
+    TrafficManager trafficManager;
+
+    initializeNodes(nodes);
+    std::vector<NPC> npcs; //  Stores NPCs
+    initializeNPCs(trafficManager, nodes);
+
+    simulateTraffic(trafficManager, npcs);
 }
