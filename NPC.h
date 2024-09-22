@@ -1,5 +1,5 @@
 /* *************************************************
- * Node.cpp
+ * NPC.h
  * Purpose: NPC header file for creation of NPC class.
  ************************************************* */
 #ifndef NPC_H
