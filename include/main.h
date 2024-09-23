@@ -6,6 +6,7 @@
 #define MAIN_H
 
 #include <vector>
+#include "functions.h"
 #include "TrafficManager.h"
 
 void initializeNodes(std::vector<Node> &nodes);

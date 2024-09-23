@@ -3,9 +3,9 @@ Simple handling of traffic nodes for NPCs.
 
 ## Compiling
 - Current build will be compiled simply with:
-    `g++ -I ./ *.cpp -o '<out file name>'`
+    `g++ -I ../include *.cpp -o '<out file name>'`
 - Or, simply:
-    `g++ -I ./ *.cpp`
+    `g++ -I ../include *.cpp`
 
 ## Versions
 - Version 1.0.0:
