@@ -5,7 +5,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include "functions.h"
+#include <vector>
 #include "TrafficManager.h"
 
 void initializeNodes(std::vector<Node> &nodes);

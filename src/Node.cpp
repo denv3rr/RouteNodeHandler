@@ -8,17 +8,6 @@
 #include <iostream>
 #include "Node.h"
 
-void initializeNodes(std::vector<Node> &nodes)
-{
-    /* Creates circular connection between the current nodes
-       by adding the next node in the list. */
-    std::cout << "Initializing nodes..." << std::endl;
-    for (size_t i = 0; i < nodes.size(); ++i)
-    {
-        nodes[i].addNeighbor(&nodes[(i + 1) % nodes.size()]);
-    }
-}
-
 // Node class initializer
 Node::Node(int id) : id(id) {}
 
@@ -35,4 +24,15 @@ void Node::addNeighbor(Node *neighbor)
 const std::vector<Node *> &Node::getNeighbors() const
 {
     return neighbors;
+}
+
+void initializeNodes(std::vector<Node> &nodes)
+{
+    /* Creates circular connection between the current nodes
+       by adding the next node in the list. */
+    std::cout << "Initializing nodes..." << std::endl;
+    for (size_t i = 0; i < nodes.size(); ++i)
+    {
+        nodes[i].addNeighbor(&nodes[(i + 1) % nodes.size()]);
+    }
 }

@@ -10,9 +10,6 @@
 #include <ctime>
 #include <iostream>
 
-// Local
-// --
-
 // Prototypes:
 
 void printCurrentTime();
