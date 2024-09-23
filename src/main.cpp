@@ -9,7 +9,7 @@
 #include <iostream>
 
 // Local
-#include "main.h"
+#include "include/main.h"
 
 void initializeNodes(std::vector<Node> &nodes)
 {

@@ -2,7 +2,7 @@
  * NPC.cpp
  * Purpose: creates an instance of NPC class.
  ************************************************* */
-#include "NPC.h"
+#include "include/NPC.h"
 
 NPC::NPC(int id, Node *startNode) : id(id), currentNode(startNode) {}
 

@@ -4,7 +4,7 @@
  *          nodes, and finally, update neighbors (with getNeighbors()
  *          function).
  ************************************************* */
-#include "Node.h"
+#include "include/Node.h"
 
 // Node initializer
 Node::Node(int id) : id(id) {}

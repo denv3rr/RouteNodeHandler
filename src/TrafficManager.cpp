@@ -4,8 +4,7 @@
  *          that handles traffic for created objects
  *          such as: NPCs, vehicles, etc.
  ************************************************* */
-#include "TrafficManager.h"
-#include <iostream>
+#include "include/TrafficManager.h"
 
 void TrafficManager::addNPC(NPC *npc)
 {
