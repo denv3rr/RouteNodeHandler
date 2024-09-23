@@ -28,11 +28,13 @@ void simulateTraffic()
         // updates for NPCs
         for (const auto &npc : npcs)
         {
+            std::cout << "NPC " << npc.getId() << " is at Node " << npc.getCurrentNode()->getId() << std::endl;
         }
 
         // updates for vehicles
         for (const auto &vehicle : vehicles)
         {
+            std::cout << "Vehicle " << vehicle.getId() << " is at Node " << vehicle.getCurrentNode()->getId() << std::endl;
         }
     }
 }

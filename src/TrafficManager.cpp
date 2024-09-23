@@ -5,6 +5,7 @@
  *          such as: NPCs, vehicles, etc.
  ************************************************* */
 #include "include/TrafficManager.h"
+#include <iostream>
 
 void TrafficManager::addNPC(NPC *npc)
 {

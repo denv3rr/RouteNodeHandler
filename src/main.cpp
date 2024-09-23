@@ -13,22 +13,6 @@
 #include "include/functions.h"
 #include "include/simulation.h"
 
-void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs)
-{
-    std::cout << "Simulating traffic..." << std::endl;
-    for (int i = 0; i < 10; ++i)
-    {
-        trafficManager.updateTraffic();
-
-        // Check node for every npc in npcs and output its data
-        for (const auto &npc : npcs)
-        {
-            std::cout << "NPC" << npc.getId() << " is at Node ";
-            std::cout << npc.getCurrentNode()->getId() << std::endl;
-        }
-    }
-}
-
 int main()
 {
     // Start the runtime clock at the beginning for accurate timing
@@ -44,12 +28,14 @@ int main()
     }
 
     TrafficManager trafficManager;
+    std::vector<NPC> npcs;         //  Stores NPCs
+    std::vector<Vehicle> vehicles; // Stores Vehicles
 
     initializeNodes(nodes);
-    std::vector<NPC> npcs; //  Stores NPCs
     initializeNPCs(trafficManager, nodes, npcs);
+    initializeVehicles(trafficManager, nodes, vehicles);
 
-    simulateTraffic(trafficManager, npcs);
+    simulateTraffic(trafficManager, npcs, vehicles);
 
     std::cout << "Program finished." << std::endl;
     printExecutionTime(start);
