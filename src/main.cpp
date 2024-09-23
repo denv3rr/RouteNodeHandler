@@ -10,6 +10,8 @@
 
 // Local
 #include "include/main.h"
+#include "include/functions.h"
+#include "include/simulation.h"
 
 void initializeNodes(std::vector<Node> &nodes)
 {
@@ -66,5 +68,7 @@ int main()
     simulateTraffic(trafficManager, npcs);
 
     std::cout << "Program finished." << std::endl;
+    std::cout << "At ";
+    printCurrentTime();
     return 0;
 }

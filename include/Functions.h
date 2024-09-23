@@ -7,6 +7,7 @@
 
 // Standard
 #include <chrono>
+#include <ctime>
 #include <iostream>
 
 // Local
