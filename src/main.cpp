@@ -13,27 +13,6 @@
 #include "include/functions.h"
 #include "include/simulation.h"
 
-void initializeNodes(std::vector<Node> &nodes)
-{
-    /* Creates circular connection between the current nodes
-       by adding the next node in the list. */
-    std::cout << "Initializing nodes..." << std::endl;
-    for (size_t i = 0; i < nodes.size(); ++i)
-    {
-        nodes[i].addNeighbor(&nodes[(i + 1) % nodes.size()]);
-    }
-}
-
-void initializeNPCs(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<NPC> &npcs)
-{
-    std::cout << "Initializing NPCs..." << std::endl;
-    for (size_t i = 0; i < nodes.size(); ++i)
-    {
-        npcs.emplace_back(i + 1, &nodes[i]);
-        trafficManager.addNPC(&npcs.back());
-    }
-}
-
 void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs)
 {
     std::cout << "Simulating traffic..." << std::endl;
