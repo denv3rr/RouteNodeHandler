@@ -10,16 +10,6 @@
 #include "TrafficManager.h"
 #include "NPC.h"
 
-void initializeNPCs(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<NPC> &npcs)
-{
-    std::cout << "Initializing NPCs..." << std::endl;
-    for (size_t i = 0; i < nodes.size(); ++i)
-    {
-        npcs.emplace_back(i + 1, &nodes[i]);
-        trafficManager.addNPC(&npcs.back());
-    }
-}
-
 NPC::NPC(int id, Node *startNode) : id(id), currentNode(startNode) {}
 
 int NPC::getId() const
@@ -35,4 +25,14 @@ Node *NPC::getCurrentNode() const
 void NPC::moveToNode(Node *node)
 {
     currentNode = node;
+}
+
+void initializeNPCs(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<NPC> &npcs)
+{
+    std::cout << "Initializing NPCs..." << std::endl;
+    for (size_t i = 0; i < nodes.size(); ++i)
+    {
+        npcs.emplace_back(i + 1, &nodes[i]);
+        trafficManager.addNPC(&npcs.back());
+    }
 }

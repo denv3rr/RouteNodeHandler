@@ -6,6 +6,8 @@
 #define NPC_H
 
 #include "Node.h"
+#include "TrafficManager.h"
+#include <vector>
 
 class NPC
 {

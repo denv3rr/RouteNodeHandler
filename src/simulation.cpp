@@ -8,7 +8,7 @@
 #include <iostream>
 
 // Local
-#include "simulation.h
+#include "simulation.h"
 
 void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles)
 {

@@ -7,6 +7,7 @@
 
 // Standard
 #include <iostream>
+#include <chrono>
 
 // Local
 #include "main.h"
@@ -38,7 +39,7 @@ int main()
 
     simulateTraffic(trafficManager, npcs, vehicles);
 
-    std::cout << "Program finished." << std::endl;
+    std::cout << "Program finished..." << std::endl;
     printExecutionTime(start);
     std::cout << "At ";
     printCurrentTime();

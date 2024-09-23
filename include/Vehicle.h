@@ -6,6 +6,8 @@
 #define VEHICLE_H
 
 #include "Node.h"
+#include "TrafficManager.h"
+#include <vector>
 
 class Vehicle
 {
