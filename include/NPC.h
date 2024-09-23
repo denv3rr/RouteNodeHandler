@@ -16,10 +16,6 @@ public:
     int getId() const;
     Node *getCurrentNode() const;
     void moveToNode(Node *node);
-
-private:
-    int id;
-    Node *currentNode;
 };
 
 void initializeNPCs(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<NPC> &npcs);

@@ -20,4 +20,6 @@ private:
     std::vector<Node *> neighbors; // Node neighbors vector
 };
 
+void initializeNodes(std::vector<Node> &nodes);
+
 #endif // NODE_H
