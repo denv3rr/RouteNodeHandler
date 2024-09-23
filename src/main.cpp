@@ -52,8 +52,13 @@ void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs)
 
 int main()
 {
+    // Start the runtime clock at the beginning for accurate timing
+    auto start = std::chrono::high_resolution_clock::now();
+
     std::cout << "Starting program..." << std::endl;
-    std::vector<Node> nodes; // Stores nodes
+
+    // Stores nodes and adds nodes to back of vector
+    std::vector<Node> nodes;
     for (int i = 1; i <= 3; ++i)
     {
         nodes.emplace_back(i);
@@ -68,6 +73,7 @@ int main()
     simulateTraffic(trafficManager, npcs);
 
     std::cout << "Program finished." << std::endl;
+    printExecutionTime(start);
     std::cout << "At ";
     printCurrentTime();
     return 0;
