@@ -8,9 +8,9 @@
 #include <iostream>
 
 // Local
-#include "include/simulation.h"
+#include "simulation.h
 
-void simulateTraffic()
+void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles)
 {
     /* *************************************************
      * Simulate Traffic function

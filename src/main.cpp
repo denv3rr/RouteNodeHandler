@@ -9,9 +9,10 @@
 #include <iostream>
 
 // Local
-#include "include/main.h"
-#include "include/functions.h"
-#include "include/simulation.h"
+#include "main.h"
+#include "functions.h"
+#include "simulation.h"
+#include "Vehicle.h"
 
 int main()
 {

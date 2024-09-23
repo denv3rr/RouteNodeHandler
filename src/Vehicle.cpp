@@ -2,17 +2,12 @@
  * Vehicle.cpp
  * Purpose: creates an instance of Vehicle class.
  ************************************************* */
-#include "include/Vehicle.h"
 
-void initializeVehicles(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<Vehicle> &vehicles)
-{
-    std::cout << "Initializing Vehicles..." << std::endl;
-    for (size_t i = 0; i < nodes.size(); ++i)
-    {
-        vehicles.emplace_back(i + 1, &nodes[i]);
-        trafficManager.addVehicle(&vehicles.back());
-    }
-}
+// Standard
+#include <iostream>
+
+// Local
+#include "Vehicle.h"
 
 // Vehicle class implementation + initializer list
 Vehicle::Vehicle(int id, Node *startNode) : id(id), currentNode(startNode) {}
@@ -30,4 +25,14 @@ Node *Vehicle::getCurrentNode() const
 void Vehicle::moveToNode(Node *node)
 {
     currentNode = node;
+}
+
+void initializeVehicles(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<Vehicle> &vehicles)
+{
+    std::cout << "Initializing Vehicles..." << std::endl;
+    for (size_t i = 0; i < nodes.size(); ++i)
+    {
+        vehicles.emplace_back(i + 1, &nodes[i]);
+        trafficManager.addVehicle(&vehicles.back());
+    }
 }

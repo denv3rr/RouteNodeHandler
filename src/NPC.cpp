@@ -7,8 +7,8 @@
 #include <iostream>
 
 // Local
-#include "include/TrafficManager.h"
-#include "include/NPC.h"
+#include "TrafficManager.h"
+#include "NPC.h"
 
 void initializeNPCs(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<NPC> &npcs)
 {

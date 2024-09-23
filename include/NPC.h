@@ -20,4 +20,6 @@ private:
     Node *currentNode;
 };
 
+void initializeNPCs(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<NPC> &npcs);
+
 #endif // NPC_H

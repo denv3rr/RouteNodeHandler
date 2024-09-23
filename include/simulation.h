@@ -9,7 +9,7 @@
 #include <vector>
 
 // Local
-#include "include/TrafficManager.h"
+#include "TrafficManager.h"
 
 void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles);
 

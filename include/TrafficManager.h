@@ -12,15 +12,18 @@
 
 // Local
 #include "NPC.h"
+#include "Vehicle.h"
 
 class TrafficManager
 {
 public:
     void addNPC(NPC *npc);
+    void addVehicle(Vehicle *vehicle);
     void updateTraffic();
 
 private:
-    std::vector<NPC *> npcs; // creates NPC vector
+    std::vector<NPC *> npcs;         // creates NPC vector
+    std::vector<Vehicle *> vehicles; // creates Vehicles vector
 };
 
 #endif // TRAFFICMANAGER_H

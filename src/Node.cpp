@@ -6,7 +6,7 @@
  ************************************************* */
 
 #include <iostream>
-#include "include/Node.h"
+#include "Node.h"
 
 void initializeNodes(std::vector<Node> &nodes)
 {

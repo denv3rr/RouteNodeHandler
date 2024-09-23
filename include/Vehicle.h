@@ -5,7 +5,7 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
 
-#include "include/Node.h"
+#include "Node.h"
 
 class Vehicle
 {
@@ -19,5 +19,7 @@ private:
     int id;
     Node *currentNode;
 };
+
+void initializeVehicles(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<Vehicle> &vehicles);
 
 #endif // VEHICLE_H
