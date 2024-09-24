@@ -6,7 +6,7 @@
  ************************************************* */
 
 #include <iostream>
-#include "Node.h"
+#include "../include/Node.h"
 
 // Node class initializer
 Node::Node(int id) : id(id) {}

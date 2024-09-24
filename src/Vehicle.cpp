@@ -7,7 +7,7 @@
 #include <iostream>
 
 // Local
-#include "Vehicle.h"
+#include "../include/Vehicle.h"
 
 // Vehicle class implementation + initializer list
 Vehicle::Vehicle(int id, Node *startNode) : id(id), currentNode(startNode) {}

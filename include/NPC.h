@@ -5,7 +5,10 @@
 #ifndef NPC_H
 #define NPC_H
 
+#include <vector>
+
 #include "Node.h"
+#include "TrafficManager.h"
 
 class NPC
 {
@@ -14,6 +17,10 @@ public:
     int getId() const;
     Node *getCurrentNode() const;
     void moveToNode(Node *node);
+
+private:
+    int id;
+    Node *currentNode;
 };
 
 void initializeNPCs(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<NPC> &npcs);

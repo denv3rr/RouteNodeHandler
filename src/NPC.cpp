@@ -7,8 +7,8 @@
 #include <iostream>
 
 // Local
-#include "NPC.h"
-#include "TrafficManager.h"
+#include "../include/NPC.h"
+#include "../include/TrafficManager.h"
 
 NPC::NPC(int id, Node *startNode) : id(id), currentNode(startNode) {}
 

@@ -5,7 +5,7 @@
 #include <ctime>
 #include <iostream>
 #include <chrono>
-#include "functions.h"
+#include "../include/functions.h"
 
 void printCurrentTime()
 {

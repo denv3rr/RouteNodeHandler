@@ -10,10 +10,10 @@
 #include <chrono>
 
 // Local
-#include "main.h"
-#include "functions.h"
-#include "simulation.h"
-#include "Vehicle.h"
+#include "../include/main.h"
+#include "../include/functions.h"
+#include "../include/simulation.h"
+#include "../include/Vehicle.h"
 
 int main()
 {
