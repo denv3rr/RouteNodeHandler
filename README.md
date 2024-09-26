@@ -20,6 +20,31 @@
 
 ## Versions
 
+- Version 3.0.0:
+    - Slowly implementing dynamic node creation functionality.
+    - output should look like:
+
+    ````
+    Starting program...
+    Node ID: 1 at (0, 0, 0)
+    Node ID: 2 at (0, 0, 1)
+    Node ID: 3 at (0, 0, 2)
+    Node ID: 4 at (0, 0, 3)
+    Node ID: 5 at (0, 0, 4)
+    .......
+    (Then updates ID until about 8000 or so, like so:)
+    .......
+    Node ID: 7996 at (19, 19, 15)
+    Node ID: 7997 at (19, 19, 16)
+    Node ID: 7998 at (19, 19, 17)
+    Node ID: 7999 at (19, 19, 18)
+    Node ID: 8000 at (19, 19, 19)
+    Simulating traffic...
+
+    Vehicle 699924208 moved to Node ID:
+
+    ````
+
 - Version 2.0.0:
     - output should look like:
 
