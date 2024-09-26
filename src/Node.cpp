@@ -9,7 +9,25 @@
 #include <iostream>
 
 // Node class initializer
+float x, y, z;
 Node::Node(int id, float x, float y, float z) : id(id), x(x), y(y), z(z) {}
+
+std::vector<Node> nodes;
+
+void createNode(int id)
+{
+    float x = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / 10.0));
+    float y = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / 10.0));
+    float z = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / 10.0));
+    nodes.push_back(Node(id, x, y, z));
+}
+
+void moveRandomly()
+{
+    x += (rand() % 3 - 1);
+    y += (rand() % 3 - 1);
+    z += (rand() % 3 - 1);
+}
 
 int Node::getId() const
 {

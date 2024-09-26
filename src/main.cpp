@@ -17,6 +17,8 @@
 
 int main()
 {
+    srand(static_cast<unsigned>(time(0)));
+
     // Start the runtime clock at the beginning for accurate timing
     auto start = std::chrono::high_resolution_clock::now();
 
@@ -41,7 +43,7 @@ int main()
     std::cout << "\n*************************\n\n";
     std::cout << "Program finished." << std::endl;
     printExecutionTime(start);
-    std::cout << "At ";
+    std::cout << "At: ";
     printCurrentTime();
     return 0;
 }

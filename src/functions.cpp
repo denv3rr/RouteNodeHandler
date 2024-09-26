@@ -10,7 +10,7 @@
 void printCurrentTime()
 {
     std::time_t now = std::time(nullptr);
-    std::cout << "Current time: " << std::ctime(&now);
+    std::cout << std::ctime(&now);
 }
 
 void printExecutionTime(std::chrono::time_point<std::chrono::high_resolution_clock> start)
