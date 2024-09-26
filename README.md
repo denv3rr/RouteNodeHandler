@@ -24,82 +24,84 @@
     - Slowly implementing dynamic node creation functionality.
     - output should look like:
 
-    ````
-    Starting program...
-    Node ID: 1 at (0, 0, 0)
-    Node ID: 2 at (0, 0, 1)
-    Node ID: 3 at (0, 0, 2)
-    Node ID: 4 at (0, 0, 3)
-    Node ID: 5 at (0, 0, 4)
-    .......
-    (Then updates ID until about 8000 or so, like so:)
-    .......
-    Node ID: 7996 at (19, 19, 15)
-    Node ID: 7997 at (19, 19, 16)
-    Node ID: 7998 at (19, 19, 17)
-    Node ID: 7999 at (19, 19, 18)
-    Node ID: 8000 at (19, 19, 19)
-    Simulating traffic...
+    -   ````
+        Starting program...
+        Node ID: 1 at (0, 0, 0)
+        Node ID: 2 at (0, 0, 1)
+        Node ID: 3 at (0, 0, 2)
+        Node ID: 4 at (0, 0, 3)
+        Node ID: 5 at (0, 0, 4)
+        ...
+        ...
+        (***MORE UPDATES***)
+        ...
+        ...
+        Node ID: 7996 at (19, 19, 15)
+        Node ID: 7997 at (19, 19, 16)
+        Node ID: 7998 at (19, 19, 17)
+        Node ID: 7999 at (19, 19, 18)
+        Node ID: 8000 at (19, 19, 19)
+        Simulating traffic...
 
-    Vehicle 699924208 moved to Node ID:
+        Vehicle 699924208 moved to Node ID:
 
-    ````
+        ````
 
 - Version 2.0.0:
     - output should look like:
 
-    ````
+    -   ````
     
-    Starting program...
-    Initializing nodes...
-    Initializing NPCs...
-    Initializing Vehicles...
-    Simulating traffic...
+        Starting program...
+        Initializing nodes...
+        Initializing NPCs...
+        Initializing Vehicles...
+        Simulating traffic...
 
 
-    NPC 1 is at Node 1
-    NPC 2 is at Node 2
-    NPC 3 is at Node 1
-    Vehicle 1 is at Node 1
-    Vehicle 2 is at Node 2
-    Vehicle 3 is at Node 1
-    ...
-    ...
-    (***MORE UPDATES***)
-    ...
-    ...
-    NPC 1 is at Node 1
-    NPC 2 is at Node 2
-    NPC 3 is at Node 1
-    Vehicle 1 is at Node 1
-    Vehicle 2 is at Node 2
-    Vehicle 3 is at Node 1
+        NPC 1 is at Node 1
+        NPC 2 is at Node 2
+        NPC 3 is at Node 1
+        Vehicle 1 is at Node 1
+        Vehicle 2 is at Node 2
+        Vehicle 3 is at Node 1
+        ...
+        ...
+        (***MORE UPDATES***)
+        ...
+        ...
+        NPC 1 is at Node 1
+        NPC 2 is at Node 2
+        NPC 3 is at Node 1
+        Vehicle 1 is at Node 1
+        Vehicle 2 is at Node 2
+        Vehicle 3 is at Node 1
 
-    *************************
+        *************************
 
-    Program finished.
-    Execution time: 0.0164633 seconds
-    At Current time: Wed Sep 25 20:54:28 2024
+        Program finished.
+        Execution time: 0.0164633 seconds
+        At Current time: Wed Sep 25 20:54:28 2024
 
-    ````
+        ````
 
 - Version 1.0.0:
     - output should look like:
 
-    ````
-    Starting program...
-    Initializing nodes...
-    Initializing NPCs...
-    Simulating traffic...
-    NPC1 is at Node 1
-    NPC2 is at Node 2
-    NPC3 is at Node 1
-    NPC1 is at Node 1
-    NPC2 is at Node 2
-    ...
-    ...
-    (***MORE UPDATES***)
-    ...
-    ...
-    Program finished.
-    ````
+    -   ````
+        Starting program...
+        Initializing nodes...
+        Initializing NPCs...
+        Simulating traffic...
+        NPC1 is at Node 1
+        NPC2 is at Node 2
+        NPC3 is at Node 1
+        NPC1 is at Node 1
+        NPC2 is at Node 2
+        ...
+        ...
+        (***MORE UPDATES***)
+        ...
+        ...
+        Program finished.
+        ````
