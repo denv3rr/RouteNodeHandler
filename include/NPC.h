@@ -1,29 +1,21 @@
-/* *************************************************
- * NPC.h
- * Purpose: NPC header file for creation of NPC class.
- ************************************************* */
 #ifndef NPC_H
 #define NPC_H
 
-#include <vector>
-
-class TrafficManager;
 #include "Node.h"
-class NPC;
+#include <vector>
 
 class NPC
 {
 public:
-    NPC(int id, Node *startNode);
-    int getId() const;
-    Node *getCurrentNode() const;
-    void moveToNode(Node *node);
+    NPC(int id, Node *startNode); // Constructor to initialize the NPC
+    void move();                  // Simulate movement (simple for now)
+    int getId() const;            // Return NPC ID
+    Node *getCurrentNode() const; // Return the node where the NPC is currently located
 
 private:
-    int id;
-    Node *currentNode;
+    int id;                   // NPC identifier
+    Node *currentNode;        // Current node the NPC is on
+    std::vector<Node *> path; // Path assigned to the NPC
 };
-
-void initializeNPCs(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<NPC> &npcs);
 
 #endif // NPC_H

@@ -1,30 +1,21 @@
-/* *************************************************
- * Vehicle.h
- * Purpose: Vehicle header file for creation of Vehicle class.
- ************************************************* */
 #ifndef VEHICLE_H
 #define VEHICLE_H
 
-// Standard
-#include <vector>
-
-class TrafficManager;
 #include "Node.h"
-class Vehicle;
+#include <vector>
 
 class Vehicle
 {
 public:
-    Vehicle(int id, Node *startNode);
-    int getId() const;
-    Node *getCurrentNode() const;
-    void moveToNode(Node *node);
+    Vehicle(int id, Node *startNode); // Constructor to initialize the vehicle
+    void move();                      // Simulate movement
+    int getId() const;                // Return Vehicle ID
+    Node *getCurrentNode() const;     // Return current node
 
 private:
-    int id;
-    Node *currentNode;
+    int id;                   // Vehicle identifier
+    Node *currentNode;        // Current node the vehicle is at
+    std::vector<Node *> path; // Path assigned to the vehicle
 };
-
-void initializeVehicles(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<Vehicle> &vehicles);
 
 #endif // VEHICLE_H

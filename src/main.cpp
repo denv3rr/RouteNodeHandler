@@ -1,51 +1,51 @@
 /* *************************************************
  * main.cpp
- * Purpose: Main program entrypoint.
- *          Implements trafficManager functions to change
- *          NPC data along a node system.
+ * Purpose: Main entry point for the Node Route Simulation
  ************************************************* */
 
-// Standard
-#include <iostream>
-#include <chrono>
-#include <ctime>
-
-// Local
+#include "../include/main.h"
+#include "../include/NodeManager.h"
+#include "../include/TrafficManager.h"
+#include "../include/simulation.h"
 #include "../include/functions.h"
-#include "main.h"
-#include "simulation.h"
+
+#include <iostream>
+#include <iomanip> // For std::setprecision
 
 int main()
 {
-    srand(static_cast<unsigned>(time(0)));
+    std::srand(static_cast<unsigned>(std::time(0))); // Seed randomness for node positions
 
-    char input;
-
-    // Start the runtime clock at the beginning for accurate timing
     auto start = std::chrono::high_resolution_clock::now();
-
     std::cout << "\n\nStarting program..." << std::endl;
 
-    // Stores nodes and adds nodes to back of vector
-    std::vector<Node> nodes;
-    nodes.emplace_back(1, 0.0f, 0.0f);
-    nodes.emplace_back(2, 1.0f, 0.0f);
-    nodes.emplace_back(3, 0.0f, 1.0f);
+    // Create NodeManager and initialize nodes with random positions
+    NodeManager nodeManager;
+    int nodeCount = 20;                           // Specify the desired number of nodes to generate
+    nodeManager.initializeNodes(nodeCount, 1.0f); // Initialize the specified number of nodes
+    nodeManager.printNodes();                     // Optional: Print nodes for debugging
 
+    // Create TrafficManager and initialize NPCs and Vehicles
     TrafficManager trafficManager;
-    std::vector<NPC> npcs;         //  Stores NPCs
-    std::vector<Vehicle> vehicles; // Stores Vehicles
+    std::vector<NPC> npcs;         // Store NPCs
+    std::vector<Vehicle> vehicles; // Store Vehicles
 
-    initializeNodes(nodes);
-    initializeNPCs(trafficManager, nodes, npcs);
-    initializeVehicles(trafficManager, nodes, vehicles);
+    int npcCount = 10;     // Number of NPCs to initialize
+    int vehicleCount = 10; // Number of Vehicles to initialize
 
+    // Initialize NPCs and Vehicles with the updated counts
+    initializeNPCs(trafficManager, nodeManager.getNodes(), npcs, npcCount);
+    initializeVehicles(trafficManager, nodeManager.getNodes(), vehicles, vehicleCount);
+
+    // Run the simulation
     simulateTraffic(trafficManager, npcs, vehicles);
 
+    // Print completion message and execution time
     std::cout << "\n*************************\n\n";
     std::cout << "Program finished." << std::endl;
     printExecutionTime(start);
     std::cout << "At: ";
     printCurrentTime();
+
     return 0;
 }

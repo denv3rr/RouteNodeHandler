@@ -1,37 +1,29 @@
-/* *************************************************
- * NPC.cpp
- * Purpose: creates an instance of NPC class.
- ************************************************* */
-
-#include "TrafficManager.h"
-#include "Node.h"
-#include "NPC.h"
-
+#include "../include/NPC.h"
 #include <iostream>
 
+// Constructor to initialize NPC with an ID and starting node
 NPC::NPC(int id, Node *startNode) : id(id), currentNode(startNode) {}
 
+// Return NPC ID
 int NPC::getId() const
 {
     return id;
 }
 
+// Return the current node the NPC is at
 Node *NPC::getCurrentNode() const
 {
     return currentNode;
 }
 
-void NPC::moveToNode(Node *node)
+// Move to the next node in the path (if path exists)
+void NPC::move()
 {
-    currentNode = node;
-}
-
-void initializeNPCs(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<NPC> &npcs)
-{
-    std::cout << "Initializing NPCs..." << std::endl;
-    for (size_t i = 0; i < nodes.size(); ++i)
+    if (!path.empty())
     {
-        npcs.emplace_back(i + 1, &nodes[i]);
-        trafficManager.addNPC(&npcs.back());
+        currentNode = path.front(); // Move to the next node
+        path.erase(path.begin());   // Remove the first node from path
+        std::cout << "NPC " << id << " moved to Node ID: " << currentNode->getId()
+                  << " at (" << currentNode->getX() << ", " << currentNode->getY() << ", " << currentNode->getZ() << ")" << std::endl;
     }
 }

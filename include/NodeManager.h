@@ -2,32 +2,18 @@
 #define NODE_MANAGER_H
 
 #include "Node.h"
-#include <iostream>
 #include <vector>
-#include <unordered_map>
-#include <queue>
 
-// NodeManager class for managing a collection of nodes and pathfinding.
 class NodeManager
 {
 public:
-    // Adds a new node to the map
-    Node *addNode(float x, float y, float z = 0.0f);
-
-    // Adds a dynamic node during simulation
-    Node *addDynamicNode(float x, float y, float z = 0.0f);
-
-    // Finds nodes near a given position
-    std::vector<Node *> findNearbyNodes(Node *newNode, float distance);
-
-    // Calculates the distance between two nodes
-    float distanceBetween(Node *a, Node *b);
-
-    // Finds a path using A* algorithm between two nodes
-    std::vector<Node *> findPath(Node *startNode, Node *goalNode);
+    NodeManager();
+    void initializeNodes(int gridSize, float spacing); // Create a 3D grid of nodes
+    const std::vector<Node> &getNodes() const;         // Retrieve all nodes
+    void printNodes() const;                           // Optional: Print all nodes for debugging
 
 private:
-    std::vector<Node> nodes; // List of all nodes
+    std::vector<Node> nodes; // Store all nodes
 };
 
 #endif // NODE_MANAGER_H

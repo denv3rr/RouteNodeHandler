@@ -1,36 +1,23 @@
-/* *************************************************
- * TrafficManager.h
- * Purpose: TrafficManager header file for creation of
- *          TrafficManager class that handles created objects
- *          (such as NPCs, vehicles, or others) Node traffic.
- ************************************************* */
-#ifndef TRAFFICMANAGER_H
-#define TRAFFICMANAGER_H
+#ifndef TRAFFIC_MANAGER_H
+#define TRAFFIC_MANAGER_H
 
 #include "Node.h"
-#include "NPC.h"
-#include "Vehicle.h"
-#include "NodeManager.h" // Include NodeManager for dynamic node creation
-#include <iostream>
 #include <vector>
+#include <unordered_map>
+
+class NPC;
+class Vehicle;
 
 class TrafficManager
 {
 public:
-    std::vector<NPC *> npcs;
-    std::vector<Vehicle *> vehicles;
-
-    void addNPC(NPC *npc);
-    void addVehicle(Vehicle *vehicle);
-
-    // Set reference to NodeManager
-    void setNodeManager(NodeManager *nodeManager);
-
-    // Check if dynamic code creation is needed
-    void updateTraffic();
+    void addNPC(NPC *npc);             // Add an NPC to manage
+    void addVehicle(Vehicle *vehicle); // Add a vehicle to manage
+    void updateEntities();             // Update positions of all entities
 
 private:
-    NodeManager *nodeManager; // Pointer to NodeManager for creation of new nodes
+    std::vector<NPC *> npcs;         // Managed NPCs
+    std::vector<Vehicle *> vehicles; // Managed Vehicles
 };
 
-#endif // TRAFFICMANAGER_H
+#endif // TRAFFIC_MANAGER_H

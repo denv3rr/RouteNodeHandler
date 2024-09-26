@@ -9,7 +9,7 @@
 
 - Navigate to the `src` folder.
 
-- Current build will be compiled simply with:
+- Current build will be compiled with:
     - `g++ -I ../include *.cpp -o '<out file name>'`
 - Or, simply:
     - `g++ -I ../include *.cpp` - for a default out file.

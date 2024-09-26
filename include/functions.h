@@ -1,20 +1,10 @@
-/* *************************************************
- * functions.h
- * Purpose: functions.cpp header file
- ************************************************* */
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-// Standard
-#include <ctime>
 #include <chrono>
-#include <iostream>
 
-// Prototypes:
-
+// Utility functions for time calculations and printing
+void printExecutionTime(const std::chrono::high_resolution_clock::time_point &start);
 void printCurrentTime();
-
-// Uses chrono library to get runtime clock for debugging
-void printExecutionTime(std::chrono::time_point<std::chrono::high_resolution_clock> start);
 
 #endif // FUNCTIONS_H

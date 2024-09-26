@@ -1,38 +1,37 @@
-/* *************************************************
- * simulation.cpp
- * Purpose: simulation logic for interacting with traffic manager
- *          and created objects
- ************************************************* */
-
-#include "simulation.h"
+#include "../include/simulation.h"
+#include "../include/NPC.h"
+#include "../include/Vehicle.h"
 #include <iostream>
 
+// Initialize NPCs by placing them on random nodes
+void initializeNPCs(TrafficManager &trafficManager, const std::vector<Node> &nodes, std::vector<NPC> &npcs, int count)
+{
+    for (int i = 0; i < count; ++i)
+    {
+        int randomNodeIndex = std::rand() % nodes.size();
+        npcs.emplace_back(i + 1, const_cast<Node *>(&nodes[randomNodeIndex])); // Create an NPC with a random starting node
+        trafficManager.addNPC(&npcs.back());
+    }
+}
+
+// Initialize Vehicles in a similar manner as NPCs
+void initializeVehicles(TrafficManager &trafficManager, const std::vector<Node> &nodes, std::vector<Vehicle> &vehicles, int count)
+{
+    for (int i = 0; i < count; ++i)
+    {
+        int randomNodeIndex = std::rand() % nodes.size();
+        vehicles.emplace_back(i + 1, const_cast<Node *>(&nodes[randomNodeIndex])); // Create a Vehicle with a random starting node
+        trafficManager.addVehicle(&vehicles.back());
+    }
+}
+
+// Run the traffic simulation loop
 void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles)
 {
-    /* *************************************************
-     * Simulate Traffic function
-     * Purpose: Handles logic for simulation running during main program.
-     *          Currently loops through a Node vector created for vehicles,
-     *          NPCs, and other object classes and updates the data along
-     *          with the trafficManager as well.
-     ************************************************* */
-    std::cout << "Simulating traffic...\n\n";
-    std::cout << std::endl;
+    std::cout << "Simulating traffic...\n"
+              << std::endl;
     for (int i = 0; i < 10; ++i)
-    {
-        // update traffic manager at start of every iteration
-        trafficManager.updateTraffic();
-
-        // updates for NPCs
-        for (const auto &npc : npcs)
-        {
-            std::cout << "NPC " << npc.getId() << " is at Node " << npc.getCurrentNode()->getId() << std::endl;
-        }
-
-        // updates for vehicles
-        for (const auto &vehicle : vehicles)
-        {
-            std::cout << "Vehicle " << vehicle.getId() << " is at Node " << vehicle.getCurrentNode()->getId() << std::endl;
-        }
+    {                                    // For demonstration, run 10 simulation steps
+        trafficManager.updateEntities(); // Move all entities
     }
 }

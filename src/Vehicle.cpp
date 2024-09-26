@@ -1,38 +1,29 @@
-/* *************************************************
- * Vehicle.cpp
- * Purpose: creates an instance of Vehicle class.
- ************************************************* */
-
-#include "TrafficManager.h"
-#include "Node.h"
-#include "Vehicle.h"
-
+#include "../include/Vehicle.h"
 #include <iostream>
 
-// Vehicle class implementation + initializer list
+// Constructor to initialize Vehicle with ID and starting node
 Vehicle::Vehicle(int id, Node *startNode) : id(id), currentNode(startNode) {}
 
+// Return Vehicle ID
 int Vehicle::getId() const
 {
     return id;
 }
 
+// Return the current node the Vehicle is at
 Node *Vehicle::getCurrentNode() const
 {
     return currentNode;
 }
 
-void Vehicle::moveToNode(Node *node)
+// Move to the next node in the path (if path exists)
+void Vehicle::move()
 {
-    currentNode = node;
-}
-
-void initializeVehicles(TrafficManager &trafficManager, std::vector<Node> &nodes, std::vector<Vehicle> &vehicles)
-{
-    std::cout << "Initializing Vehicles..." << std::endl;
-    for (size_t i = 0; i < nodes.size(); ++i)
+    if (!path.empty())
     {
-        vehicles.emplace_back(i + 1, &nodes[i]);
-        trafficManager.addVehicle(&vehicles.back());
+        currentNode = path.front(); // Move to the next node
+        path.erase(path.begin());   // Remove the first node from path
+        std::cout << "Vehicle " << id << " moved to Node ID: " << currentNode->getId()
+                  << " at (" << currentNode->getX() << ", " << currentNode->getY() << ", " << currentNode->getZ() << ")" << std::endl;
     }
 }
