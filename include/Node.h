@@ -1,6 +1,8 @@
 /* *************************************************
  * Node.h
- * Purpose: Node.cpp header file for creation of Node class
+ * Purpose: Node.cpp header file for creation of Node class.
+ *          Includes finding distance between nodes, getting coords
+ *          of a particular node, creating nodes, etc.
  ************************************************* */
 #ifndef NODE_H
 #define NODE_H
