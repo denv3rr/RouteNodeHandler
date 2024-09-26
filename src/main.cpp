@@ -11,6 +11,7 @@
 #include <ctime>
 
 // Local
+#include "../include/functions.h"
 #include "main.h"
 #include "simulation.h"
 
