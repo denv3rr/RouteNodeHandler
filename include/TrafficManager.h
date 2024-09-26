@@ -11,6 +11,7 @@
 #include <vector>
 
 // Local
+#include "../include/Node.h"
 #include "NPC.h"
 #include "Vehicle.h"
 

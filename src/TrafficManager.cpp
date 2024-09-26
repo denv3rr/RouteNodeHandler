@@ -5,6 +5,7 @@
  *          such as: NPCs, vehicles, etc.
  ************************************************* */
 #include "TrafficManager.h"
+#include "../include/Node.h"
 #include <iostream>
 
 void TrafficManager::addNPC(NPC *npc)
@@ -28,7 +29,10 @@ void TrafficManager::updateTraffic()
         {
             // move to a random neighbor within neighbors vector
             // "%" makes sure the random index is within the vector
-            npc->moveToNode(neighbors[rand() % neighbors.size()]);
+            Node *nextNode = neighbors[rand() % neighbors.size()];
+            npc->moveToNode(nextNode);
+            std::cout << "NPC moved to Node ID: " << nextNode->getId();
+            std::cout << " at (" << nextNode->getX() << ", " << nextNode->getY() << ", " << nextNode->getZ() << ")\n";
         }
     }
 
@@ -41,7 +45,10 @@ void TrafficManager::updateTraffic()
         {
             // move to a random neighbor within neighbors vector
             // "%" makes sure the random index is within the vector
-            vehicle->moveToNode(neighbors[rand() % neighbors.size()]);
+            Node *nextNode = neighbors[rand() % neighbors.size()];
+            vehicle->moveToNode(nextNode);
+            std::cout << "Vehicle moved to Node ID: " << nextNode->getId();
+            std::cout << " at (" << nextNode->getX() << ", " << nextNode->getY() << ", " << nextNode->getZ() << ")\n";
         }
     }
 }

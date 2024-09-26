@@ -5,11 +5,11 @@
  *          function).
  ************************************************* */
 
-#include "Node.h"
+#include "../include/Node.h"
 #include <iostream>
 
 // Node class initializer
-Node::Node(int id) : id(id) {}
+Node::Node(int id, float x, float y, float z) : id(id), x(x), y(y), z(z) {}
 
 int Node::getId() const
 {
@@ -24,6 +24,21 @@ void Node::addNeighbor(Node *neighbor)
 const std::vector<Node *> &Node::getNeighbors() const
 {
     return neighbors;
+}
+
+float Node::getX() const
+{
+    return x;
+}
+
+float Node::getY() const
+{
+    return y;
+}
+
+float Node::getZ() const
+{
+    return z;
 }
 
 void initializeNodes(std::vector<Node> &nodes)

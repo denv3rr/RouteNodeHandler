@@ -9,7 +9,7 @@
 - Current build will be compiled simply with:
     `g++ -I ../include *.cpp -o '<out file name>'`
 - Or, simply:
-    `g++ -I ../include *.cpp`
+    `g++ -I ../include *.cpp` - for a default out file.
 
 - These 2 compile options uses the "Include" tag to include the `include` folder as well as all files ending in `.cpp`.
 

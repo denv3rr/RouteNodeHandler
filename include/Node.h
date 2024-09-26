@@ -10,13 +10,17 @@
 class Node
 {
 public:
-    Node(int id);
+    Node(int id, float x, float y, float z = 0.0f); // init node id# and coordinates
     int getId() const;
     void addNeighbor(Node *neighbor);
     const std::vector<Node *> &getNeighbors() const;
+    float getX() const;
+    float getY() const;
+    float getZ() const;
 
 private:
     int id;
+    float x, y, z;                 // 3D coordinates
     std::vector<Node *> neighbors; // Node neighbors vector
 };
 

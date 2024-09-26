@@ -24,10 +24,9 @@ int main()
 
     // Stores nodes and adds nodes to back of vector
     std::vector<Node> nodes;
-    for (int i = 1; i <= 3; ++i)
-    {
-        nodes.emplace_back(i);
-    }
+    nodes.emplace_back(1, 0.0f, 0.0f);
+    nodes.emplace_back(2, 1.0f, 0.0f);
+    nodes.emplace_back(3, 0.0f, 1.0f);
 
     TrafficManager trafficManager;
     std::vector<NPC> npcs;         //  Stores NPCs
