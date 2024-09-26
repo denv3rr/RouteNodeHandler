@@ -16,7 +16,8 @@ void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std
      *          NPCs, and other object classes and updates the data along
      *          with the trafficManager as well.
      ************************************************* */
-    std::cout << "Simulating traffic..." << std::endl;
+    std::cout << "Simulating traffic...\n\n";
+    std::cout << std::endl;
     for (int i = 0; i < 10; ++i)
     {
         // update traffic manager at start of every iteration
