@@ -11,6 +11,7 @@
 
 // Local
 #include "functions.h"
+#include "NodeManager.h"
 #include "TrafficManager.h"
 
 void initializeNodes(std::vector<Node> &nodes);

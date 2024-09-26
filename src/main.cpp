@@ -19,6 +19,8 @@ int main()
 {
     srand(static_cast<unsigned>(time(0)));
 
+    char input;
+
     // Start the runtime clock at the beginning for accurate timing
     auto start = std::chrono::high_resolution_clock::now();
 

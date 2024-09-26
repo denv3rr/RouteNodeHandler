@@ -11,7 +11,6 @@ class Node
 {
 public:
     Node(int id, float x, float y, float z = 0.0f); // init node id# and coordinates
-    void moveRandomly();
     int getId() const;
     void addNeighbor(Node *neighbor);
     const std::vector<Node *> &getNeighbors() const;
@@ -26,6 +25,6 @@ private:
 };
 
 void initializeNodes(std::vector<Node> &nodes);
-void createNode(int id);
+void createNode();
 
 #endif // NODE_H
