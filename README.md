@@ -6,14 +6,17 @@
     - and more.
 
 ## Compiling
+
+- Navigate to the `src` folder.
+
 - Current build will be compiled simply with:
-    `g++ -I ../include *.cpp -o '<out file name>'`
+    - `g++ -I ../include *.cpp -o '<out file name>'`
 - Or, simply:
-    `g++ -I ../include *.cpp` - for a default out file.
+    - `g++ -I ../include *.cpp` - for a default out file.
 
-- These 2 compile options uses the "Include" tag to include the `include` folder as well as all files ending in `.cpp`.
+- These 2 compile options use the "Include" tag to add the `include` folder as well as all files ending in `.cpp`.
 
-- The compiled out/exe file will then be added into the same folder (`src`) depending on what you specify at compilation.
+- The compiled out/exe file will then be added into the same folder you are in (`src`) - depending on what you specify at compilation.
 
 ## Versions
 
