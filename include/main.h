@@ -6,6 +6,7 @@
 #define MAIN_H
 
 // Standard
+#include <iostream>
 #include <vector>
 
 // Local

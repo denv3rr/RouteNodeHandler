@@ -2,6 +2,9 @@
  * functions.cpp
  * Purpose: Stores program functions
  ************************************************* */
+#include <ctime>
+#include <chrono>
+#include <iostream>
 #include "functions.h"
 
 void printCurrentTime()

@@ -6,8 +6,8 @@
 #define FUNCTIONS_H
 
 // Standard
-#include <chrono>
 #include <ctime>
+#include <chrono>
 #include <iostream>
 
 // Prototypes:

@@ -9,7 +9,7 @@
 #include <vector>
 
 class TrafficManager;
-class Node;
+#include "Node.h"
 class Vehicle;
 
 class Vehicle

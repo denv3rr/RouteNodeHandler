@@ -6,12 +6,12 @@
  ************************************************* */
 
 // Standard
-#include <iostream>
 #include <chrono>
+#include <iostream>
 
 // Local
-#include "main.h"
 #include "functions.h"
+#include "main.h"
 #include "simulation.h"
 #include "Vehicle.h"
 
