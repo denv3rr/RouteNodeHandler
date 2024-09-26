@@ -57,8 +57,8 @@ float Node::getZ() const
 
 void initializeNodes(std::vector<Node> &nodes)
 {
-    /* Creates proximity connection between the current nodes
-       by adding the next node in the list. */
+    /* Creates proximity-based connections between the current nodes
+       by adding the next node as a neighbor. */
     std::cout << "Initializing nodes..." << std::endl;
     for (size_t i = 0; i < nodes.size(); ++i)
     {
