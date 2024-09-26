@@ -7,24 +7,30 @@
 #ifndef TRAFFICMANAGER_H
 #define TRAFFICMANAGER_H
 
-// Standard
-#include <vector>
-
-// Local
-#include "../include/Node.h"
+#include "Node.h"
 #include "NPC.h"
 #include "Vehicle.h"
+#include "NodeManager.h" // Include NodeManager for dynamic node creation
+#include <iostream>
+#include <vector>
 
 class TrafficManager
 {
 public:
+    std::vector<NPC *> npcs;
+    std::vector<Vehicle *> vehicles;
+
     void addNPC(NPC *npc);
     void addVehicle(Vehicle *vehicle);
+
+    // Set reference to NodeManager
+    void setNodeManager(NodeManager *nodeManager);
+
+    // Check if dynamic code creation is needed
     void updateTraffic();
 
 private:
-    std::vector<NPC *> npcs;         // creates NPC vector
-    std::vector<Vehicle *> vehicles; // creates Vehicles vector
+    NodeManager *nodeManager; // Pointer to NodeManager for creation of new nodes
 };
 
 #endif // TRAFFICMANAGER_H

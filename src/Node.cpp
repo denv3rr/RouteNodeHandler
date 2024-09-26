@@ -9,8 +9,13 @@
 #include <iostream>
 #include <cmath> // for distance calculations
 
-// Node class initializer
+// Node constructor
 Node::Node(int id, float x, float y, float z) : id(id), x(x), y(y), z(z) {}
+
+int Node::getId() const
+{
+    return id;
+}
 
 std::vector<Node> nodes;
 

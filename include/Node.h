@@ -8,24 +8,22 @@
 #define NODE_H
 
 #include <vector>
-#include <cmath> // For distance calculation
 
 class Node
 {
 public:
-    Node(int id, float x, float y, float z = 0.0f); // Init node id# and coordinates
+    Node(int id, float x, float y, float z = 0.0f); // Node constructor
     int getId() const;
     void addNeighbor(Node *neighbor);
     const std::vector<Node *> &getNeighbors() const;
     float getX() const;
     float getY() const;
     float getZ() const;
-    float distanceTo(const Node *other) const; // For distance to nearest nodes
 
 private:
     int id;
-    float x, y, z;                 // 3D coordinates
-    std::vector<Node *> neighbors; // Node neighbors vector
+    float x, y, z;                 // 3D coordinates of the node
+    std::vector<Node *> neighbors; // List of neighboring nodes
 };
 
 // Function to initialize the nodes with connections
