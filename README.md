@@ -12,7 +12,7 @@
 - Current build will be compiled with:
     - `g++ -I ../include *.cpp -o '<out file name>'`
 - Or, simply:
-    - `g++ -I ../include *.cpp` - for a default out file.
+    - `g++ -I ../include *.cpp` - for a **default** out file.
 
 - These 2 compile options use the "Include" tag to add the `include` folder as well as all files ending in `.cpp`.
 
@@ -20,13 +20,13 @@
 
 ## Versions
 
-- Version 4.1.0:
-    - *Updates:*
+- **Version 4.1.0:**
+    - **Updates:**
         -   Modularized pathfinding logic by introducing AStarPathfinder class.
         -   Added detailed debugging statements with color-coded outputs for better traceability.
         -   Improved gScore initialization and handling in the A* algorithm to fix pathfinding issues.
 
-    - Expected Output:
+    - **Expected Output:**
 
         -   ````
             Starting program...
@@ -61,12 +61,12 @@
 
             ````
 
-- Version 4.0.0:
-    - *Updates:*
+- **Version 4.0.0:**
+    - **Updates:**
         - Added more robust debugging statements
         - Previous pathfinding issues persisted due to incorrect `gScore` handling.
 
-    - Expected Output:
+    - **Expected Output:**
 
         -   ````
             Starting program...
@@ -116,10 +116,10 @@
             At: 2024-09-27 01:41:16
             ````
 
-- Version 3.1.0:
-    - *Updates:*
+- **Version 3.1.0:**
+    - **Updates:**
 
-    - Expected Output:
+    - **Expected Output:**
 
         -   ````
             Starting program...
@@ -164,11 +164,11 @@
 
             ````
 
-- Version 3.0.0:
-    - *Updates:*
+- **Version 3.0.0:**
+    - **Updates:**
         - Slowly implementing dynamic node creation functionality.
 
-    - Expected Output:
+    - **Expected Output:**
 
         -   ````
             Starting program...
@@ -193,10 +193,10 @@
 
             ````
 
-- Version 2.0.0:
-    - *Updates:*
+- **Version 2.0.0:**
+    - **Updates:**
 
-    - Expected Output:
+    - **Expected Output**:
 
         -   ````
         
@@ -233,10 +233,10 @@
 
             ````
 
-- Version 1.0.0:
-    - *Updates:*
+- **Version 1.0.0:**
+    - **Updates:**
 
-    - Expected Output:
+    - **Expected Output:**
 
         -   ````
             Starting program...
