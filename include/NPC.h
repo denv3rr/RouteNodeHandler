@@ -6,13 +6,18 @@
 
 class NPC : public Entity
 {
-private:
-    std::vector<Node *> path; // The path for NPC to follow
-
 public:
     NPC(int id, Node *startNode);
+    int getId() const;
+    Node *getCurrentNode() const;
 
-    void move() override; // Override the pure virtual function from Entity
+    // Add this method to allow setting a path
+    void setPath(const std::vector<Node *> &newPath);
+
+    void move() override;
+
+private:
+    std::vector<Node *> path; // Store the NPC's path
 };
 
 #endif // NPC_H

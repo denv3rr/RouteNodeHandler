@@ -40,25 +40,26 @@ std::vector<std::shared_ptr<Node>> &NodeManager::getNodes()
     return nodes;
 }
 
-// Heuristic cost estimate for pathfinding using raw pointers
-float NodeManager::heuristicCostEstimate(const Node *start, const Node *goal) const
+// Heuristic cost estimate for pathfinding using std::shared_ptr<Node>
+float NodeManager::heuristicCostEstimate(const std::shared_ptr<Node> &start, const std::shared_ptr<Node> &goal) const
 {
     return std::sqrt(std::pow(goal->getX() - start->getX(), 2) +
                      std::pow(goal->getY() - start->getY(), 2) +
                      std::pow(goal->getZ() - start->getZ(), 2));
 }
 
-// Distance function for raw pointers
-float NodeManager::distance(const Node *start, const Node *goal) const
+// Distance function for pathfinding using std::shared_ptr<Node>
+float NodeManager::distance(const std::shared_ptr<Node> &start, const std::shared_ptr<Node> &goal) const
 {
-    return heuristicCostEstimate(start, goal); // Assuming distance is the Euclidean distance here
+    return heuristicCostEstimate(start, goal); // Use shared_ptr instead of raw pointers
 }
 
 // Implement the A* pathfinding algorithm
 std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode)
 {
-    std::cout << "Initiating pathfinding algorithm...\n";
+    std::cout << "Initiating pathfinding algorithm..." << std::endl;
 
+    // Initialize the open set
     std::priority_queue<std::pair<float, std::shared_ptr<Node>>,
                         std::vector<std::pair<float, std::shared_ptr<Node>>>,
                         std::greater<std::pair<float, std::shared_ptr<Node>>>>
@@ -71,41 +72,37 @@ std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::
     std::unordered_map<std::shared_ptr<Node>, float> gScore;
     std::unordered_map<std::shared_ptr<Node>, float> fScore;
 
-    // Initialize the start node's gScore and fScore
     gScore[startNode] = 0.0f;
-    fScore[startNode] = heuristicCostEstimate(startNode.get(), goalNode.get()); // Convert to raw pointers
+    fScore[startNode] = heuristicCostEstimate(startNode, goalNode);
 
-    // The main pathfinding loop
+    // Main loop
     while (!openSet.empty())
     {
-        std::cout << "\033[32mPathfinding!\033[0m";
         std::shared_ptr<Node> current = openSet.top().second;
         openSet.pop();
 
-        // If we reach the goal node, reconstruct the path
         if (current == goalNode)
         {
-            std::cout << "Goal node reached. Reconstructing path.";
+            std::cout << "Goal node reached. Reconstructing path." << std::endl;
             return reconstructPath(cameFrom, current);
         }
 
-        // Process the neighbors of the current node
         for (const auto &neighbor : current->getNeighbors())
         {
-            float tentative_gScore = gScore[current] + distance(current.get(), neighbor.get());
+            float tentative_gScore = gScore[current] + distance(current, neighbor);
 
             if (tentative_gScore < gScore[neighbor] || gScore.find(neighbor) == gScore.end())
             {
                 cameFrom[neighbor] = current;
                 gScore[neighbor] = tentative_gScore;
-                fScore[neighbor] = gScore[neighbor] + heuristicCostEstimate(neighbor.get(), goalNode.get());
+                fScore[neighbor] = gScore[neighbor] + heuristicCostEstimate(neighbor, goalNode);
                 openSet.emplace(fScore[neighbor], neighbor);
             }
         }
     }
 
-    // If no path is found, return an empty vector
-    return std::vector<Node *>();
+    std::cout << "No path found." << std::endl;
+    return std::vector<Node *>(); // Return empty if no path found
 }
 
 // Reconstruct path function definition

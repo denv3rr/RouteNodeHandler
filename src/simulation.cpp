@@ -1,7 +1,9 @@
 #include "../include/simulation.h"
 #include "../include/NPC.h"
 #include "../include/Vehicle.h"
+#include "../include/NodeManager.h"
 #include <iostream>
+#include <memory> // For std::shared_ptr
 
 // Initialize NPCs and add them as entities
 void initializeNPCs(TrafficManager &trafficManager, const std::vector<std::shared_ptr<Node>> &nodes, std::vector<NPC> &npcs, int count)
@@ -28,13 +30,30 @@ void initializeVehicles(TrafficManager &trafficManager, const std::vector<std::s
 }
 
 // Run the traffic simulation loop
-void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles)
+void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles, NodeManager &nodeManager)
 {
     std::cout << "Simulating traffic...\n"
               << std::endl;
 
+    // Assign a simple path to all NPCs and Vehicles
+    for (NPC &npc : npcs)
+    {
+        std::shared_ptr<Node> startNode = nodeManager.getNodes()[0]; // Example start node
+        std::shared_ptr<Node> endNode = nodeManager.getNodes()[99];  // Example end node
+
+        npc.setPath(nodeManager.findPath(startNode, endNode)); // Set the path for NPC
+    }
+
+    for (Vehicle &vehicle : vehicles)
+    {
+        std::shared_ptr<Node> startNode = nodeManager.getNodes()[0]; // Example start node
+        std::shared_ptr<Node> endNode = nodeManager.getNodes()[99];  // Example end node
+
+        vehicle.setPath(nodeManager.findPath(startNode, endNode)); // Set the path for Vehicle
+    }
+
     for (int i = 0; i < 10; ++i)
-    {                                    // For demonstration, run 10 simulation steps
-        trafficManager.updateEntities(); // Move all entities
+    {
+        trafficManager.updateEntities(); // Move all entities along their paths
     }
 }

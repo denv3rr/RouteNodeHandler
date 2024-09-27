@@ -4,6 +4,11 @@
 // Constructor to initialize Vehicle with ID and starting node
 Vehicle::Vehicle(int id, Node *startNode) : Entity(id, startNode) {}
 
+void Vehicle::setPath(const std::vector<Node *> &newPath)
+{
+    path = newPath; // Assign the new path to the Vehicle
+}
+
 // Move to the next node in the path (if path exists)
 void Vehicle::move()
 {
