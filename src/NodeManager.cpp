@@ -12,25 +12,75 @@ NodeManager::NodeManager() {}
 void NodeManager::createNodes(float spacing, int gridSize)
 {
     int nodeID = 0;
+    std::cout << "\033[32mInitializing node creation with gridSize: " << gridSize << "...\033[0m" << std::endl;
+
+    // First pass: Create all nodes without neighbors
     for (int x = 0; x < gridSize; ++x)
     {
         for (int y = 0; y < gridSize; ++y)
         {
             for (int z = 0; z < gridSize; ++z)
             {
+                std::cout << "\033[32mCreating Node ID: " << nodeID << " at (" << x << ", " << y << ", " << z << ")\033[0m" << std::endl;
                 auto node = std::make_shared<Node>(nodeID++, x * spacing, y * spacing, z * spacing);
                 nodes.push_back(node);
-
-                // Add neighbors
-                if (x > 0)
-                    node->addNeighbor(nodes[getIndex(x - 1, y, z, gridSize)]); // Neighbor in -x direction
-                if (y > 0)
-                    node->addNeighbor(nodes[getIndex(x, y - 1, z, gridSize)]); // Neighbor in -y direction
-                if (z > 0)
-                    node->addNeighbor(nodes[getIndex(x, y, z - 1, gridSize)]); // Neighbor in -z direction
             }
         }
     }
+
+    // Second pass: Assign neighbors to the nodes
+    for (int x = 0; x < gridSize; ++x)
+    {
+        for (int y = 0; y < gridSize; ++y)
+        {
+            for (int z = 0; z < gridSize; ++z)
+            {
+                auto node = nodes[getIndex(x, y, z, gridSize)];
+
+                // Add neighbors in -x, +x, -y, +y, -z, +z directions
+                if (x > 0)
+                {
+                    int neighborIndex = getIndex(x - 1, y, z, gridSize);
+                    std::cout << "\033[32mAdding -x neighbor to Node " << node->getId() << ", Neighbor Index: " << neighborIndex << "\033[0m" << std::endl;
+                    node->addNeighbor(nodes[neighborIndex]);
+                }
+                if (x < gridSize - 1)
+                {
+                    int neighborIndex = getIndex(x + 1, y, z, gridSize);
+                    std::cout << "\033[32mAdding +x neighbor to Node " << node->getId() << ", Neighbor Index: " << neighborIndex << "\033[0m" << std::endl;
+                    node->addNeighbor(nodes[neighborIndex]);
+                }
+
+                if (y > 0)
+                {
+                    int neighborIndex = getIndex(x, y - 1, z, gridSize);
+                    std::cout << "\033[32mAdding -y neighbor to Node " << node->getId() << ", Neighbor Index: " << neighborIndex << "\033[0m" << std::endl;
+                    node->addNeighbor(nodes[neighborIndex]);
+                }
+                if (y < gridSize - 1)
+                {
+                    int neighborIndex = getIndex(x, y + 1, z, gridSize);
+                    std::cout << "\033[32mAdding +y neighbor to Node " << node->getId() << ", Neighbor Index: " << neighborIndex << "\033[0m" << std::endl;
+                    node->addNeighbor(nodes[neighborIndex]);
+                }
+
+                if (z > 0)
+                {
+                    int neighborIndex = getIndex(x, y, z - 1, gridSize);
+                    std::cout << "\033[32mAdding -z neighbor to Node " << node->getId() << ", Neighbor Index: " << neighborIndex << "\033[0m" << std::endl;
+                    node->addNeighbor(nodes[neighborIndex]);
+                }
+                if (z < gridSize - 1)
+                {
+                    int neighborIndex = getIndex(x, y, z + 1, gridSize);
+                    std::cout << "\033[32mAdding +z neighbor to Node " << node->getId() << ", Neighbor Index: " << neighborIndex << "\033[0m" << std::endl;
+                    node->addNeighbor(nodes[neighborIndex]);
+                }
+            }
+        }
+    }
+
+    std::cout << "\033[32mFinished creating all nodes and neighbors.\033[0m" << std::endl;
 }
 
 int NodeManager::getIndex(int x, int y, int z, int gridSize)
@@ -74,56 +124,83 @@ float NodeManager::distance(const std::shared_ptr<Node> &start, const std::share
     return heuristicCostEstimate(start, goal); // Use shared_ptr instead of raw pointers
 }
 
-// Implement the A* pathfinding algorithm
+// Find path function using std::shared_ptr<Node>
 std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode)
 {
     std::cout << "Initiating pathfinding algorithm..." << std::endl;
 
-    // Initialize the open set
+    // Initialize the open set (priority queue) using fScore
     std::priority_queue<std::pair<float, std::shared_ptr<Node>>,
                         std::vector<std::pair<float, std::shared_ptr<Node>>>,
                         std::greater<std::pair<float, std::shared_ptr<Node>>>>
         openSet;
 
+    // Place the start node in the open set with fScore 0
     openSet.emplace(0.0f, startNode);
+
     std::unordered_map<std::shared_ptr<Node>, std::shared_ptr<Node>> cameFrom;
     std::unordered_map<std::shared_ptr<Node>, float> gScore;
     std::unordered_map<std::shared_ptr<Node>, float> fScore;
 
+    // Initialize the gScore and fScore for the start node
     gScore[startNode] = 0.0f;
     fScore[startNode] = heuristicCostEstimate(startNode, goalNode);
 
-    // Main pathfinding loop
+    // Main loop to process nodes in open set
     while (!openSet.empty())
     {
+        // Get the node with the lowest fScore (priority queue gives us this node)
         std::shared_ptr<Node> current = openSet.top().second;
         openSet.pop();
 
+        // Debugging: show current node being processed
         std::cout << "Processing Node: " << current->getId() << std::endl;
 
+        // Check if the current node is the goal
         if (current == goalNode)
         {
             std::cout << "Goal node reached. Reconstructing path." << std::endl;
-            return reconstructPath(cameFrom, current);
+            return reconstructPath(cameFrom, current); // Return the constructed path
         }
 
+        // Process each neighbor of the current node
         for (const auto &neighbor : current->getNeighbors())
         {
-            std::cout << "Checking neighbor: " << neighbor->getId() << std::endl;
+            // Ensure that neighbor is valid and check if it's being processed
+            if (!neighbor)
+            {
+                std::cout << "Invalid neighbor for Node: " << current->getId() << std::endl;
+                continue;
+            }
+
             float tentative_gScore = gScore[current] + distance(current, neighbor);
 
+            // Debugging: log tentative score for neighbor
+            std::cout << "Evaluating Neighbor: " << neighbor->getId() << " with tentative gScore: " << tentative_gScore << std::endl;
+
+            // If this is a better path to neighbor or it's not been visited
             if (tentative_gScore < gScore[neighbor] || gScore.find(neighbor) == gScore.end())
             {
-                cameFrom[neighbor] = current;
+                cameFrom[neighbor] = current; // Mark how we reached the neighbor
                 gScore[neighbor] = tentative_gScore;
                 fScore[neighbor] = gScore[neighbor] + heuristicCostEstimate(neighbor, goalNode);
+
+                // Debugging: log fScore for neighbor
+                std::cout << "Neighbor: " << neighbor->getId() << " added to open set with fScore: " << fScore[neighbor] << std::endl;
+
+                // Add the neighbor to the open set with its fScore
                 openSet.emplace(fScore[neighbor], neighbor);
+            }
+            else
+            {
+                std::cout << "Neighbor: " << neighbor->getId() << " not added, worse gScore." << std::endl;
             }
         }
     }
 
+    // If no path is found, return an empty vector
     std::cout << "No path found." << std::endl;
-    return std::vector<Node *>(); // Return empty if no path found
+    return std::vector<Node *>(); // No path found
 }
 
 // Reconstruct path function definition

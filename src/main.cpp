@@ -22,10 +22,14 @@ int main()
               << std::endl;
 
     NodeManager nodeManager;
-    int gridSize = 20;                          // 20x20x20 grid => 8000 nodes
-    float spacing = 1.0f;                       // Adjust this node spacing as needed!
-    nodeManager.createNodes(spacing, gridSize); // Initialize the specified number of nodes
-    nodeManager.printNodes();                   // Optional: Print nodes for debugging
+    int nodeCount = 20; // Set the node count for a 20x20x20 grid, or adjust this value as needed
+    int gridSize = 20;  // Specify the size of the grid for nodes
+
+    std::cout << "\033[32mCreating nodes...\033[0m" << std::endl;
+    nodeManager.createNodes(1.0f, gridSize); // Initialize the specified number of nodes
+    nodeManager.printNodes();                // Optional: Print nodes for debugging
+
+    std::cout << "\033[32mNodes created successfully.\033[0m" << std::endl;
 
     TrafficManager trafficManager;
     std::vector<NPC> npcs;         // Store NPCs
@@ -42,6 +46,9 @@ int main()
     // Initialization of Start and End nodes
     std::shared_ptr<Node> startNode = nodeManager.getNodes()[0];
     std::shared_ptr<Node> goalNode = nodeManager.getNodes()[99];
+
+    std::cout << "\033[32mFinding path from Node " << startNode->getId() << " to Node " << goalNode->getId() << "...\033[0m" << std::endl;
+
     std::vector<Node *> path = nodeManager.findPath(startNode, goalNode);
 
     std::cout << "\nPath from Node " << startNode->getId() << " to Node " << goalNode->getId() << ":\n";
