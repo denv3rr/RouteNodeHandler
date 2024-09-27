@@ -1,21 +1,18 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
 
-#include "Node.h"
+#include "Entity.h"
 #include <vector>
 
-class Vehicle
+class Vehicle : public Entity
 {
-public:
-    Vehicle(int id, Node *startNode); // Constructor to initialize the vehicle
-    void move();                      // Simulate movement
-    int getId() const;                // Return Vehicle ID
-    Node *getCurrentNode() const;     // Return current node
-
 private:
-    int id;                   // Vehicle identifier
-    Node *currentNode;        // Current node the vehicle is at
-    std::vector<Node *> path; // Path assigned to the vehicle
+    std::vector<Node *> path; // The path for Vehicle to follow
+
+public:
+    Vehicle(int id, Node *startNode);
+
+    void move() override; // Override the pure virtual function from Entity
 };
 
 #endif // VEHICLE_H

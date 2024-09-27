@@ -5,18 +5,22 @@
 
 class Entity
 {
-public:
-    Entity(int id, Node *startNode) : id(id), currentNode(startNode) {}
-
-    virtual ~Entity() = default;
-
-    virtual void move() = 0;                             // Pure virtual function for movement logic
-    int getId() const { return id; }                     // Return the ID of the entity
-    Node *getCurrentNode() const { return currentNode; } // Get the current node
-
 protected:
-    int id;            // Unique ID for the entity
-    Node *currentNode; // Pointer to the current node of the entity
+    int id;
+    Node *currentNode;
+
+public:
+    // Constructor to initialize entity with an ID and starting node
+    Entity(int id, Node *startNode);
+
+    // Get the entity's ID
+    virtual int getId() const;
+
+    // Get the current node the entity is at
+    virtual Node *getCurrentNode() const;
+
+    // Move the entity to the next node (defined in derived classes)
+    virtual void move() = 0; // Pure virtual function
 };
 
 #endif // ENTITY_H

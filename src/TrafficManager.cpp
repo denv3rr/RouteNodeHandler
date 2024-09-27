@@ -1,29 +1,17 @@
 #include "../include/TrafficManager.h"
-#include "../include/NPC.h"
-#include "../include/Vehicle.h"
+#include "../include/Entity.h" // Include the base Entity class
 
-// Add NPC to the manager
-void TrafficManager::addNPC(NPC *npc)
+// Add a generic Entity to the manager
+void TrafficManager::addEntity(std::shared_ptr<Entity> entity)
 {
-    npcs.push_back(npc);
+    entities.push_back(entity); // Store any Entity (NPC, Vehicle, etc.)
 }
 
-// Add Vehicle to the manager
-void TrafficManager::addVehicle(Vehicle *vehicle)
-{
-    vehicles.push_back(vehicle);
-}
-
-// Update all entities (simplified example)
+// Update all entities
 void TrafficManager::updateEntities()
 {
-    for (NPC *npc : npcs)
+    for (auto &entity : entities)
     {
-        npc->move();
-    }
-
-    for (Vehicle *vehicle : vehicles)
-    {
-        vehicle->move();
+        entity->move(); // Call move() on every entity (NPC or Vehicle)
     }
 }
