@@ -20,6 +20,58 @@
 
 ## Versions
 
+- Version 4.0.0:
+    - added more robust debugging statements
+    - output should look like:
+
+    -   ````
+        Starting program...
+
+        Creating nodes...
+        Initializing node creation with gridSize: 20...
+        Creating Node ID: 0 at (0, 0, 0)
+        Creating Node ID: 1 at (0, 0, 1)
+        Creating Node ID: 2 at (0, 0, 2)
+        Creating Node ID: 3 at (0, 0, 3)
+        Creating Node ID: 4 at (0, 0, 4)
+        Creating Node ID: 5 at (0, 0, 5)
+        ...
+        ...
+        (***MORE UPDATES***)
+        ...
+        ...
+        Adding +x neighbor to Node 2865, Neighbor Index: 3265
+        Adding -y neighbor to Node 2865, Neighbor Index: 2845
+        Adding +y neighbor to Node 2865, Neighbor Index: 2885
+        Adding -z neighbor to Node 2865, Neighbor Index: 2864
+        Adding +z neighbor to Node 2865, Neighbor Index: 2866
+        Adding -x neighbor to Node 2866, Neighbor Index: 2466
+
+        ...
+        ...
+        (***MORE UPDATES***)
+        ...
+        ...
+        Finding path from Node 0 to Node 99...
+        Initiating pathfinding algorithm...
+        Processing Node: 0
+        Evaluating Neighbor: 400 with tentative gScore: 1
+        Neighbor: 400 not added, worse gScore.
+        Evaluating Neighbor: 20 with tentative gScore: 1
+        Neighbor: 20 not added, worse gScore.
+        Evaluating Neighbor: 1 with tentative gScore: 1
+        Neighbor: 1 not added, worse gScore.
+        No path found.
+
+        Path from Node 0 to Node 99:
+
+        *************************
+
+        Program finished.
+        Execution time: 17346 ms
+        At: 2024-09-27 01:41:16
+        ````
+
 - Version 3.1.0:
     - output should look like:
 
