@@ -2,25 +2,25 @@
 #define ENTITY_H
 
 #include "Node.h"
+#include <vector>
 
 class Entity
 {
+public:
+    Entity(int id, Node *startNode); // Constructor
+    virtual ~Entity();               // Virtual destructor to ensure proper cleanup
+
+    virtual void move() = 0;                            // Pure virtual method to be implemented by derived classes
+    virtual void setPath(std::vector<Node *> path) = 0; // Pure virtual method
+
+    // Getter methods (if needed)
+    int getId() const;            // Return entity ID
+    Node *getCurrentNode() const; // Return current node
+
 protected:
     int id;
     Node *currentNode;
-
-public:
-    // Constructor to initialize entity with an ID and starting node
-    Entity(int id, Node *startNode);
-
-    // Get the entity's ID
-    virtual int getId() const;
-
-    // Get the current node the entity is at
-    virtual Node *getCurrentNode() const;
-
-    // Move the entity to the next node (defined in derived classes)
-    virtual void move() = 0; // Pure virtual function
+    std::vector<Node *> path; // Store the path to move along
 };
 
 #endif // ENTITY_H

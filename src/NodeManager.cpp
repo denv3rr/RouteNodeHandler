@@ -18,10 +18,12 @@ void NodeManager::createNodes(float spacing, int gridSize)
         {
             for (int z = 0; z < gridSize; ++z)
             {
+                // Use gridSize^3 (total number of nodes)
                 nodes.emplace_back(std::make_shared<Node>(nodeID++, x * spacing, y * spacing, z * spacing));
             }
         }
     }
+    std::cout << "\033[32mInitialized " << nodeID << " nodes in a " << gridSize << "x" << gridSize << "x" << gridSize << " grid.\033[0m\n\n";
 }
 
 // Print all nodes for debugging
@@ -81,6 +83,8 @@ std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::
         std::shared_ptr<Node> current = openSet.top().second;
         openSet.pop();
 
+        std::cout << "Processing Node: " << current->getId() << std::endl;
+
         if (current == goalNode)
         {
             std::cout << "Goal node reached. Reconstructing path." << std::endl;
@@ -90,6 +94,7 @@ std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::
         for (const auto &neighbor : current->getNeighbors())
         {
             float tentative_gScore = gScore[current] + distance(current, neighbor);
+            std::cout << "Neighbor: " << neighbor->getId() << " Tentative gScore: " << tentative_gScore << std::endl;
 
             if (tentative_gScore < gScore[neighbor] || gScore.find(neighbor) == gScore.end())
             {

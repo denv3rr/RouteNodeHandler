@@ -18,12 +18,14 @@ int main()
     std::srand(static_cast<unsigned>(std::time(0))); // Seed randomness for node positions
 
     auto start = std::chrono::high_resolution_clock::now();
-    std::cout << "\n\nStarting program..." << std::endl;
+    std::cout << "\n\n\033[32mStarting program...\033[0m\n"
+              << std::endl;
 
     NodeManager nodeManager;
-    int nodeCount = 20;                       // Specify the desired number of nodes to generate
-    nodeManager.createNodes(nodeCount, 1.0f); // Initialize the specified number of nodes
-    nodeManager.printNodes();                 // Optional: Print nodes for debugging
+    int gridSize = 20;                          // 20x20x20 grid => 8000 nodes
+    float spacing = 1.0f;                       // Adjust this node spacing as needed!
+    nodeManager.createNodes(spacing, gridSize); // Initialize the specified number of nodes
+    nodeManager.printNodes();                   // Optional: Print nodes for debugging
 
     TrafficManager trafficManager;
     std::vector<NPC> npcs;         // Store NPCs
@@ -35,7 +37,7 @@ int main()
     initializeNPCs(trafficManager, nodeManager.getNodes(), npcs, npcCount);
     initializeVehicles(trafficManager, nodeManager.getNodes(), vehicles, vehicleCount);
 
-    simulateTraffic(trafficManager, npcs, vehicles);
+    simulateTraffic(trafficManager, npcs, vehicles, nodeManager);
 
     // Initialization of Start and End nodes
     std::shared_ptr<Node> startNode = nodeManager.getNodes()[0];

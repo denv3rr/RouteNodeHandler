@@ -2,22 +2,15 @@
 #define VEHICLE_H
 
 #include "Entity.h"
-#include <vector>
+#include "Node.h"
 
 class Vehicle : public Entity
 {
 public:
     Vehicle(int id, Node *startNode);
-    int getId() const;
-    Node *getCurrentNode() const;
-
-    // Add this method to allow setting a path
-    void setPath(const std::vector<Node *> &newPath);
-
-    void move() override;
-
-private:
-    std::vector<Node *> path; // Store the Vehicle's path
+    ~Vehicle() override;                             // Override the destructor
+    void move() override;                            // Override the move function
+    void setPath(std::vector<Node *> path) override; // Override setPath
 };
 
 #endif // VEHICLE_H

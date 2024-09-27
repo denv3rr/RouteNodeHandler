@@ -32,7 +32,7 @@ void initializeVehicles(TrafficManager &trafficManager, const std::vector<std::s
 // Run the traffic simulation loop
 void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles, NodeManager &nodeManager)
 {
-    std::cout << "Simulating traffic...\n"
+    std::cout << "\n\033[32mSimulating traffic...\033[0m\n"
               << std::endl;
 
     // Assign a simple path to all NPCs and Vehicles
