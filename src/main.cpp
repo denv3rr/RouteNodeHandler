@@ -29,7 +29,7 @@ int main()
     nodeManager.createNodes(1.0f, gridSize); // Initialize the specified number of nodes
     nodeManager.printNodes();                // Optional: Print nodes for debugging
 
-    std::cout << "\033[32mNodes created successfully.\033[0m" << std::endl;
+    std::cout << "\033[32m\nNodes created successfully.\033[0m" << std::endl;
 
     TrafficManager trafficManager;
     std::vector<NPC> npcs;         // Store NPCs

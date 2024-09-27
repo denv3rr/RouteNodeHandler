@@ -21,7 +21,7 @@ void NodeManager::createNodes(float spacing, int gridSize)
         {
             for (int z = 0; z < gridSize; ++z)
             {
-                std::cout << "\033[32mCreating Node ID: " << nodeID << " at (" << x << ", " << y << ", " << z << ")\033[0m" << std::endl;
+                std::cout << "Creating Node ID: \033[32m" << nodeID << " at (" << x << ", " << y << ", " << z << ")\033[0m" << std::endl;
                 auto node = std::make_shared<Node>(nodeID++, x * spacing, y * spacing, z * spacing);
                 nodes.push_back(node);
             }
@@ -41,39 +41,39 @@ void NodeManager::createNodes(float spacing, int gridSize)
                 if (x > 0)
                 {
                     int neighborIndex = getIndex(x - 1, y, z, gridSize);
-                    std::cout << "\033[32mAdding -x neighbor to Node " << node->getId() << ", Neighbor Index: " << neighborIndex << "\033[0m" << std::endl;
+                    std::cout << "Adding \033[32m-x\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m" << std::endl;
                     node->addNeighbor(nodes[neighborIndex]);
                 }
                 if (x < gridSize - 1)
                 {
                     int neighborIndex = getIndex(x + 1, y, z, gridSize);
-                    std::cout << "\033[32mAdding +x neighbor to Node " << node->getId() << ", Neighbor Index: " << neighborIndex << "\033[0m" << std::endl;
+                    std::cout << "Adding \033[32m+x\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m" << std::endl;
                     node->addNeighbor(nodes[neighborIndex]);
                 }
 
                 if (y > 0)
                 {
                     int neighborIndex = getIndex(x, y - 1, z, gridSize);
-                    std::cout << "\033[32mAdding -y neighbor to Node " << node->getId() << ", Neighbor Index: " << neighborIndex << "\033[0m" << std::endl;
+                    std::cout << "Adding \033[32m-y\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m" << std::endl;
                     node->addNeighbor(nodes[neighborIndex]);
                 }
                 if (y < gridSize - 1)
                 {
                     int neighborIndex = getIndex(x, y + 1, z, gridSize);
-                    std::cout << "\033[32mAdding +y neighbor to Node " << node->getId() << ", Neighbor Index: " << neighborIndex << "\033[0m" << std::endl;
+                    std::cout << "Adding \033[32m+y\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m" << std::endl;
                     node->addNeighbor(nodes[neighborIndex]);
                 }
 
                 if (z > 0)
                 {
                     int neighborIndex = getIndex(x, y, z - 1, gridSize);
-                    std::cout << "\033[32mAdding -z neighbor to Node " << node->getId() << ", Neighbor Index: " << neighborIndex << "\033[0m" << std::endl;
+                    std::cout << "Adding \033[32m-z\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m" << std::endl;
                     node->addNeighbor(nodes[neighborIndex]);
                 }
                 if (z < gridSize - 1)
                 {
                     int neighborIndex = getIndex(x, y, z + 1, gridSize);
-                    std::cout << "\033[32mAdding +z neighbor to Node " << node->getId() << ", Neighbor Index: " << neighborIndex << "\033[0m" << std::endl;
+                    std::cout << "Adding \033[32m+z\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m" << std::endl;
                     node->addNeighbor(nodes[neighborIndex]);
                 }
             }
@@ -93,8 +93,8 @@ void NodeManager::printNodes() const
 {
     for (const auto &node : nodes)
     {
-        std::cout << "Node ID: " << node->getId() << " at ("
-                  << node->getX() << ", " << node->getY() << ", " << node->getZ() << ")\n";
+        std::cout << "Node ID: \033[32m" << node->getId() << "\033[0m at \033[32m("
+                  << node->getX() << ", " << node->getY() << ", " << node->getZ() << ")\033[0m\n";
         std::cout << "  Neighbors: ";
         for (const auto &neighbor : node->getNeighbors())
         {
@@ -159,7 +159,7 @@ std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::
         // Check if the current node is the goal
         if (current == goalNode)
         {
-            std::cout << "Goal node reached. Reconstructing path." << std::endl;
+            std::cout << "\033[32mGoal node reached.\033[0m Reconstructing path." << std::endl;
             return reconstructPath(cameFrom, current); // Return the constructed path
         }
 
@@ -199,7 +199,8 @@ std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::
     }
 
     // If no path is found, return an empty vector
-    std::cout << "No path found." << std::endl;
+    std::cout << "\033[31mNo path found.\033[0m\n"
+              << std::endl;
     return std::vector<Node *>(); // No path found
 }
 
