@@ -1,27 +1,27 @@
-#ifndef NODE_MANAGER_H
-#define NODE_MANAGER_H
+#ifndef NODEMANAGER_H
+#define NODEMANAGER_H
 
+#include "Node.h"
 #include <vector>
 #include <unordered_map>
-#include <queue>
-#include <limits>
-#include "Node.h"
+#include <memory> // For std::shared_ptr
 
 class NodeManager
 {
 public:
-public:
     NodeManager();
-    void initializeNodes(int gridSize, float spacing);
-    std::vector<Node> getNodes() const;
-    std::vector<Node *> findPath(Node *start, Node *goal); // A* Pathfinding
+    void createNodes(float spacing, int gridSize);
+    std::vector<std::shared_ptr<Node>> &getNodes(); // Changed to shared_ptr
+    std::vector<Node *> findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode);
+    // Member function declarations
+    float heuristicCostEstimate(const Node *start, const Node *goal) const;                                                                         // For A* heuristic
+    std::vector<Node *> reconstructPath(std::unordered_map<std::shared_ptr<Node>, std::shared_ptr<Node>> &cameFrom, std::shared_ptr<Node> current); // Path reconstruction
+    float distance(const Node *start, const Node *goal) const;                                                                                      // Distance calculation
+    // Function to print all nodes if needed
+    void printNodes() const;
 
 private:
-    std::vector<Node> nodes;
-
-    // Helper methods for A*
-    float heuristicCostEstimate(const Node *start, const Node *goal) const;
-    std::vector<Node *> getNeighbors(Node *node);
+    std::vector<std::shared_ptr<Node>> nodes; // Changed to shared_ptr
 };
 
-#endif // NODE_MANAGER_H
+#endif // NODEMANAGER_H

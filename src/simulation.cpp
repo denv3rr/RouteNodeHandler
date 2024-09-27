@@ -4,23 +4,23 @@
 #include <iostream>
 
 // Initialize NPCs by placing them on random nodes
-void initializeNPCs(TrafficManager &trafficManager, const std::vector<Node> &nodes, std::vector<NPC> &npcs, int count)
+void initializeNPCs(TrafficManager &trafficManager, const std::vector<std::shared_ptr<Node>> &nodes, std::vector<NPC> &npcs, int count)
 {
     for (int i = 0; i < count; ++i)
     {
         int randomNodeIndex = std::rand() % nodes.size();
-        npcs.emplace_back(i + 1, const_cast<Node *>(&nodes[randomNodeIndex])); // Create an NPC with a random starting node
+        npcs.emplace_back(i + 1, nodes[randomNodeIndex].get()); // Create an NPC with a random starting node
         trafficManager.addNPC(&npcs.back());
     }
 }
 
 // Initialize Vehicles in a similar manner as NPCs
-void initializeVehicles(TrafficManager &trafficManager, const std::vector<Node> &nodes, std::vector<Vehicle> &vehicles, int count)
+void initializeVehicles(TrafficManager &trafficManager, const std::vector<std::shared_ptr<Node>> &nodes, std::vector<Vehicle> &vehicles, int count)
 {
     for (int i = 0; i < count; ++i)
     {
         int randomNodeIndex = std::rand() % nodes.size();
-        vehicles.emplace_back(i + 1, const_cast<Node *>(&nodes[randomNodeIndex])); // Create a Vehicle with a random starting node
+        vehicles.emplace_back(i + 1, nodes[randomNodeIndex].get()); // Create a Vehicle with a random starting node
         trafficManager.addVehicle(&vehicles.back());
     }
 }

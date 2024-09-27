@@ -7,8 +7,8 @@
 #include "Vehicle.h"
 #include <vector>
 
-void initializeNPCs(TrafficManager &trafficManager, const std::vector<Node> &nodes, std::vector<NPC> &npcs, int count);
-void initializeVehicles(TrafficManager &trafficManager, const std::vector<Node> &nodes, std::vector<Vehicle> &vehicles, int count);
+void initializeNPCs(TrafficManager &trafficManager, const std::vector<std::shared_ptr<Node>> &nodes, std::vector<NPC> &npcs, int npcCount);
+void initializeVehicles(TrafficManager &trafficManager, const std::vector<std::shared_ptr<Node>> &nodes, std::vector<Vehicle> &vehicles, int vehicleCount);
 void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles);
 
 #endif // SIMULATION_H

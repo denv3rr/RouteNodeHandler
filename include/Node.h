@@ -2,22 +2,35 @@
 #define NODE_H
 
 #include <vector>
+#include <memory> // For std::shared_ptr
 
 class Node
 {
-public:
-    Node(int id, float x, float y, float z = 0.0f); // Constructor to initialize node ID and coordinates
-    int getId() const;
-    void addNeighbor(Node *neighbor);                // Add a neighboring node
-    const std::vector<Node *> &getNeighbors() const; // Return all neighbors
-    float getX() const;
-    float getY() const;
-    float getZ() const;
-
 private:
-    int id;
-    float x, y, z;                 // 3D coordinates
-    std::vector<Node *> neighbors; // Neighbors of this node
+    int id;                                       // Node identifier
+    int x, y, z;                                  // Coordinates for the node
+    std::vector<std::shared_ptr<Node>> neighbors; // Connected neighbors
+
+public:
+    // Constructor
+    Node(int nodeId, int xCoord, int yCoord, int zCoord);
+
+    // Getters
+    int getId() const;
+    int getNodeId() const { return getId(); }
+    int getX() const;
+    int getY() const;
+    int getZ() const;
+
+    // Setters
+    void setId(int newId);
+    void setX(int newX);
+    void setY(int newY);
+    void setZ(int newZ);
+
+    // Neighbor handling
+    void addNeighbor(std::shared_ptr<Node> neighbor);
+    std::vector<std::shared_ptr<Node>> getNeighbors() const;
 };
 
-#endif // NODE_H
+#endif

@@ -1,41 +1,57 @@
 #include "../include/Node.h"
-#include <iostream>
 
 // Constructor
-Node::Node(int id, float x, float y, float z) : id(id), x(x), y(y), z(z) {}
+Node::Node(int nodeId, int xCoord, int yCoord, int zCoord) : id(nodeId), x(xCoord), y(yCoord), z(zCoord) {}
 
-// Return Node ID
+// Getters
 int Node::getId() const
 {
     return id;
 }
 
-// Add a neighboring node to the vector
-void Node::addNeighbor(Node *neighbor)
-{
-    neighbors.push_back(neighbor);
-}
-
-// Return neighbors
-const std::vector<Node *> &Node::getNeighbors() const
-{
-    return neighbors;
-}
-
-// Return X coordinate
-float Node::getX() const
+int Node::getX() const
 {
     return x;
 }
 
-// Return Y coordinate
-float Node::getY() const
+int Node::getY() const
 {
     return y;
 }
 
-// Return Z coordinate
-float Node::getZ() const
+int Node::getZ() const
 {
     return z;
+}
+
+// Setters
+void Node::setId(int newId)
+{
+    id = newId;
+}
+
+void Node::setX(int newX)
+{
+    x = newX;
+}
+
+void Node::setY(int newY)
+{
+    y = newY;
+}
+
+void Node::setZ(int newZ)
+{
+    z = newZ;
+}
+
+// Neighbor handling
+void Node::addNeighbor(std::shared_ptr<Node> neighbor)
+{
+    neighbors.push_back(neighbor);
+}
+
+std::vector<std::shared_ptr<Node>> Node::getNeighbors() const
+{
+    return neighbors;
 }
