@@ -6,6 +6,7 @@
 #include "NPC.h"
 #include "Vehicle.h"
 #include <vector>
+#include <memory>
 
 void initializeNPCs(TrafficManager &trafficManager, const std::vector<std::shared_ptr<Node>> &nodes, std::vector<NPC> &npcs, int npcCount);
 void initializeVehicles(TrafficManager &trafficManager, const std::vector<std::shared_ptr<Node>> &nodes, std::vector<Vehicle> &vehicles, int vehicleCount);

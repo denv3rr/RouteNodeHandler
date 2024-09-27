@@ -2,19 +2,7 @@
 #include <iostream>
 
 // Constructor to initialize Vehicle with ID and starting node
-Vehicle::Vehicle(int id, Node *startNode) : id(id), currentNode(startNode) {}
-
-// Return Vehicle ID
-int Vehicle::getId() const
-{
-    return id;
-}
-
-// Return the current node the Vehicle is at
-Node *Vehicle::getCurrentNode() const
-{
-    return currentNode;
-}
+Vehicle::Vehicle(int id, Node *startNode) : Entity(id, startNode) {}
 
 // Move to the next node in the path (if path exists)
 void Vehicle::move()
