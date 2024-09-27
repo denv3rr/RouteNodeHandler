@@ -22,8 +22,9 @@
 
 - Version 4.1.0:
     - *Updates:*
-        -Added more robust debugging statements.
-        -Previous pathfinding issues persisted due to incorrect gScore handling.
+        -   Modularized pathfinding logic by introducing AStarPathfinder class.
+        -   Added detailed debugging statements with color-coded outputs for better traceability.
+        -   Improved gScore initialization and handling in the A* algorithm to fix pathfinding issues.
 
     - Expected Output:
 
