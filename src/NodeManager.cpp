@@ -18,12 +18,24 @@ void NodeManager::createNodes(float spacing, int gridSize)
         {
             for (int z = 0; z < gridSize; ++z)
             {
-                // Use gridSize^3 (total number of nodes)
-                nodes.emplace_back(std::make_shared<Node>(nodeID++, x * spacing, y * spacing, z * spacing));
+                auto node = std::make_shared<Node>(nodeID++, x * spacing, y * spacing, z * spacing);
+                nodes.push_back(node);
+
+                // Add neighbors
+                if (x > 0)
+                    node->addNeighbor(nodes[getIndex(x - 1, y, z, gridSize)]); // Neighbor in -x direction
+                if (y > 0)
+                    node->addNeighbor(nodes[getIndex(x, y - 1, z, gridSize)]); // Neighbor in -y direction
+                if (z > 0)
+                    node->addNeighbor(nodes[getIndex(x, y, z - 1, gridSize)]); // Neighbor in -z direction
             }
         }
     }
-    std::cout << "\033[32mInitialized " << nodeID << " nodes in a " << gridSize << "x" << gridSize << "x" << gridSize << " grid.\033[0m\n\n";
+}
+
+int NodeManager::getIndex(int x, int y, int z, int gridSize)
+{
+    return x * gridSize * gridSize + y * gridSize + z;
 }
 
 // Print all nodes for debugging
@@ -33,6 +45,12 @@ void NodeManager::printNodes() const
     {
         std::cout << "Node ID: " << node->getId() << " at ("
                   << node->getX() << ", " << node->getY() << ", " << node->getZ() << ")\n";
+        std::cout << "  Neighbors: ";
+        for (const auto &neighbor : node->getNeighbors())
+        {
+            std::cout << neighbor->getId() << " ";
+        }
+        std::cout << std::endl;
     }
 }
 
@@ -67,9 +85,7 @@ std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::
                         std::greater<std::pair<float, std::shared_ptr<Node>>>>
         openSet;
 
-    // Place start node in open set
     openSet.emplace(0.0f, startNode);
-
     std::unordered_map<std::shared_ptr<Node>, std::shared_ptr<Node>> cameFrom;
     std::unordered_map<std::shared_ptr<Node>, float> gScore;
     std::unordered_map<std::shared_ptr<Node>, float> fScore;
@@ -77,7 +93,7 @@ std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::
     gScore[startNode] = 0.0f;
     fScore[startNode] = heuristicCostEstimate(startNode, goalNode);
 
-    // Main loop
+    // Main pathfinding loop
     while (!openSet.empty())
     {
         std::shared_ptr<Node> current = openSet.top().second;
@@ -93,8 +109,8 @@ std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::
 
         for (const auto &neighbor : current->getNeighbors())
         {
+            std::cout << "Checking neighbor: " << neighbor->getId() << std::endl;
             float tentative_gScore = gScore[current] + distance(current, neighbor);
-            std::cout << "Neighbor: " << neighbor->getId() << " Tentative gScore: " << tentative_gScore << std::endl;
 
             if (tentative_gScore < gScore[neighbor] || gScore.find(neighbor) == gScore.end())
             {
