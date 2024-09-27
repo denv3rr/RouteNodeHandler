@@ -149,7 +149,7 @@ std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::
     // Main loop to process nodes in open set
     while (!openSet.empty())
     {
-        // Get the node with the lowest fScore (priority queue gives us this node)
+        // Get the node with the lowest fScore
         std::shared_ptr<Node> current = openSet.top().second;
         openSet.pop();
 
@@ -166,7 +166,7 @@ std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::
         // Process each neighbor of the current node
         for (const auto &neighbor : current->getNeighbors())
         {
-            // Ensure that neighbor is valid and check if it's being processed
+            // Ensure that neighbor is valid
             if (!neighbor)
             {
                 std::cout << "Invalid neighbor for Node: " << current->getId() << std::endl;
@@ -175,13 +175,10 @@ std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::
 
             float tentative_gScore = gScore[current] + distance(current, neighbor);
 
-            // Debugging: log tentative score for neighbor
-            std::cout << "Evaluating Neighbor: " << neighbor->getId() << " with tentative gScore: " << tentative_gScore << std::endl;
-
-            // If this is a better path to neighbor or it's not been visited
-            if (tentative_gScore < gScore[neighbor] || gScore.find(neighbor) == gScore.end())
+            // If neighbor not in gScore or tentative_gScore is better
+            if (gScore.find(neighbor) == gScore.end() || tentative_gScore < gScore[neighbor])
             {
-                cameFrom[neighbor] = current; // Mark how we reached the neighbor
+                cameFrom[neighbor] = current;
                 gScore[neighbor] = tentative_gScore;
                 fScore[neighbor] = gScore[neighbor] + heuristicCostEstimate(neighbor, goalNode);
 
