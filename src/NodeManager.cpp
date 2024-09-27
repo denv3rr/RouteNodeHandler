@@ -159,7 +159,8 @@ std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::
         // Check if the current node is the goal
         if (current == goalNode)
         {
-            std::cout << "\033[32mGoal node reached.\033[0m Reconstructing path." << std::endl;
+            std::cout << "\n\n\033[32mGoal node reached.\033[0m\n\nReconstructing path.\n\n"
+                      << std::endl;
             return reconstructPath(cameFrom, current); // Return the constructed path
         }
 
