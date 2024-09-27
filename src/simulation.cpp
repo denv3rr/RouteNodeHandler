@@ -3,25 +3,27 @@
 #include "../include/Vehicle.h"
 #include <iostream>
 
-// Initialize NPCs by placing them on random nodes
+// Initialize NPCs and add them as entities
 void initializeNPCs(TrafficManager &trafficManager, const std::vector<std::shared_ptr<Node>> &nodes, std::vector<NPC> &npcs, int count)
 {
     for (int i = 0; i < count; ++i)
     {
         int randomNodeIndex = std::rand() % nodes.size();
-        npcs.emplace_back(i + 1, nodes[randomNodeIndex].get()); // Create an NPC with a random starting node
-        trafficManager.addNPC(&npcs.back());
+        auto npc = std::make_shared<NPC>(i + 1, nodes[randomNodeIndex].get()); // Create NPC
+        npcs.push_back(*npc);                                                  // Add to NPCs vector
+        trafficManager.addEntity(npc);                                         // Add to traffic manager as an entity
     }
 }
 
-// Initialize Vehicles in a similar manner as NPCs
+// Initialize Vehicles and add them as entities
 void initializeVehicles(TrafficManager &trafficManager, const std::vector<std::shared_ptr<Node>> &nodes, std::vector<Vehicle> &vehicles, int count)
 {
     for (int i = 0; i < count; ++i)
     {
         int randomNodeIndex = std::rand() % nodes.size();
-        vehicles.emplace_back(i + 1, nodes[randomNodeIndex].get()); // Create a Vehicle with a random starting node
-        trafficManager.addVehicle(&vehicles.back());
+        auto vehicle = std::make_shared<Vehicle>(i + 1, nodes[randomNodeIndex].get()); // Create Vehicle
+        vehicles.push_back(*vehicle);                                                  // Add to Vehicles vector
+        trafficManager.addEntity(vehicle);                                             // Add to traffic manager as an entity
     }
 }
 

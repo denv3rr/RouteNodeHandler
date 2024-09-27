@@ -1,5 +1,6 @@
 #include "../include/TrafficManager.h"
 #include "../include/Entity.h" // Include the base Entity class
+#include <iostream>
 
 // Add a generic Entity to the manager
 void TrafficManager::addEntity(std::shared_ptr<Entity> entity)
