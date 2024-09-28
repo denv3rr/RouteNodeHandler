@@ -1,5 +1,10 @@
 # RouteNodeHandler
 
+┏┓┏┓┏┓┏┓┳┓┏┓┏┳┓
+┗┓┣ ┃┃┣ ┣┫┣  ┃ 
+┗┛┗┛┣┛┗┛┛┗┗┛ ┻ 
+               
+
 - Simple handling of nodes for objects such as:
     - NPCs
     - Vehicles
@@ -14,7 +19,7 @@
 - Or, simply:
     - `g++ -I ../include *.cpp` - for a **default** out file.
 
-- These 2 compile options use the "Include" tag to add the `include` folder as well as all files ending in `.cpp`.
+- These 2 compile options use the "Include" - `-I` tag to add the `include` project folder and all other files ending in `.cpp` (located in `src`).
 
 - The compiled out/exe file will then be added into the same folder you are in (`src`) - depending on what you specify at compilation.
 

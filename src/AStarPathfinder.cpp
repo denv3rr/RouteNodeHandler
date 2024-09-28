@@ -2,7 +2,9 @@
 #include <cmath>
 #include <algorithm>
 #include <iostream>
-#include <limits> // For infinity
+#include <limits>        // For infinity
+#include <queue>         // For std::priority_queue
+#include <unordered_map> // For std::unordered_map
 
 std::vector<Node *> AStarPathfinder::findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode)
 {
@@ -10,7 +12,7 @@ std::vector<Node *> AStarPathfinder::findPath(std::shared_ptr<Node> startNode, s
     std::cout << "\033[32mStart Node: \033[0m" << startNode->getId() << " at (" << startNode->getX() << ", " << startNode->getY() << ", " << startNode->getZ() << ")\n";
     std::cout << "\033[32mGoal Node: \033[0m" << goalNode->getId() << " at (" << goalNode->getX() << ", " << goalNode->getY() << ", " << goalNode->getZ() << ")\n";
 
-    // Priority queue setup for A*
+    // Corrected priority queue declaration
     std::priority_queue<
         std::pair<float, std::shared_ptr<Node>>,
         std::vector<std::pair<float, std::shared_ptr<Node>>>,
@@ -27,11 +29,7 @@ std::vector<Node *> AStarPathfinder::findPath(std::shared_ptr<Node> startNode, s
     gScore[startNode] = 0.0f;
     fScore[startNode] = heuristicCostEstimate(startNode, goalNode);
 
-    // Set all other gScores to infinity (they haven't been visited yet)
-    for (const auto &node : startNode->getNeighbors())
-    {
-        gScore[node] = std::numeric_limits<float>::infinity();
-    }
+    // You don't need to initialize gScore for all nodes; the default value is infinity when not present in the map
 
     while (!openSet.empty())
     {
@@ -56,10 +54,15 @@ std::vector<Node *> AStarPathfinder::findPath(std::shared_ptr<Node> startNode, s
 
             float tentative_gScore = gScore[current] + distance(current, neighbor);
 
+            // If neighbor is not in gScore, it returns zero, so we need to handle this
+            if (gScore.find(neighbor) == gScore.end())
+            {
+                gScore[neighbor] = std::numeric_limits<float>::infinity();
+            }
+
             std::cout << "\033[33mEvaluating Neighbor: \033[0m" << neighbor->getId() << "\n"
                       << "Current gScore: " << gScore[neighbor] << ", Tentative gScore: " << tentative_gScore << "\n";
 
-            // If this path to the neighbor is better or the neighbor hasn't been visited
             if (tentative_gScore < gScore[neighbor])
             {
                 cameFrom[neighbor] = current;
