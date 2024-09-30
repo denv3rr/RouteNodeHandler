@@ -318,7 +318,7 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 
 
-![seperet.com spinning logo gif](/assets/media/Sep3D_GIF.GIF)
+![seperet.com spinning logo gif](RouteNodeHandler/assets/media/Sep3D_GIF.GIF)
 
 
 ````
