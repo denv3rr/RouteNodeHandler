@@ -44,8 +44,10 @@ By Denver Clark || [Seperet](https://seperet.com)
 /_/\__/ / /  / / /______  / / /      / / /______  / / /\ \ \  / / /______  / / /_     / / /________  / / /___/ / // / /    / / /     
 \ \/___/ /  / / /_______\/ / /      / / /_______\/ / /  \ \ \/ / /_______\/_/ //\_\  / / /_________\/ / /____\/ / \/_/    / / /      
  \_____\/   \/__________/\/_/       \/__________/\/_/    \_\/\/__________/\_\/ \/_/  \/____________/\/_________/          \/_/       
- 
+
 ````
+
+![seperet.com spinning logo gif](https://images.squarespace-cdn.com/content/v1/612e9679ca3ada2f6398ebb3/c05732db-3886-411e-8985-1745b6bc638a/IMG_3139-ezgif.com-crop.gif?format=1500w)
 
 - Simple handling of nodes for objects such as:
     - NPCs
