@@ -1,5 +1,5 @@
 # RouteNodeHandler
-
+By Denver Clark || [Seperet](https://seperet.com)
 
 ````
           _____                    _____                    _____                    _____                    _____                    _____                _____          
@@ -281,3 +281,12 @@
             ...
             Program finished.
             ````
+
+## Links
+
+- seperet.com || [Seperet](https://seperet.com)
+- Dijkstra, A*, and Topological Sort || [CS106B Lecture 27. Dijkstra, A*, and Topological Sort](https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1242/lectures/27-graph-algorithms/)
+
+## Notes
+
+- Welcome, welcome.

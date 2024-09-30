@@ -7,6 +7,7 @@
 #include "NPC.h"
 #include "Vehicle.h"
 #include <vector>
+#include <unistd.h>
 
 // Function declarations for initializing NPCs and Vehicles
 void initializeNPCs(TrafficManager &trafficManager, const std::vector<std::shared_ptr<Node>> &nodes, std::vector<NPC> &npcs, int numNPCs);

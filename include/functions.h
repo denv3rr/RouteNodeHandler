@@ -7,5 +7,7 @@
 void printExecutionTime(const std::chrono::high_resolution_clock::time_point &start);
 void printCurrentTime();
 void coloredSeperetLogo(int colorCode1, int colorCode2);
+void voodooASCII();
+void disappointedGarfield();
 
 #endif // FUNCTIONS_H

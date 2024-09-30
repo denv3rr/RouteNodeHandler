@@ -15,6 +15,33 @@
 
 int main()
 {
+    {
+        // Logo / Startup
+
+        // Break
+        std::cout << "\n\n\n";
+
+        // Red and Yellow
+        coloredSeperetLogo(31, 33);
+
+        // Green and Cyan
+        coloredSeperetLogo(32, 36);
+
+        // Yellow and Magenta
+        coloredSeperetLogo(33, 35);
+
+        std::cout << "\n\n\n";
+
+        sleep(2);
+
+        // seperet.com voodoo logo
+        voodooASCII();
+
+        std::cout << "\n\n\n";
+
+        sleep(2);
+    }
+
     std::srand(static_cast<unsigned>(std::time(0))); // Seed randomness for node positions
 
     auto start = std::chrono::high_resolution_clock::now();
