@@ -302,8 +302,10 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 ##
 
-````
+![seperet.com spinning logo gif](https://images.squarespace-cdn.com/content/v1/612e9679ca3ada2f6398ebb3/c05732db-3886-411e-8985-1745b6bc638a/IMG_3139-ezgif.com-crop.gif?format=1500w)
 
+
+````
 
                             ▓█████▄ ▓█████  ███▄    █ ██▒   █▓▓█████  ██▀███      ▄████▄   ██▓    ▄▄▄       ██▀███   ██ ▄█▀
                             ▒██▀ ██▌▓█   ▀  ██ ▀█   █▓██░   █▒▓█   ▀ ▓██ ▒ ██▒   ▒██▀ ▀█  ▓██▒   ▒████▄    ▓██ ▒ ██▒ ██▄█▒ 
@@ -315,10 +317,4 @@ By Denver Clark || [Seperet](https://seperet.com)
                             ░ ░  ░    ░      ░   ░ ░     ░░     ░     ░░   ░    ░          ░ ░    ░   ▒     ░░   ░ ░ ░░ ░ 
                             ░       ░  ░         ░      ░     ░  ░   ░        ░ ░          ░  ░     ░  ░   ░     ░  ░   
                             ░                            ░                      ░                                       
-
-
-
-![seperet.com spinning logo gif](RouteNodeHandler/assets/media/Sep3D_GIF.GIF)
-
-
 ````
