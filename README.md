@@ -53,6 +53,11 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 - The compiled out/exe file will then be added into the same folder you are in (`src`) - depending on what you specify at compilation.
 
+## Issues
+
+🚧
+If you have any problems with anything, submit issues to let me know.
+
 ## Versions
 
 - **Version 4.1.0:**
