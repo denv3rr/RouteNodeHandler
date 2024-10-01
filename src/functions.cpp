@@ -78,7 +78,7 @@ void coloredLogoScrolling(int colorCode1, int colorCode2, int colorCode3, int co
 
   std::string logoPart3 = R"(
                 / / / /___ _____  ____/ / /__  _____              
-               / /_/ / __ `/ __ \/ __  / / _ \/ ___/              )";
+               / /_/ / __ `/ __ \/ __  / / _ \/ ___/)";
 
   std::string logoPart4 = R"(              
               / __  / /_/ / / / / /_/ / /  __/ /                  

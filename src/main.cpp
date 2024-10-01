@@ -30,7 +30,7 @@ int main()
         // Yellow and Magenta
         // coloredSeperetLogo(33, 35);
 
-        std::cout << "\n\n\n";
+        std::cout << "\n\n";
 
         // RNH Logo
         coloredLogoScrolling(37, 35, 34, 32);
