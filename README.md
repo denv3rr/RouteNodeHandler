@@ -1,9 +1,8 @@
 # RouteNodeHandler
-By Denver Clark || [Seperet](https://seperet.com)
+
+<div align="center">
 
 ````
-
-
  ____                     __                             
 /\  _`\                  /\ \__                          
 \ \ \L\ \    ___   __  __\ \ ,_\    __                   
@@ -29,11 +28,18 @@ By Denver Clark || [Seperet](https://seperet.com)
   \ \ \ \ \/\ \L\.\_/\ \/\ \/\ \L\ \ \_\ \_/\  __/\ \ \/ 
    \ \_\ \_\ \__/.\_\ \_\ \_\ \___,_\/\____\ \____\\ \_\ 
     \/_/\/_/\/__/\/_/\/_/\/_/\/__,_ /\/____/\/____/ \/_/ 
-                                                         
-                                                         
+
 ````
 
+
+By Denver Clark || [Seperet](https://seperet.com)
+
+
+<picture>
 ![seperet.com spinning logo gif](https://images.squarespace-cdn.com/content/v1/612e9679ca3ada2f6398ebb3/c05732db-3886-411e-8985-1745b6bc638a/IMG_3139-ezgif.com-crop.gif?format=1500w)
+</picture>
+
+</div>
 
 - Simple handling of nodes for objects such as:
     - NPCs
