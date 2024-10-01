@@ -22,18 +22,18 @@ int main()
         std::cout << "\n\n\n";
 
         // Red and Yellow
-        coloredSeperetLogo(31, 33);
+        // coloredSeperetLogo(31, 33);
 
         // Green and Cyan
-        coloredSeperetLogo(32, 36);
+        coloredSeperetLogoScrolling(32, 36);
 
         // Yellow and Magenta
-        coloredSeperetLogo(33, 35);
+        // coloredSeperetLogo(33, 35);
 
         std::cout << "\n\n\n";
 
         // seperet.com voodoo logo
-        voodooASCII();
+        printASCIIArtScrolling(scroll_voodooASCII, 0, 50);
 
         std::cout << "\n\n\n";
 
@@ -92,13 +92,13 @@ int main()
     std::cout << "\n\n\n";
 
     // Red and Yellow
-    coloredSeperetLogo(31, 33);
+    coloredSeperetLogoScrolling(31, 33);
 
     // Green and Cyan
-    coloredSeperetLogo(32, 36);
+    coloredSeperetLogoScrolling(32, 36);
 
     // Yellow and Magenta
-    coloredSeperetLogo(33, 35);
+    coloredSeperetLogoScrolling(33, 35);
 
     std::cout << "\n\n\n";
 

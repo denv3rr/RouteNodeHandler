@@ -2,9 +2,9 @@
 #include <cmath>
 #include <algorithm>
 #include <iostream>
-#include <limits>        // For infinity
-#include <queue>         // For std::priority_queue
-#include <unordered_map> // For std::unordered_map
+#include <limits>
+#include <queue>
+#include <unordered_map>
 
 std::vector<Node *> AStarPathfinder::findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode)
 {
@@ -12,7 +12,6 @@ std::vector<Node *> AStarPathfinder::findPath(std::shared_ptr<Node> startNode, s
     std::cout << "\033[32mStart Node: \033[0m" << startNode->getId() << " at (" << startNode->getX() << ", " << startNode->getY() << ", " << startNode->getZ() << ")\n";
     std::cout << "\033[32mGoal Node: \033[0m" << goalNode->getId() << " at (" << goalNode->getX() << ", " << goalNode->getY() << ", " << goalNode->getZ() << ")\n";
 
-    // Corrected priority queue declaration
     std::priority_queue<
         std::pair<float, std::shared_ptr<Node>>,
         std::vector<std::pair<float, std::shared_ptr<Node>>>,
@@ -25,18 +24,13 @@ std::vector<Node *> AStarPathfinder::findPath(std::shared_ptr<Node> startNode, s
     std::unordered_map<std::shared_ptr<Node>, float> gScore;
     std::unordered_map<std::shared_ptr<Node>, float> fScore;
 
-    // Initialize gScore for all nodes as "infinity"
     gScore[startNode] = 0.0f;
     fScore[startNode] = heuristicCostEstimate(startNode, goalNode);
-
-    // You don't need to initialize gScore for all nodes; the default value is infinity when not present in the map
 
     while (!openSet.empty())
     {
         std::shared_ptr<Node> current = openSet.top().second;
         openSet.pop();
-
-        std::cout << "\033[37mProcessing Node: \033[0m" << current->getId() << std::endl;
 
         if (current == goalNode)
         {
@@ -54,27 +48,17 @@ std::vector<Node *> AStarPathfinder::findPath(std::shared_ptr<Node> startNode, s
 
             float tentative_gScore = gScore[current] + distance(current, neighbor);
 
-            // If neighbor is not in gScore, it returns zero, so we need to handle this
             if (gScore.find(neighbor) == gScore.end())
             {
                 gScore[neighbor] = std::numeric_limits<float>::infinity();
             }
-
-            std::cout << "\033[33mEvaluating Neighbor: \033[0m" << neighbor->getId() << "\n"
-                      << "Current gScore: " << gScore[neighbor] << ", Tentative gScore: " << tentative_gScore << "\n";
 
             if (tentative_gScore < gScore[neighbor])
             {
                 cameFrom[neighbor] = current;
                 gScore[neighbor] = tentative_gScore;
                 fScore[neighbor] = gScore[neighbor] + heuristicCostEstimate(neighbor, goalNode);
-
-                std::cout << "\033[32mNeighbor: \033[0m" << neighbor->getId() << " with gScore: " << gScore[neighbor] << " added to open set.\n";
                 openSet.emplace(fScore[neighbor], neighbor);
-            }
-            else
-            {
-                std::cout << "\033[31mNeighbor: \033[0m" << neighbor->getId() << " not added, worse gScore.\n";
             }
         }
     }
