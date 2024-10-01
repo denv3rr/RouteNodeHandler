@@ -20,6 +20,8 @@ By Denver Clark || [Seperet](https://seperet.com)
 </div>
 
 
+
+
 ##
 
 - Handling of nodes for objects such as:
@@ -27,9 +29,12 @@ By Denver Clark || [Seperet](https://seperet.com)
     - Vehicles
     - and more.
 
-- Currently pathfinding algorithms:
+- Current pathfinding algorithms in use:
     - A*
     - Dijkstra
+
+
+
 
 ## Compiling
 
@@ -44,9 +49,15 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 - The compiled out/exe file will then be added into the same folder you are in (`src`) - depending on what you specify at compilation.
 
+
+
+
 ## Issues
 
 🚧 If you have any problems with anything, submit an issue to let me know.
+
+
+
 
 ## Versions
 
@@ -286,30 +297,26 @@ By Denver Clark || [Seperet](https://seperet.com)
             Program finished.
             ````
 
+
+
+
 ## Links
 
 - seperet.com || [Seperet](https://seperet.com)
 - Dijkstra, A*, and Topological Sort || [CS106B Lecture 27. Dijkstra, A*, and Topological Sort](https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1242/lectures/27-graph-algorithms/)
 
+
+
+
 ## Notes
 
 - Welcome, welcome.
 
+
+
+
 ##
 
-![seperet.com spinning logo gif](https://images.squarespace-cdn.com/content/v1/612e9679ca3ada2f6398ebb3/c05732db-3886-411e-8985-1745b6bc638a/IMG_3139-ezgif.com-crop.gif?format=1500w)
-
-
-````
-
-                            ▓█████▄ ▓█████  ███▄    █ ██▒   █▓▓█████  ██▀███      ▄████▄   ██▓    ▄▄▄       ██▀███   ██ ▄█▀
-                            ▒██▀ ██▌▓█   ▀  ██ ▀█   █▓██░   █▒▓█   ▀ ▓██ ▒ ██▒   ▒██▀ ▀█  ▓██▒   ▒████▄    ▓██ ▒ ██▒ ██▄█▒ 
-                            ░██   █▌▒███   ▓██  ▀█ ██▒▓██  █▒░▒███   ▓██ ░▄█ ▒   ▒▓█    ▄ ▒██░   ▒██  ▀█▄  ▓██ ░▄█ ▒▓███▄░ 
-                            ░▓█▄   ▌▒▓█  ▄ ▓██▒  ▐▌██▒ ▒██ █░░▒▓█  ▄ ▒██▀▀█▄     ▒▓▓▄ ▄██▒▒██░   ░██▄▄▄▄██ ▒██▀▀█▄  ▓██ █▄ 
-                            ░▒████▓ ░▒████▒▒██░   ▓██░  ▒▀█░  ░▒████▒░██▓ ▒██▒   ▒ ▓███▀ ░░██████▒▓█   ▓██▒░██▓ ▒██▒▒██▒ █▄
-                            ▒▒▓  ▒ ░░ ▒░ ░░ ▒░   ▒ ▒   ░ ▐░  ░░ ▒░ ░░ ▒▓ ░▒▓░   ░ ░▒ ▒  ░░ ▒░▓  ░▒▒   ▓▒█░░ ▒▓ ░▒▓░▒ ▒▒ ▓▒
-                            ░ ▒  ▒  ░ ░  ░░ ░░   ░ ▒░  ░ ░░   ░ ░  ░  ░▒ ░ ▒░     ░  ▒   ░ ░ ▒  ░ ▒   ▒▒ ░  ░▒ ░ ▒░░ ░▒ ▒░
-                            ░ ░  ░    ░      ░   ░ ░     ░░     ░     ░░   ░    ░          ░ ░    ░   ▒     ░░   ░ ░ ░░ ░ 
-                            ░       ░  ░         ░      ░     ░  ░   ░        ░ ░          ░  ░     ░  ░   ░     ░  ░   
-                            ░                            ░                      ░                                       
-````
+<div align="center">
+<img src="https://images.squarespace-cdn.com/content/v1/612e9679ca3ada2f6398ebb3/c05732db-3886-411e-8985-1745b6bc638a/IMG_3139-ezgif.com-crop.gif?format=1500w" alt="seperet.com spinning logo gif" width="300" height="300"/>
+</div>
