@@ -12,15 +12,24 @@
 ````
 
 
-By Denver Clark || [Seperet](https://seperet.com)
 
 <img src="https://images.squarespace-cdn.com/content/v1/612e9679ca3ada2f6398ebb3/c05732db-3886-411e-8985-1745b6bc638a/IMG_3139-ezgif.com-crop.gif?format=1500w" alt="seperet.com spinning logo gif" width="120" height="120"/>
+
+By Denver Clark || [Seperet](https://seperet.com)
+
 </div>
 
-- Simple handling of nodes for objects such as:
+
+##
+
+- Handling of nodes for objects such as:
     - NPCs
     - Vehicles
     - and more.
+
+- Currently pathfinding algorithms:
+    - A*
+    - Dijkstra
 
 ## Compiling
 
@@ -37,16 +46,15 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 ## Issues
 
-🚧
-If you have any problems with anything, submit issues to let me know.
+🚧 If you have any problems with anything, submit an issue to let me know.
 
 ## Versions
 
 - **Version 4.1.0:**
     - **Updates:**
-        -   Modularized pathfinding logic by introducing AStarPathfinder class.
-        -   Added detailed debugging statements with color-coded outputs for better traceability.
-        -   Improved gScore initialization and handling in the A* algorithm to fix pathfinding issues.
+        - Modularized pathfinding logic by introducing AStarPathfinder class.
+        - Added detailed debugging statements with color-coded outputs for better traceability.
+        - Improved gScore initialization and handling in the A* algorithm to fix pathfinding issues.
 
     - **Expected Output:**
 
