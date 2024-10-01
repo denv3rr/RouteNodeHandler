@@ -8,7 +8,9 @@
 void printExecutionTime(const std::chrono::high_resolution_clock::time_point &start);
 void printCurrentTime();
 extern const std::string scroll_voodooASCII;
+extern const std::string RNH_Logo_ASCII;
 void coloredSeperetLogoScrolling(int, int);
+void coloredLogoScrolling(int, int, int, int);
 void printASCIIArtScrolling(const std::string &, int, int);
 void voodooASCII();
 void disappointedGarfield();
