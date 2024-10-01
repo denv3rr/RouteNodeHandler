@@ -1,14 +1,30 @@
-#pragma once
-#include <vector>
-#include <memory>
+#ifndef PATHFINDINGMANAGER_H
+#define PATHFINDINGMANAGER_H
 
-class Node; // Forward declaration
+#include <memory>
+#include "IPathfindingAlgorithm.h"
 
 class PathfindingManager
 {
-public:
-    virtual ~PathfindingManager() = default;
+private:
+    std::shared_ptr<IPathfindingAlgorithm> pathfindingAlgorithm;
 
-    // Pure virtual function to find a path
-    virtual std::vector<Node *> findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode) = 0;
+public:
+    // Set the pathfinding algorithm at runtime
+    void setAlgorithm(std::shared_ptr<IPathfindingAlgorithm> algorithm)
+    {
+        pathfindingAlgorithm = algorithm;
+    }
+
+    // Call the selected algorithm's findPath method
+    std::vector<Node *> findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode)
+    {
+        if (!pathfindingAlgorithm)
+        {
+            throw std::runtime_error("Pathfinding algorithm not set.");
+        }
+        return pathfindingAlgorithm->findPath(startNode, goalNode);
+    }
 };
+
+#endif // PATHFINDINGMANAGER_H

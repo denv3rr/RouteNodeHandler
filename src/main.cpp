@@ -32,8 +32,6 @@ int main()
 
         std::cout << "\n\n\n";
 
-        sleep(2);
-
         // seperet.com voodoo logo
         voodooASCII();
 

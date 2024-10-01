@@ -1,18 +1,20 @@
-#pragma once
-#include "PathfindingManager.h"
-#include "Node.h"
-#include <unordered_map>
-#include <vector>
-#include <memory>
+#include "IPathfindingAlgorithm.h"
+#include <cmath>
+#include <algorithm>
+#include <iostream>
 
-class AStarPathfinder : public PathfindingManager
+class AStarPathfinder : public IPathfindingAlgorithm
 {
 public:
-    // Find path implementation for A* algorithm
-    std::vector<Node *> findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode) override;
+    float heuristicCostEstimate(const std::shared_ptr<Node> &start, const std::shared_ptr<Node> &goal) const
+    {
+        return std::sqrt(std::pow(goal->getX() - start->getX(), 2) +
+                         std::pow(goal->getY() - start->getY(), 2) +
+                         std::pow(goal->getZ() - start->getZ(), 2));
+    }
 
-private:
-    float heuristicCostEstimate(const std::shared_ptr<Node> &start, const std::shared_ptr<Node> &goal) const;
-    float distance(const std::shared_ptr<Node> &start, const std::shared_ptr<Node> &goal) const;
-    std::vector<Node *> reconstructPath(std::unordered_map<std::shared_ptr<Node>, std::shared_ptr<Node>> &cameFrom, std::shared_ptr<Node> current);
+    std::vector<Node *> findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode) override
+    {
+        // A* implementation here
+    }
 };
