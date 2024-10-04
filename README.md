@@ -16,6 +16,9 @@
 <img src="https://images.squarespace-cdn.com/content/v1/612e9679ca3ada2f6398ebb3/c05732db-3886-411e-8985-1745b6bc638a/IMG_3139-ezgif.com-crop.gif?format=1500w" alt="seperet.com spinning logo gif" width="120" height="120"/>
 
 By Denver Clark || [Seperet](https://seperet.com)
+    <a href="https://github.com/denv3rr/github-readme-stats/actions">
+      <img alt="Tests Passing" src="https://github.com/denv3rr/github-readme-stats/workflows/Test/badge.svg" />
+    </a>
 
 </div>
 
