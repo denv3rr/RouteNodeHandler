@@ -10,6 +10,7 @@ private:
     int id;                                       // Node identifier
     int x, y, z;                                  // Coordinates for the node
     std::vector<std::shared_ptr<Node>> neighbors; // Connected neighbors
+    bool blocked;                                 // Variable for indication of blocked status of a node
 
 public:
     // Constructor
@@ -31,6 +32,10 @@ public:
     // Neighbor handling
     void addNeighbor(std::shared_ptr<Node> neighbor);
     std::vector<std::shared_ptr<Node>> getNeighbors() const;
+
+    // Checking isBlocked() status
+    bool isBlocked() const;
+    void setBlocked(bool blockedStatus);
 };
 
 #endif

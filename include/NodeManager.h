@@ -23,6 +23,9 @@ public:
     // Function to print all nodes for debugging
     void printNodes() const; // Add this declaration
 
+    // Function to set a node to a status of "blocked" by ID
+    void setNodeBlocked(int nodeId, bool blocked);
+
 private:
     // Function to get the index of a node in the grid
     int getIndex(int x, int y, int z, int gridSize); // Add this declaration

@@ -55,3 +55,15 @@ std::vector<std::shared_ptr<Node>> Node::getNeighbors() const
 {
     return neighbors;
 }
+
+// Returns status of blocked for a poor/unavailable next-node option
+bool Node::isBlocked() const
+{
+    return blocked;
+}
+
+// Sets blocked status to blocked bool variable
+void Node::setBlocked(bool blockedStatus)
+{
+    blocked = blockedStatus;
+}
