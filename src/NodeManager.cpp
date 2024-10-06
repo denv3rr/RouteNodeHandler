@@ -117,3 +117,13 @@ std::vector<Node *> NodeManager::findPath(std::shared_ptr<Node> startNode, std::
     // Delegating the pathfinding to the Pathfinder object
     return pathfinder->findPath(startNode, goalNode);
 }
+
+// Set blocked nodes to a status of blocked
+void NodeManager::setNodeBlocked(int nodeId, bool blockedStatus)
+{
+    if (nodeId >= 0 && nodeId < nodes.size())
+    {
+        nodes[nodeId]->setBlocked(blockedStatus);
+        std::cout << "Node " << nodeId << " has been marked as " << (blockedStatus ? "blocked" : "available") << std::endl;
+    }
+}
