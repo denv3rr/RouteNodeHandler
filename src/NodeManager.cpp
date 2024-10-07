@@ -127,3 +127,16 @@ void NodeManager::setNodeBlocked(int nodeId, bool blockedStatus)
         std::cout << "Node " << nodeId << " has been marked as " << (blockedStatus ? "blocked" : "available") << std::endl;
     }
 }
+
+void NodeManager::randomlyBlockNodes()
+{
+    for (auto &node : nodes)
+    {
+        if (rand() % 5 == 0) // Randomly block/unblock some nodes
+        {
+            bool blockStatus = rand() % 2 == 0; // Randomly block or unblock
+            node->setBlocked(blockStatus);
+            std::cout << "Node " << node->getId() << " has been " << (blockStatus ? "blocked" : "unblocked") << std::endl;
+        }
+    }
+}

@@ -32,58 +32,33 @@ void initializeVehicles(TrafficManager &trafficManager, const std::vector<std::s
 // Run the traffic simulation loop
 void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles, NodeManager &nodeManager, PathfindingManager &pathfindingManager)
 {
-    std::cout << "\n\033[32mSimulating traffic...\033[0m\n"
-              << std::endl;
-
-    // Set up the pathfinding algorithm (can be A*, Dijkstra, etc.)
-    pathfindingManager.setAlgorithm(std::make_shared<AStarPathfinder>());
-
-    // Assign a path to all NPCs and Vehicles
-    for (NPC &npc : npcs)
+    for (int i = 0; i < 10; ++i) // Simulate 10 cycles
     {
-        std::shared_ptr<Node> startNode = nodeManager.getNodes()[0]; // Example start node
-        std::shared_ptr<Node> endNode = nodeManager.getNodes()[99];  // Example end node
+        // Randomly block/unblock nodes during simulation
+        nodeManager.randomlyBlockNodes();
 
-        // Recalculate path dynamically based on node status
-        npc.setPath(pathfindingManager.findPath(startNode, endNode));
-    }
-
-    for (Vehicle &vehicle : vehicles)
-    {
-        std::shared_ptr<Node> startNode = nodeManager.getNodes()[0]; // Example start node
-        std::shared_ptr<Node> endNode = nodeManager.getNodes()[99];  // Example end node
-
-        // Recalculate path dynamically based on node status
-        vehicle.setPath(pathfindingManager.findPath(startNode, endNode));
-    }
-
-    // Simulate traffic and adjust paths dynamically if conditions change
-    for (int i = 0; i < 10; ++i)
-    {
-        // During each update, check for changes (e.g., blocked nodes) and update paths accordingly
+        // Check NPCs and recalculate path if blocked
         for (NPC &npc : npcs)
         {
             std::shared_ptr<Node> currentNode = std::make_shared<Node>(*npc.getCurrentNode());
             if (currentNode->isBlocked())
             {
-                // Recalculate path if the current node becomes blocked
-                std::shared_ptr<Node> newEndNode = nodeManager.getNodes()[99]; // Pick another end node if needed
-                npc.setPath(pathfindingManager.findPath(currentNode, newEndNode));
+                std::shared_ptr<Node> newGoal = nodeManager.getNodes()[99]; // Use a different end node
+                npc.setPath(pathfindingManager.findPath(currentNode, newGoal));
             }
         }
 
+        // Check Vehicles and recalculate path if blocked
         for (Vehicle &vehicle : vehicles)
         {
             std::shared_ptr<Node> currentNode = std::make_shared<Node>(*vehicle.getCurrentNode());
-            ;
             if (currentNode->isBlocked())
             {
-                // Recalculate path if the current node becomes blocked
-                std::shared_ptr<Node> newEndNode = nodeManager.getNodes()[99]; // Pick another end node if needed
-                vehicle.setPath(pathfindingManager.findPath(currentNode, newEndNode));
+                std::shared_ptr<Node> newGoal = nodeManager.getNodes()[99];
+                vehicle.setPath(pathfindingManager.findPath(currentNode, newGoal));
             }
         }
 
-        trafficManager.updateEntities(); // Move all entities along their paths
+        trafficManager.updateEntities(); // Move entities along their paths
     }
 }
