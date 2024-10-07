@@ -9,7 +9,7 @@ void printExecutionTime(const std::chrono::high_resolution_clock::time_point &st
 {
   auto end = std::chrono::high_resolution_clock::now();
   auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-  std::cout << "Execution time: " << duration << " ms" << std::endl;
+  std::cout << "Execution time: " << duration << " ms (" << duration / 1000 << " sec)" << std::endl;
 }
 
 // Print the current local time
@@ -40,7 +40,7 @@ void coloredSeperetLogoScrolling(int colorCode1, int colorCode2)
   for (char c : logoPart1)
   {
     std::cout << c << std::flush;
-    std::this_thread::sleep_for(std::chrono::milliseconds(5)); // Adjust delay as needed
+    std::this_thread::sleep_for(std::chrono::milliseconds(1)); // Adjust delay as needed
   }
 
   // Reset color
@@ -56,7 +56,7 @@ void coloredSeperetLogoScrolling(int colorCode1, int colorCode2)
   for (char c : logoPart2)
   {
     std::cout << c << std::flush;
-    std::this_thread::sleep_for(std::chrono::milliseconds(5)); // Adjust delay as needed
+    std::this_thread::sleep_for(std::chrono::milliseconds(1)); // Adjust delay as needed
   }
 
   // Reset color
@@ -106,7 +106,7 @@ void coloredLogoScrolling(int colorCode1, int colorCode2, int colorCode3, int co
   };
 
   // Adjust delayPerChar as needed (set to 0 for no delay)
-  int delayPerChar = 3; // Set to 0 for no delays in scroll animation
+  int delayPerChar = 1; // Set to 0 for no delays in scroll animation
 
   // Print each part
   printLogoPart(logoPart1, colorCode1, delayPerChar);
@@ -117,19 +117,7 @@ void coloredLogoScrolling(int colorCode1, int colorCode2, int colorCode3, int co
   printLogoPart(logoPart3, colorCode3, delayPerChar);
 
   printLogoPart(logoPart4, colorCode4, delayPerChar);
-  std::cout << "\n";
 }
-
-const std::string RNH_Logo_ASCII = R"(
-          ____              __          _   __          __   
-         / __ \____  __  __/ /____     / | / /___  ____/ /__ 
-        / /_/ / __ \/ / / / __/ _ \   /  |/ / __ \/ __  / _ \
-       / _, _/ /_/ / /_/ / /_/  __/  / /|  / /_/ / /_/ /  __/
-      /_/ |_|\____/\__,_/\__/\___/__/_/ |_/\____/\__,_/\___/ 
-                / / / /___ _____  ____/ / /__  _____              
-               / /_/ / __ `/ __ \/ __  / / _ \/ ___/              
-              / __  / /_/ / / / / /_/ / /  __/ /                  
-             /_/ /_/\__,_/_/ /_/\__,_/_/\___/_/)";
 
 // Function to print ASCII art with scrolling effect, skipping whitespace delays
 void printASCIIArtScrolling(const std::string &asciiArt, int delayNonWhitespace, int delayLine)
@@ -151,72 +139,4 @@ void printASCIIArtScrolling(const std::string &asciiArt, int delayNonWhitespace,
       std::this_thread::sleep_for(std::chrono::milliseconds(delayLine));
     }
   }
-}
-
-const std::string scroll_voodooASCII = R"(
-    
-                                @@@%@%@@@                       
-                               @@@=----+%@@                     
-                              @*:%*------+@@                    
-                             @=...%+------+@@                   
-                          @@@+.....@@+----=@@                   
-                          @@@@=#=@:.%%%====*@@                  
-                          @%:..%@@...+-.=%@@@                   
-                          @-.....@..*@%*.*@@                    
-                         @+..+@...::::==@@@                     
-                         @@-.-@%=.:=*=@@@@@                     
-                         @@@@:#@@@@@@@@                         
-                    @@@@*==@@@@@@@@@@@@                         
-                   @@%@@=--*@#@@@#@@@@@@@                       
-                  @@#+*%=--=--@@%%#%@@@@@@                      
-                  @#++#%=----=@%#@%%%@@@@@@                     
-                 @@+++%#------@######@@@@@@@                    
-                @@++++%#----+*@%%####@@@@@@@@                   
-                @*+++*%%--+@@*+==@%##%@@@@@@@@                  
-               @@+++=+%@=*@**=====@%##@@@@@@@@@                 
-              @@@@@#**%@%%*++======@%#@@@@@@@@@                 
-               @@@%%%@@%%%+=+===--=@@#%@@@@@@@                  
-                 @@@@@@=*@#+======-#@#%@@@@     @@@@@@@@@@@@@@  
-                 @@@*=#=-@@%+==-==%@#%%%@@@@@@@@%%%%%%%%%%%**@@ 
-               @@@%%%@@#+==*@@@@@%##@@%%%%%%%%%%%%%%%%%%%%%=%@@ 
-             @@%%%%%%%%@%*+--=*@###@%%%%%%%%%%%%%%%%%%%%%@*-#@@ 
-          @@%%%%%%%%%%%@@@%+*#%@%@@@@@@@%%%%%%%%%%%%%%%%@@+=@@  
-       @@%%%%%%%%%%%%%@@             @@@@@@@@@%%%@%%%%%%--%@@  
-    @@@%%%%%%%%%%%%%@@@                     @@@@@@@@@%@@@%@@@   
-  @@%%%%%%%%%%%%%%%@@@                             @@@@@@@@@    
-  @*=#@@%%%%%%%%%%@@                                            
-  @*...:=@%%%%%%%@@                                             
-  @@:.....:@%%%@@@                                              
-   @@=....:*@%@@                                                
-    @@#+===#@@@                                                 
-      @@@@@@@         seperet.com || Denver Clark                                               
-
-
-
-
-)";
-
-void disappointedGarfield()
-{
-  // Makes you feel pretty guilty
-  std::cout << R"(
-
-    Garfield                       ...ooooo.         ..---##o
-                          .--^""#########o ..o--"  .o#####
-        .."-.         ..-^"  .o###########^"    .o########
-      ..."^o ^.    .o^"    o##^"#"#"#"#"##   .o#^:^:^:^:#
-        "^-:^.# .o#:-    o^"    "-"-"-"-##.o^"-^" " " :# .-^""
-           ::#"##o#^.  -""..---------...":^-------. o#^.^.#:"
-         -:.-:^:"oo^   .-"             ""o         ^:^#:#"
-     ..o:^o:#o:##""  o"                  "o          # "-o.
-    o"." ^"-"^-""   #                     #           #  .#.
-  .^o"o:-. .        #                    .^           #o-#-#
- .#^.^.^#^#^        #                ...o:      .....o""o^o"#
- #^ "-"- "           #""""^####^""""".-"#####^""""  o"  ^.^.^o
- "#"o"o       .#--""" ^..       ..oo###oo.      ..-"    o:o"o^
-  ^-o:o".   .^"          """""""  ::^^^^^::"""""        ^.#-#
-    "^o:-:-#   -        ..    .o-"         "--..    .    ^.^
-      "-:-:^o            """"""                 """"     o"
-         "^-^#.   .o^#...........................    ..-"
-              """""   ""                         """")";
 }

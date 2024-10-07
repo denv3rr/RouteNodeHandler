@@ -2,6 +2,7 @@
 #define PATHFINDINGMANAGER_H
 
 #include <memory>
+#include <stdexcept>
 #include "IPathfindingAlgorithm.h"
 
 class PathfindingManager
@@ -16,15 +17,9 @@ public:
         pathfindingAlgorithm = algorithm;
     }
 
-    // Call the selected algorithm's findPath method
-    std::vector<Node *> findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode)
-    {
-        if (!pathfindingAlgorithm)
-        {
-            throw std::runtime_error("Pathfinding algorithm not set.");
-        }
-        return pathfindingAlgorithm->findPath(startNode, goalNode);
-    }
+    std::vector<Node *> findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode);
+
+    bool isNodeBlocked(const std::shared_ptr<Node> &) const;
 };
 
 #endif // PATHFINDINGMANAGER_H

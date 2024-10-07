@@ -3,6 +3,7 @@
  * Purpose: Main entry point for the Node Route Simulation
  ************************************************* */
 
+// Local
 #include "../include/main.h"
 #include "../include/Node.h"
 #include "../include/NodeManager.h"
@@ -10,6 +11,7 @@
 #include "../include/simulation.h"
 #include "../include/functions.h"
 
+// Standard
 #include <iostream>
 #include <iomanip> // For std::setprecision
 
@@ -30,10 +32,10 @@ int main()
         // Yellow and Magenta
         // coloredSeperetLogo(33, 35);
 
-        std::cout << "\n\n";
+        // std::cout << "\n\n";
 
         // RNH Logo
-        coloredLogoScrolling(37, 35, 34, 32);
+        // coloredLogoScrolling(37, 35, 34, 32);
 
         std::cout << "\n\n\n";
 
@@ -66,7 +68,8 @@ int main()
     initializeNPCs(trafficManager, nodeManager.getNodes(), npcs, npcCount);
     initializeVehicles(trafficManager, nodeManager.getNodes(), vehicles, vehicleCount);
 
-    simulateTraffic(trafficManager, npcs, vehicles, nodeManager);
+    PathfindingManager pathfindingManager; // Declaration of pathfinding manager
+    simulateTraffic(trafficManager, npcs, vehicles, nodeManager, pathfindingManager);
 
     // Initialization of Start and End nodes
     std::shared_ptr<Node> startNode = nodeManager.getNodes()[0];
@@ -92,7 +95,7 @@ int main()
     std::cout << "\n\n\n";
 
     coloredSeperetLogoScrolling(34, 35);
-    coloredLogoScrolling(37, 35, 34, 32);
+    // coloredLogoScrolling(37, 35, 34, 32);
 
     std::cout << "\n\n\n";
 
