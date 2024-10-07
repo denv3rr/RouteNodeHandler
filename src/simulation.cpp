@@ -32,6 +32,39 @@ void initializeVehicles(TrafficManager &trafficManager, const std::vector<std::s
 // Run the traffic simulation loop
 void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles, NodeManager &nodeManager, PathfindingManager &pathfindingManager)
 {
+    std::cout << "\n\033[32mSimulating traffic...\033[0m\n"
+              << std::endl;
+
+    // Ensure the pathfinding algorithm is set
+    if (!pathfindingManager.hasAlgorithm())
+    {
+        std::cerr << "Error: Pathfinding algorithm not set!" << std::endl;
+        return;
+    }
+
+    // Set up the pathfinding algorithm (can be A*, Dijkstra, etc.)
+    pathfindingManager.setAlgorithm(std::make_shared<AStarPathfinder>());
+
+    // Assign a path to all NPCs and Vehicles
+    for (NPC &npc : npcs)
+    {
+        std::shared_ptr<Node> startNode = nodeManager.getNodes()[0]; // Example start node
+        std::shared_ptr<Node> endNode = nodeManager.getNodes()[99];  // Example end node
+
+        // Recalculate path dynamically based on node status
+        npc.setPath(pathfindingManager.findPath(startNode, endNode));
+    }
+
+    for (Vehicle &vehicle : vehicles)
+    {
+        std::shared_ptr<Node> startNode = nodeManager.getNodes()[0]; // Example start node
+        std::shared_ptr<Node> endNode = nodeManager.getNodes()[99];  // Example end node
+
+        // Recalculate path dynamically based on node status
+        vehicle.setPath(pathfindingManager.findPath(startNode, endNode));
+    }
+
+    // Simulate traffic and adjust paths dynamically if conditions change
     for (int i = 0; i < 10; ++i) // Simulate 10 cycles
     {
         // Randomly block/unblock nodes during simulation

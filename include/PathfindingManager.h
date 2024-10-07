@@ -17,6 +17,12 @@ public:
         pathfindingAlgorithm = algorithm;
     }
 
+    // Check if an algorithm is set
+    bool hasAlgorithm() const
+    {
+        return pathfindingAlgorithm != nullptr;
+    }
+
     std::vector<Node *> findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode);
 
     bool isNodeBlocked(const std::shared_ptr<Node> &) const;

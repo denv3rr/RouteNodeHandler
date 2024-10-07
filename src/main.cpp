@@ -39,7 +39,7 @@ int main()
 
         std::cout << "\n\n\n";
 
-        sleep(2);
+        sleep(1);
     }
 
     std::srand(static_cast<unsigned>(std::time(0))); // Seed randomness for node positions
@@ -49,8 +49,8 @@ int main()
               << std::endl;
 
     NodeManager nodeManager;
-    int nodeCount = 20; // Set the node count for a 20x20x20 grid, or adjust this value as needed
-    int gridSize = 20;  // Specify the size of the grid for nodes
+    int nodeCount = 10; // Set the node count for a 20x20x20 grid, or adjust this value as needed
+    int gridSize = 10;  // Specify the size of the grid for nodes
 
     std::cout << "\033[32mCreating nodes...\033[0m" << std::endl;
     nodeManager.createNodes(1.0f, gridSize); // Initialize the specified number of nodes
@@ -68,7 +68,8 @@ int main()
     initializeNPCs(trafficManager, nodeManager.getNodes(), npcs, npcCount);
     initializeVehicles(trafficManager, nodeManager.getNodes(), vehicles, vehicleCount);
 
-    PathfindingManager pathfindingManager; // Declaration of pathfinding manager
+    PathfindingManager pathfindingManager;                                // Declaration of pathfinding manager
+    pathfindingManager.setAlgorithm(std::make_shared<AStarPathfinder>()); // Ensures the algorithm is set
     simulateTraffic(trafficManager, npcs, vehicles, nodeManager, pathfindingManager);
 
     // Initialization of Start and End nodes
