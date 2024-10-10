@@ -14,7 +14,7 @@ If anything is broken or seems "off," please directly email `denver@seperet.com`
 To report a vulnerability, email me directly at: `denver@seperet.com`
 
 **Required Info**
-1. Email: security@copilotkit.ai
+1. Email: `denver@seperet.com`
 
 2. A detailed description of the vulnerability
 3. Steps to reproduce the issue
