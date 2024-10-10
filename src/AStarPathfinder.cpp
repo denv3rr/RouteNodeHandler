@@ -1,4 +1,4 @@
-#include "AStarPathfinder.h"
+#include "../include/AStarPathfinder.h"
 #include <cmath>
 #include <algorithm>
 #include <iostream>
