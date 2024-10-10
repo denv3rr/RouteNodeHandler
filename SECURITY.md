@@ -14,8 +14,7 @@ If anything is broken or seems "off," please directly email `denver@seperet.com`
 To report a vulnerability, email me directly at: `denver@seperet.com`
 
 **Required Info**
-1. Email: `denver@seperet.com`
-
+1. Email address (and any other relevant contact info)
 2. A detailed description of the vulnerability
 3. Steps to reproduce the issue
 4. Potential impact or risk
