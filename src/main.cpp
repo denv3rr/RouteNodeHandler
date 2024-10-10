@@ -65,8 +65,13 @@ int main()
     initializeNPCs(trafficManager, nodeManager.getNodes(), npcs, npcCount);
     initializeVehicles(trafficManager, nodeManager.getNodes(), vehicles, vehicleCount);
 
-    PathfindingManager pathfindingManager;                                // Declaration of pathfinding manager
-    pathfindingManager.setAlgorithm(std::make_shared<AStarPathfinder>()); // Ensures the algorithm is set
+    PathfindingManager pathfindingManager; // Declaration of pathfinding manager
+    int choice;
+    if (choice == 1)
+        pathfindingManager.setAlgorithm(std::make_shared<AStarPathfinder>());
+    else
+        pathfindingManager.setAlgorithm(std::make_shared<DijkstraPathfinder>());
+
     simulateTraffic(trafficManager, npcs, vehicles, nodeManager, pathfindingManager);
 
     // Initialization of Start and End nodes

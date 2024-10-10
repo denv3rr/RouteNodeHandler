@@ -18,7 +18,7 @@ std::vector<Node *> PathfindingManager::findPath(std::shared_ptr<Node> startNode
     // Check if start or goal nodes are blocked before beginning pathfinding
     if (isNodeBlocked(startNode) || isNodeBlocked(goalNode))
     {
-        std::cout << "Start or goal node is blocked. Cannot find path." << std::endl;
+        std::cout << "\033[31mStart or goal node is blocked. Cannot find path.\033[0m\n";
         return {};
     }
 
@@ -31,7 +31,7 @@ std::vector<Node *> PathfindingManager::findPath(std::shared_ptr<Node> startNode
     {
         if (isNodeBlocked(std::make_shared<Node>(*node)))
         {
-            std::cout << "Blocked node encountered: " << node->getId() << ". Skipping." << std::endl;
+            std::cout << "\033[31mBlocked node encountered: \033[0m" << node->getId() << "\033[31m. Skipping...\033[0m\n";
         }
         else
         {

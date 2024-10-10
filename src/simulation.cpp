@@ -38,7 +38,7 @@ void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std
     // Ensure the pathfinding algorithm is set
     if (!pathfindingManager.hasAlgorithm())
     {
-        std::cerr << "Error: Pathfinding algorithm not set!" << std::endl;
+        std::cerr << "\033[31mError: Pathfinding algorithm not set!\033[0m\n";
         return;
     }
 

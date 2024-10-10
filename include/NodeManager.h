@@ -2,7 +2,8 @@
 #define NODEMANAGER_H
 
 #include "Node.h"
-#include "AStarPathfinder.h" // Include pathfinding logic
+#include "AStarPathfinder.h"    // Include logic for A*
+#include "DijkstraPathfinder.h" // Including logic for Dijkstra
 #include <memory>
 #include <vector>
 
