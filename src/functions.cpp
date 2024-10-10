@@ -9,7 +9,7 @@ void printExecutionTime(const std::chrono::high_resolution_clock::time_point &st
 {
   auto end = std::chrono::high_resolution_clock::now();
   auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-  std::cout << "Execution time: " << duration << " ms (" << duration / 1000 << " sec)" << std::endl;
+  std::cout << "Execution time: " << duration << " ms (" << duration / 1000 << " sec)\n";
 }
 
 // Print the current local time
@@ -17,7 +17,7 @@ void printCurrentTime()
 {
   auto now = std::chrono::system_clock::now();
   std::time_t now_time = std::chrono::system_clock::to_time_t(now);
-  std::cout << std::put_time(std::localtime(&now_time), "%Y-%m-%d %H:%M:%S") << std::endl;
+  std::cout << std::put_time(std::localtime(&now_time), "%Y-%m-%d %H:%M:%S\n");
 }
 
 // Function to print the logo with specified colors and scrolling effect
@@ -63,13 +63,14 @@ void coloredSeperetLogoScrolling(int colorCode1, int colorCode2)
   std::cout << "\033[0m"; // End color 2
 }
 
+/*
 // Function to print the logo with specified colors and scrolling effect
 void coloredLogoScrolling(int colorCode1, int colorCode2, int colorCode3, int colorCode4)
 {
   // Logo parts
   std::string logoPart1 = R"(
-          ____              __          _   __          __   
-         / __ \____  __  __/ /____     / | / /___  ____/ /__ 
+          ____              __          _   __          __
+         / __ \____  __  __/ /____     / | / /___  ____/ /__
         / /_/ / __ \/ / / / __/ _ \   /  |/ / __ \/ __  / _ \)";
 
   std::string logoPart2 = R"(
@@ -77,11 +78,11 @@ void coloredLogoScrolling(int colorCode1, int colorCode2, int colorCode3, int co
       /_/ |_|\____/\__,_/\__/\___/__/_/ |_/\____/\__,_/\___/)";
 
   std::string logoPart3 = R"(
-                / / / /___ _____  ____/ / /__  _____              
+                / / / /___ _____  ____/ / /__  _____
                / /_/ / __ `/ __ \/ __  / / _ \/ ___/)";
 
-  std::string logoPart4 = R"(              
-              / __  / /_/ / / / / /_/ / /  __/ /                  
+  std::string logoPart4 = R"(
+              / __  / /_/ / / / / /_/ / /  __/ /
              /_/ /_/\__,_/_/ /_/\__,_/_/\___/_/)";
 
   // Helper lambda to print a logo part with color and optional delay
@@ -119,6 +120,7 @@ void coloredLogoScrolling(int colorCode1, int colorCode2, int colorCode3, int co
   printLogoPart(logoPart4, colorCode4, delayPerChar);
 }
 
+
 // Function to print ASCII art with scrolling effect, skipping whitespace delays
 void printASCIIArtScrolling(const std::string &asciiArt, int delayNonWhitespace, int delayLine)
 {
@@ -140,3 +142,4 @@ void printASCIIArtScrolling(const std::string &asciiArt, int delayNonWhitespace,
     }
   }
 }
+*/

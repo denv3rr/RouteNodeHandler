@@ -38,25 +38,22 @@ int main()
         // coloredLogoScrolling(37, 35, 34, 32);
 
         std::cout << "\n\n\n";
-
-        sleep(1);
     }
 
     std::srand(static_cast<unsigned>(std::time(0))); // Seed randomness for node positions
 
     auto start = std::chrono::high_resolution_clock::now();
-    std::cout << "\n\n\033[32mStarting program...\033[0m\n"
-              << std::endl;
+    std::cout << "\n\n\033[32mStarting program...\033[0m\n";
 
     NodeManager nodeManager;
     int nodeCount = 10; // Set the node count for a 20x20x20 grid, or adjust this value as needed
     int gridSize = 10;  // Specify the size of the grid for nodes
 
-    std::cout << "\033[32mCreating nodes...\033[0m" << std::endl;
+    std::cout << "\033[32mCreating nodes...\033[0m\n";
     nodeManager.createNodes(1.0f, gridSize); // Initialize the specified number of nodes
     nodeManager.printNodes();                // Optional: Print nodes for debugging
 
-    std::cout << "\033[32m\nNodes created successfully.\033[0m" << std::endl;
+    std::cout << "\033[32m\nNodes created successfully.\033[0m\n";
 
     TrafficManager trafficManager;
     std::vector<NPC> npcs;         // Store NPCs
@@ -76,7 +73,7 @@ int main()
     std::shared_ptr<Node> startNode = nodeManager.getNodes()[0];
     std::shared_ptr<Node> goalNode = nodeManager.getNodes()[99];
 
-    std::cout << "\033[32mFinding path from Node " << startNode->getId() << " to Node " << goalNode->getId() << "...\033[0m" << std::endl;
+    std::cout << "\033[32mFinding path from Node " << startNode->getId() << " to Node " << goalNode->getId() << "...\033[0m\n";
 
     std::vector<Node *> path = nodeManager.findPath(startNode, goalNode);
 
@@ -96,7 +93,6 @@ int main()
     std::cout << "\n\n\n";
 
     coloredSeperetLogoScrolling(34, 35);
-    // coloredLogoScrolling(37, 35, 34, 32);
 
     std::cout << "\n\n\n";
 
