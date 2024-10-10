@@ -33,12 +33,10 @@ By Denver Clark || [Seperet](https://seperet.com)
     - A*
     - Dijkstra
 
-<div align=center>
   | Version | Supported          |
   | ------- | ------------------ |
   | > 4.2   | :white_check_mark: |
   | < 4.1   | :x:                |
-</div>
 
 
 ## Compiling
