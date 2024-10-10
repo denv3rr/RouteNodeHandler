@@ -17,29 +17,6 @@
 
 int main()
 {
-    {
-        // Logo / Startup
-
-        // Break
-        std::cout << "\n\n\n";
-
-        // Red and Yellow
-        // coloredSeperetLogo(31, 33);
-
-        // Green and Cyan
-        coloredSeperetLogoScrolling(34, 35);
-
-        // Yellow and Magenta
-        // coloredSeperetLogo(33, 35);
-
-        // std::cout << "\n\n";
-
-        // RNH Logo
-        // coloredLogoScrolling(37, 35, 34, 32);
-
-        std::cout << "\n\n\n";
-    }
-
     std::srand(static_cast<unsigned>(std::time(0))); // Seed randomness for node positions
 
     auto start = std::chrono::high_resolution_clock::now();

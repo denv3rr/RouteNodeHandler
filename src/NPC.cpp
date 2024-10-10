@@ -13,7 +13,7 @@ void NPC::move()
     {
         currentNode = path.front(); // Move to the next node
         path.erase(path.begin());   // Remove the first node from path
-        std::cout << "NPC " << id << " moved to Node ID: " << currentNode->getId() << std::endl;
+        std::cout << "NPC " << id << " moved to Node ID: " << currentNode->getId() << "\n";
     }
 }
 

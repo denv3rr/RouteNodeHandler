@@ -42,7 +42,7 @@ std::vector<Node *> AStarPathfinder::findPath(std::shared_ptr<Node> startNode, s
         {
             if (!neighbor)
             {
-                std::cout << "\033[31mInvalid neighbor for Node: \033[0m" << current->getId() << std::endl;
+                std::cout << "\033[31mInvalid neighbor for Node: \033[0m" << current->getId() << "\n";
                 continue;
             }
 
