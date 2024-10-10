@@ -23,8 +23,8 @@ int main()
     std::cout << "\n\n\033[32mStarting program...\033[0m\n";
 
     NodeManager nodeManager;
-    int nodeCount = 10; // Set the node count for a 20x20x20 grid, or adjust this value as needed
-    int gridSize = 10;  // Specify the size of the grid for nodes
+    int nodeCount = 5; // Set the node count
+    int gridSize = 5;  // Specify the size of the grid for nodes (cubed)
 
     std::cout << "\033[32mCreating nodes...\033[0m\n";
     nodeManager.createNodes(1.0f, gridSize); // Initialize the specified number of nodes

@@ -38,16 +38,23 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 ## Compiling
 
-- Navigate to the `src` folder.
+1. Clone the repo.
+    - `git clone https://github.com/denv3rr/RouteNodeHandler.git`
 
-- Current build will be compiled with:
+2. Navigate to the `src` folder.
+    - `cd RouteNodeHandler/src`
+
+3. Compile. Current build will be compiled with:
     - `g++ -I ../include *.cpp -o '<out file name>'`
-- Or, simply:
+    - Or, simply:
     - `g++ -I ../include *.cpp` - for a **default** out file.
+    - These 2 compile options use the "Include" - `-I` tag to add the `include` project folder and all other files ending in `.cpp` (located in `src`).
 
-- These 2 compile options use the "Include" - `-I` tag to add the `include` project folder and all other files ending in `.cpp` (located in `src`).
+4. The compiled out/exe file will then be added into the same folder you are in (`src`) - depending on what you specify at compilation.
 
-- The compiled out/exe file will then be added into the same folder you are in (`src`) - depending on what you specify at compilation.
+5. Run the simulation. Type either:
+    - `./RouteNodeHandler` from root.
+    - or run the `.exe`/`out` file now found in the `src` folder.
 
 
 
@@ -58,8 +65,47 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 
 
+## Contributing
 
-## Versions
+Contributions are welcome. Please fork this repository and create a pull request with your added changes.
+
+
+
+
+## Version History
+
+- **Version 4.2.0:**
+    - **Updates:**
+        - Implemented Additional Pathfinding Algorithm:
+            - Introduced the DijkstraPathfinder class to provide an alternative pathfinding method alongside A*.
+        - Dynamic Algorithm Selection:
+            - Enabled runtime switching between A* and Dijkstra algorithms based on user input or simulation conditions.
+        - Optimized Pathfinding Performance:
+            - Replaced std::endl with \n in output statements to enhance compilation and execution speed.
+            - Reduced overall execution time by optimizing node blocking and path recalculation logic.
+        - Enhanced Node Blocking Mechanism:
+            - Improved the logic for randomly blocking and unblocking nodes during simulation to better reflect dynamic environments.
+        - Error Handling Enhancements:
+            - Added checks to ensure the pathfinding algorithm is set before attempting to find paths, preventing runtime errors.
+            - Implemented the hasAlgorithm method in PathfindingManager for safer algorithm usage.
+        - Color-Coded Output for Improved Readability:
+            - Enhanced console outputs with ANSI color codes to differentiate between information, warnings, and errors.
+            - Ensured that node status updates (blocked/unblocked) and pathfinding results are clearly color-coded for better traceability.
+        - Bug Fixes:
+            - Resolved issues related to undefined functions and missing includes, ensuring smoother compilation and runtime stability.
+
+    - **(Working On):**
+        - Foundation for Dynamic Subnode Grids:
+            - Build groundwork for implementing dynamic subnode grids that load on-demand during specific scenarios like blockages, enhancing the simulation's scalability for more complex issues.
+        - Code Refactoring for Modularity and Test-Driven Development (TDD):
+            - Refactor existing code to support future expansions and facilitate easier testing.
+            - Structure classes and methods to promote modularity (to make the codebase more maintainable).
+        - Advanced Traffic Rules Implementation:
+            - Introduce more sophisticated traffic rules, including stoplights, speed limits, and intersection management, to increase simulation realism.
+        - Entity Behavior Models:
+            - Implement diverse behaviors for entities (NPCs and vehicles), such as aggressive, cautious, or normal driving styles, to enrich the simulation dynamics.
+        - Additional Pathfinding Algorithms:
+            - Expand the pathfinding toolkit by adding more algorithms like Best-First Search or Bidirectional Search for comparative analysis and enhanced flexibility.
 
 - **Version 4.1.0:**
     - **Updates:**
