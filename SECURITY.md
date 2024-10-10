@@ -6,7 +6,7 @@ If anything is broken or seems "off," please directly email `denver@seperet.com`
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 4.2.x   | :white_check_mark: |
+| > 4.2   | :white_check_mark: |
 | < 4.1   | :x:                |
 
 ## Reporting a Vulnerability
