@@ -1,6 +1,6 @@
 #include "../include/DijkstraPathfinder.h"
 #include <cmath>
-#include <algorithm>
+#include <algorithm> // Using std::reverse
 #include <queue>
 #include <unordered_map>
 #include <iostream>

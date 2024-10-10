@@ -2,6 +2,7 @@
 #define DIJKSTRTAPATHFINDER_H
 
 #include "IPathfindingAlgorithm.h"
+#include <unordered_map>
 #include <memory>
 #include <vector>
 
