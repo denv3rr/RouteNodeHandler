@@ -28,7 +28,7 @@ public:
         return pathfindingAlgorithm != nullptr;
     }
 
-    std::vector<Node *> findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode);
+    std::vector<Node *> findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode, const std::string &entityType, int entityId);
 
     bool isNodeBlocked(const std::shared_ptr<Node> &) const;
 };

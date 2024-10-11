@@ -76,7 +76,8 @@ void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std
             std::shared_ptr<Node> currentNode = std::make_shared<Node>(*npc.getCurrentNode());
             if (currentNode->isBlocked())
             {
-                std::shared_ptr<Node> newGoal = nodeManager.getNodes()[99]; // Use a different end node
+                std::shared_ptr<Node> newGoal = nodeManager.getNodes()[99];                 // Use a different end node
+                std::cout << "Entity: NPC " << npc.getId() << " attempting pathfinding.\n"; // Output label
                 npc.setPath(pathfindingManager.findPath(currentNode, newGoal));
             }
         }
@@ -88,6 +89,7 @@ void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std
             if (currentNode->isBlocked())
             {
                 std::shared_ptr<Node> newGoal = nodeManager.getNodes()[99];
+                std::cout << "Entity: Vehicle " << vehicle.getId() << " attempting pathfinding.\n"; // Output label
                 vehicle.setPath(pathfindingManager.findPath(currentNode, newGoal));
             }
         }

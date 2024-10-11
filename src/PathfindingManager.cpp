@@ -8,7 +8,7 @@ bool PathfindingManager::isNodeBlocked(const std::shared_ptr<Node> &node) const
     return node->isBlocked(); // Assuming Node has an isBlocked() method
 }
 
-std::vector<Node *> PathfindingManager::findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode)
+std::vector<Node *> PathfindingManager::findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode, const std::string &entityType, int entityId)
 {
     if (!pathfindingAlgorithm)
     {
