@@ -10,19 +10,19 @@ bool PathfindingManager::isNodeBlocked(const std::shared_ptr<Node> &node) const
 
 std::vector<Node *> PathfindingManager::findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode, const std::string &entityType, int entityId)
 {
-    // Check if algorithm was able to be set
     if (!pathfindingAlgorithm)
     {
         throw std::runtime_error("Pathfinding algorithm not set.");
     }
 
-    // Output entity details before running simulation with that entity
-    std::cout << "Entity: " << entityType << " " << entityId << " - Start Node: " << startNode->getId() << " Goal Node: " << goalNode->getId() << "\n";
+    // Output entity details
+    std::cout << "Entity: " << entityType << " " << entityId << " - Start Node: " << startNode->getId()
+              << " Goal Node: " << goalNode->getId() << "\n";
 
     // If start or goal is blocked, try finding subnodes
     if (isNodeBlocked(startNode))
     {
-        std::cout << "Start node blocked, trying subnodes...\n";
+        std::cout << "Entity: " << entityType << " " << entityId << " - Start node blocked, trying subnodes...\n";
         auto subnodes = nodeManager.createSubnodes(startNode);
         if (!subnodes.empty())
         {
@@ -32,7 +32,7 @@ std::vector<Node *> PathfindingManager::findPath(std::shared_ptr<Node> startNode
 
     if (isNodeBlocked(goalNode))
     {
-        std::cout << "Goal node blocked, trying subnodes...\n";
+        std::cout << "Entity: " << entityType << " " << entityId << " - Goal node blocked, trying subnodes...\n";
         auto subnodes = nodeManager.createSubnodes(goalNode);
         if (!subnodes.empty())
         {
@@ -41,5 +41,17 @@ std::vector<Node *> PathfindingManager::findPath(std::shared_ptr<Node> startNode
     }
 
     // Use the selected algorithm to find the path
-    return pathfindingAlgorithm->findPath(startNode, goalNode);
+    auto path = pathfindingAlgorithm->findPath(startNode, goalNode);
+
+    // Log the pathfinding result
+    if (path.empty())
+    {
+        std::cout << "Entity: " << entityType << " " << entityId << " - No path found.\n";
+    }
+    else
+    {
+        std::cout << "Entity: " << entityType << " " << entityId << " - Path found.\n";
+    }
+
+    return path;
 }

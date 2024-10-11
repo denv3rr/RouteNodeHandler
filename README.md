@@ -87,7 +87,17 @@ Contributions are welcome. Please fork this repository and create a pull request
 
 ## Notes
 
-- Welcome, welcome.
+1. Entity Identification: Each entity (NPC or Vehicle) is identified by its type and ID, like "Entity: NPC 1" or "Entity: Vehicle 3". This clarifies which entity is being processed.
+
+2. Start and Goal Nodes: For each entity, the start node and goal node are printed (e.g., "Start Node: 0", "Goal Node: 99"). If the start or goal node is blocked, subnodes are generated and tried.
+
+3. Subnode Attempts: If the start or goal node is blocked, the log shows "Start node blocked, trying subnodes..." and attempts to find subnodes. The subnode IDs are also shown (e.g., "Start Node: 2899 at (0, 0, 3)").
+
+4. Pathfinding: After attempting subnodes, the pathfinding algorithm is initiated ("Initiating pathfinding algorithm..."). If no path is found, the log prints "No path found."
+
+5. Multithreading-like Output: The logs may seem to jump between entities because multiple entities are processed sequentially in each simulation step. This can give the appearance of multithreading but is a result of each entity attempting pathfinding one after the other. This will be added eventually.
+
+6. Goal Reached: At the end, if a path is successfully found, it reconstructs and prints the path ("Goal node reached").
 
 
 
@@ -121,7 +131,7 @@ Contributions are welcome. Please fork this repository and create a pull request
             Program finished.
             Execution time: 3240 ms
             At: 2024-10-12 00:43:39
-            
+
             ````
 
 - **Version 4.2.0:**

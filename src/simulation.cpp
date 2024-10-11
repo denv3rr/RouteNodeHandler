@@ -52,7 +52,7 @@ void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std
         std::shared_ptr<Node> endNode = nodeManager.getNodes()[99];  // Example end node
 
         // Recalculate path dynamically based on node status
-        npc.setPath(pathfindingManager.findPath(startNode, endNode));
+        npc.setPath(pathfindingManager.findPath(startNode, endNode, "NPC", npc.getId()));
     }
 
     for (Vehicle &vehicle : vehicles)
@@ -61,7 +61,7 @@ void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std
         std::shared_ptr<Node> endNode = nodeManager.getNodes()[99];  // Example end node
 
         // Recalculate path dynamically based on node status
-        vehicle.setPath(pathfindingManager.findPath(startNode, endNode));
+        vehicle.setPath(pathfindingManager.findPath(startNode, endNode, "Vehicle", vehicle.getId()));
     }
 
     // Simulate traffic and adjust paths dynamically if conditions change
@@ -78,7 +78,7 @@ void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std
             {
                 std::shared_ptr<Node> newGoal = nodeManager.getNodes()[99];                 // Use a different end node
                 std::cout << "Entity: NPC " << npc.getId() << " attempting pathfinding.\n"; // Output label
-                npc.setPath(pathfindingManager.findPath(currentNode, newGoal));
+                npc.setPath(pathfindingManager.findPath(currentNode, newGoal, "NPC", npc.getId()));
             }
         }
 
@@ -90,7 +90,7 @@ void simulateTraffic(TrafficManager &trafficManager, std::vector<NPC> &npcs, std
             {
                 std::shared_ptr<Node> newGoal = nodeManager.getNodes()[99];
                 std::cout << "Entity: Vehicle " << vehicle.getId() << " attempting pathfinding.\n"; // Output label
-                vehicle.setPath(pathfindingManager.findPath(currentNode, newGoal));
+                vehicle.setPath(pathfindingManager.findPath(currentNode, newGoal, "Vehicle", vehicle.getId()));
             }
         }
 
