@@ -15,28 +15,27 @@ std::vector<Node *> PathfindingManager::findPath(std::shared_ptr<Node> startNode
         throw std::runtime_error("Pathfinding algorithm not set.");
     }
 
-    // Check if start or goal nodes are blocked before beginning pathfinding
-    if (isNodeBlocked(startNode) || isNodeBlocked(goalNode))
+    // If start or goal is blocked, try finding subnodes
+    if (isNodeBlocked(startNode))
     {
-        std::cout << "\033[31mStart or goal node is blocked. Cannot find path.\033[0m\n";
-        return {};
+        std::cout << "Start node blocked, trying subnodes...\n";
+        auto subnodes = nodeManager.createSubnodes(startNode);
+        if (!subnodes.empty())
+        {
+            startNode = subnodes[0]; // Pick the first subnode as the new start point
+        }
+    }
+
+    if (isNodeBlocked(goalNode))
+    {
+        std::cout << "Goal node blocked, trying subnodes...\n";
+        auto subnodes = nodeManager.createSubnodes(goalNode);
+        if (!subnodes.empty())
+        {
+            goalNode = subnodes[0]; // Pick the first subnode as the new goal
+        }
     }
 
     // Use the selected algorithm to find the path
-    auto path = pathfindingAlgorithm->findPath(startNode, goalNode);
-
-    // Filter out blocked nodes during path traversal
-    std::vector<Node *> filteredPath;
-    for (auto &node : path)
-    {
-        if (isNodeBlocked(std::make_shared<Node>(*node)))
-        {
-            std::cout << "\033[31mBlocked node encountered: \033[0m" << node->getId() << "\033[31m. Skipping...\033[0m\n";
-        }
-        else
-        {
-            filteredPath.push_back(node);
-        }
-    }
-    return filteredPath;
+    return pathfindingAlgorithm->findPath(startNode, goalNode);
 }

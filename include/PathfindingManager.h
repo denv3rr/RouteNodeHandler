@@ -4,13 +4,18 @@
 #include <memory>
 #include <stdexcept>
 #include "IPathfindingAlgorithm.h"
+#include "NodeManager.h"
 
 class PathfindingManager
 {
 private:
     std::shared_ptr<IPathfindingAlgorithm> pathfindingAlgorithm;
+    NodeManager &nodeManager;
 
 public:
+    // Constructor to initialize with NodeManager
+    PathfindingManager(NodeManager &nodeMgr) : nodeManager(nodeMgr) {}
+
     // Set the pathfinding algorithm at runtime
     void setAlgorithm(std::shared_ptr<IPathfindingAlgorithm> algorithm)
     {

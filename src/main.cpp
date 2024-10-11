@@ -42,7 +42,7 @@ int main()
     initializeNPCs(trafficManager, nodeManager.getNodes(), npcs, npcCount);
     initializeVehicles(trafficManager, nodeManager.getNodes(), vehicles, vehicleCount);
 
-    PathfindingManager pathfindingManager; // Declaration of pathfinding manager
+    PathfindingManager pathfindingManager(nodeManager); // Declaration of pathfinding manager
     int choice;
     if (choice == 1)
         pathfindingManager.setAlgorithm(std::make_shared<AStarPathfinder>());
