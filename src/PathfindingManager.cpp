@@ -10,10 +10,14 @@ bool PathfindingManager::isNodeBlocked(const std::shared_ptr<Node> &node) const
 
 std::vector<Node *> PathfindingManager::findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode, const std::string &entityType, int entityId)
 {
+    // Check if algorithm was able to be set
     if (!pathfindingAlgorithm)
     {
         throw std::runtime_error("Pathfinding algorithm not set.");
     }
+
+    // Output entity details before running simulation with that entity
+    std::cout << "Entity: " << entityType << " " << entityId << " - Start Node: " << startNode->getId() << " Goal Node: " << goalNode->getId() << "\n";
 
     // If start or goal is blocked, try finding subnodes
     if (isNodeBlocked(startNode))
