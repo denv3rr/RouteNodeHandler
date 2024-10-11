@@ -94,6 +94,36 @@ Contributions are welcome. Please fork this repository and create a pull request
 
 ## Version History
 
+- **Version 4.3.0:**
+    - **Updates:**
+        - Dynamic Subnode Grid System:
+            - Implemented subnode grids that load dynamically when the main node is blocked.
+            - Introduced lazy-loading subnodes between nodes, improving scalability during complex pathfinding scenarios.
+        - Improved Output Format:
+            - Enhanced output to display subnode creation and usage during blocked node situations, providing clearer traceability of subnodes.
+        - Bug Fixes & Optimizations:
+            - Refined logic for switching between nodes and subnodes during pathfinding, reducing unnecessary computations.
+
+    - **Expected Output:**
+
+        -   ````
+            Creating nodes...
+            Initializing node creation with gridSize: 5...
+            Creating Node ID: 0 at (0, 0, 0)
+            Adding +x neighbor to Node 0
+            ...
+            No path found.
+            Start node blocked, trying subnodes...
+            Initiating pathfinding algorithm...
+            Start Node: 2799 at (0, 0, 2)
+            Goal Node: 99 at (3, 4, 4)
+            No path found.
+            Program finished.
+            Execution time: 3240 ms
+            At: 2024-10-12 00:43:39
+            
+            ````
+
 - **Version 4.2.0:**
     - **Updates:**
         - Implemented Additional Pathfinding Algorithm:
