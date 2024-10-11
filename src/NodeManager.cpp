@@ -141,3 +141,37 @@ void NodeManager::randomlyBlockNodes()
         }
     }
 }
+
+// Subnode grid creation (dynamic)
+std::vector<std::shared_ptr<Node>> NodeManager::createSubnodes(const std::shared_ptr<Node> &parentNode)
+{
+    if (subnodes.find(parentNode->getId()) != subnodes.end())
+    {
+        return subnodes[parentNode->getId()]; // Return existing subnodes if already created
+    }
+
+    std::vector<std::shared_ptr<Node>> generatedSubnodes;
+    float spacing = 0.5f; // Example smaller spacing for subnodes
+
+    for (int dx = -1; dx <= 1; ++dx)
+    {
+        for (int dy = -1; dy <= 1; ++dy)
+        {
+            for (int dz = -1; dz <= 1; ++dz)
+            {
+                if (dx == 0 && dy == 0 && dz == 0)
+                    continue; // Skip the center (parent node itself)
+
+                auto subnode = std::make_shared<Node>(
+                    parentNode->getId() * 100 + (dx + 1) * 10 + (dy + 1) * 1 + dz,
+                    parentNode->getX() + dx * spacing,
+                    parentNode->getY() + dy * spacing,
+                    parentNode->getZ() + dz * spacing);
+                generatedSubnodes.push_back(subnode);
+            }
+        }
+    }
+
+    subnodes[parentNode->getId()] = generatedSubnodes;
+    return generatedSubnodes;
+}

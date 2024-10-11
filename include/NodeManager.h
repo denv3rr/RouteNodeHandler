@@ -6,6 +6,7 @@
 #include "DijkstraPathfinder.h" // Including logic for Dijkstra
 #include <memory>
 #include <vector>
+#include <map>
 
 class NodeManager
 {
@@ -13,6 +14,8 @@ private:
     std::vector<std::shared_ptr<Node>> nodes;
     std::map<int, std::vector<std::shared_ptr<Node>>> subnodes; // Map node ID to its subnodes
     std::unique_ptr<AStarPathfinder> pathfinder;                // Pathfinding logic
+
+    int getIndex(int x, int y, int z, int gridSize);
 
 public:
     NodeManager();
