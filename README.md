@@ -49,17 +49,16 @@ By Denver Clark || [Seperet](https://seperet.com)
 2. Navigate to the `src` folder.
     - `cd RouteNodeHandler/src`
 
-3. Compile. Current build will be compiled with:
+3. Compile. The current build will be compiled with:
     - `g++ -I ../include *.cpp -o '<out file name>'`
     - Or, simply:
     - `g++ -I ../include *.cpp` - for a **default** out file.
     - These 2 compile options use the "Include" - `-I` tag to add the `include` project folder and all other files ending in `.cpp` (located in `src`).
 
-4. The compiled out/exe file will then be added into the same folder you are in (`src`) - depending on what you specify at compilation.
+4. Depending on what you specify at compilation, the compiled out/exe file will then be added to the same folder you are in (should be `src`).
 
-5. Run the simulation. Type either:
-    - `./RouteNodeHandler` from root.
-    - or run the `.exe`/`out` file now found in the `src` folder.
+5. Run the simulation:
+    - Type `<name_of_file>.exe`/`<name_of_file>.out` matching the file now found in the `src` folder after compiling.
 
 
 
@@ -70,9 +69,25 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 
 
+
 ## Contributing
 
 Contributions are welcome. Please fork this repository and create a pull request with your added changes.
+
+
+
+
+## Links
+
+- seperet.com || [Seperet](https://seperet.com)
+- Dijkstra, A*, and Topological Sort || [CS106B Lecture 27. Dijkstra, A*, and Topological Sort](https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1242/lectures/27-graph-algorithms/)
+
+
+
+
+## Notes
+
+- Welcome, welcome.
 
 
 
@@ -89,13 +104,13 @@ Contributions are welcome. Please fork this repository and create a pull request
             - Replaced std::endl with \n in output statements to enhance compilation and execution speed.
             - Reduced overall execution time by optimizing node blocking and path recalculation logic.
         - Enhanced Node Blocking Mechanism:
-            - Improved the logic for randomly blocking and unblocking nodes during simulation to better reflect dynamic environments.
+            - Improved the logic for randomly blocking and unblocking nodes during simulation to reflect dynamic environments better.
         - Error Handling Enhancements:
             - Added checks to ensure the pathfinding algorithm is set before attempting to find paths, preventing runtime errors.
             - Implemented the hasAlgorithm method in PathfindingManager for safer algorithm usage.
         - Color-Coded Output for Improved Readability:
             - Enhanced console outputs with ANSI color codes to differentiate between information, warnings, and errors.
-            - Ensured that node status updates (blocked/unblocked) and pathfinding results are clearly color-coded for better traceability.
+            - Ensured that node status updates (blocked/unblocked) and pathfinding results were clearly color-coded for better traceability.
         - Bug Fixes:
             - Resolved issues related to undefined functions and missing includes, ensuring smoother compilation and runtime stability.
 
@@ -114,7 +129,7 @@ Contributions are welcome. Please fork this repository and create a pull request
 
 - **Version 4.1.0:**
     - **Updates:**
-        - Modularized pathfinding logic by introducing AStarPathfinder class.
+        - Modularized pathfinding logic by introducing the AStarPathfinder class.
         - Added detailed debugging statements with color-coded outputs for better traceability.
         - Improved gScore initialization and handling in the A* algorithm to fix pathfinding issues.
 
@@ -347,21 +362,6 @@ Contributions are welcome. Please fork this repository and create a pull request
             ...
             Program finished.
             ````
-
-
-
-
-## Links
-
-- seperet.com || [Seperet](https://seperet.com)
-- Dijkstra, A*, and Topological Sort || [CS106B Lecture 27. Dijkstra, A*, and Topological Sort](https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1242/lectures/27-graph-algorithms/)
-
-
-
-
-## Notes
-
-- Welcome, welcome.
 
 
 
