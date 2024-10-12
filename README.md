@@ -51,7 +51,7 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 3. Compile. The current build will be compiled with:
     - `g++ -I ../include *.cpp -o '<out file name>'`
-    - Or, simply:
+    Or, simply:
     - `g++ -I ../include *.cpp` - for a **default** out file.
     - These 2 compile options use the "Include" - `-I` tag to add the `include` folder found one directory back and all other files ending in `.cpp` (that are located in the `src` folder).
     - Depending on what you specify at compilation, the compiled out/exe file will then be added to the same folder you are in (should be `src`).
