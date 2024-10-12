@@ -1,5 +1,27 @@
 ## Version History
 
+- **Version 4.3.1:**
+    - **Updates:**
+        - Added option to take input for grid size if running multiple tests.
+        - ````
+           __   ____  ___   ____  ___   ____ _____
+          ( (` | |_  | |_) | |_  | |_) | |_   | |
+          _)_) |_|__ |_|   |_|__ |_| \ |_|__  |_|
+
+
+
+
+          Route Node Handler
+          Copyright (c) 2024 Denver Clark
+          Visit the repo at: github.com/denv3rr/RouteNodeHandler
+
+
+          Set the grid size (node count) for this simulation.
+
+          Grid size:
+
+          ````
+
 - **Version 4.3.0:**
     - **Updates:**
         - Dynamic Subnode Grid System:
