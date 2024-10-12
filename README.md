@@ -40,6 +40,7 @@ By Denver Clark || [Seperet](https://seperet.com)
   | > 4.3   | :white_check_mark: |
   | < 4.2   | :x:                |
 
+(See `versions.md` for version history.)
 
 ## Compiling
 
