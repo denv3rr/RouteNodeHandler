@@ -24,15 +24,19 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 ##
 
-- Handling of nodes for objects such as:
-    - NPCs
-    - Vehicles
-    - and more.
+-  Keep track of entity data (3D) while they search for a location.
+    -  Currently supporting entities such as:
+        - NPCs
+        - Vehicles
+        - and more - feel free to add your own.
 
-- Current pathfinding algorithms in use:
-    - A*
-    - Dijkstra
+    - Current pathfinding algorithms in use:
+        - A*
+        - Dijkstra
 
+
+
+        
 ## Supported Versions
 
   | Version | Supported          |
