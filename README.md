@@ -37,8 +37,8 @@ By Denver Clark || [Seperet](https://seperet.com)
 
   | Version | Supported          |
   | ------- | ------------------ |
-  | > 4.2   | :white_check_mark: |
-  | < 4.1   | :x:                |
+  | > 4.3   | :white_check_mark: |
+  | < 4.2   | :x:                |
 
 
 ## Compiling
