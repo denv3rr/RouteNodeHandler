@@ -49,14 +49,16 @@ By Denver Clark || [Seperet](https://seperet.com)
 2. Navigate to the `src` folder.
     - `cd RouteNodeHandler/src`
 
-3. Compile. The current build will be compiled with:
-    - `g++ -I ../include *.cpp -o '<out file name>'`
-    Or, simply:
-    - `g++ -I ../include *.cpp` - for a **default** out file.
+3. Compile. The current build can be compiled with 2 options:
+    1. Named:
+        - `g++ -I ../include *.cpp -o '<out file name>'`
+    2. Default:
+        - `g++ -I ../include *.cpp` - for an **unnamed** out file.
+    
     - These 2 compile options use the "Include" (`-I`) tag to add 2 things:
-        - the `include` folder found one directory back: `../include`
-        - and all (`*`) other files ending in `.cpp`
-            (that are located in the `src` folder).
+        1. The `include` folder found one directory back: `../include`
+        2. All (`*`) other files ending in `.cpp` (located in the `src` folder).
+
     - Depending on what you specify at compilation, the compiled out/exe file will then be added to the same folder you are in (should be `src`).
 
 4. Run the `.exe` file.
