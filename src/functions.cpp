@@ -25,11 +25,11 @@ void coloredSeperetLogoScrolling(int colorCode1, int colorCode2)
 {
   // First part of the logo
   std::string logoPart1 = R"(
-                __   ____  ___   ____  ___   ____ _____ 
-               ( (` | |_  | |_) | |_  | |_) | |_   | |  )";
+ __   ____  ___   ____  ___   ____ _____ 
+( (` | |_  | |_) | |_  | |_) | |_   | |  )";
 
   // Second part of the logo
-  std::string logoPart2 = R"(               _)_) |_|__ |_|   |_|__ |_| \ |_|__  |_|  
+  std::string logoPart2 = R"(_)_) |_|__ |_|   |_|__ |_| \ |_|__  |_|  
     
 )";
 
@@ -40,7 +40,7 @@ void coloredSeperetLogoScrolling(int colorCode1, int colorCode2)
   for (char c : logoPart1)
   {
     std::cout << c << std::flush;
-    std::this_thread::sleep_for(std::chrono::milliseconds(1)); // Adjust delay as needed
+    std::this_thread::sleep_for(std::chrono::milliseconds(0)); // Adjust delay as needed
   }
 
   // Reset color
@@ -56,7 +56,7 @@ void coloredSeperetLogoScrolling(int colorCode1, int colorCode2)
   for (char c : logoPart2)
   {
     std::cout << c << std::flush;
-    std::this_thread::sleep_for(std::chrono::milliseconds(1)); // Adjust delay as needed
+    std::this_thread::sleep_for(std::chrono::milliseconds(0)); // Adjust delay as needed
   }
 
   // Reset color
