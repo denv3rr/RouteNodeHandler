@@ -57,8 +57,7 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 4. Depending on what you specify at compilation, the compiled out/exe file will then be added to the same folder you are in (should be `src`).
 
-5. Run the simulation:
-    - Type `<name_of_file>.exe`/`<name_of_file>.out` matching the file now found in the `src` folder after compiling.
+5. Run the `.exe` file.
 
 
 
