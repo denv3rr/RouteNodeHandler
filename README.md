@@ -36,6 +36,16 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 
 
+##
+<div align="center">
+    <img src="https://i.imgur.com/vC71luv.gif" width="200" height="200"/>
+    <div>
+        Example of the A* algorithm in use in a Python program.
+    </div>
+</div>
+
+
+
         
 ## Supported Versions
 
@@ -45,6 +55,9 @@ By Denver Clark || [Seperet](https://seperet.com)
   | < 4.2   | :x:                |
 
 (See `versions.md` for version history.)
+
+
+
 
 ## Compiling
 
