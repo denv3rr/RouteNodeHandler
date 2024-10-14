@@ -19,7 +19,14 @@
     <img src="https://images.squarespace-cdn.com/content/v1/612e9679ca3ada2f6398ebb3/c05732db-3886-411e-8985-1745b6bc638a/IMG_3139-ezgif.com-crop.gif?format=1500w" alt="seperet.com spinning logo gif" width="120" height="120"/>
 </a>
     <br></br>
-</a>
+<div align="center">
+  
+  ![GitHub Created At](https://img.shields.io/github/created-at/denv3rr/RouteNodeHandler)
+  ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/denv3rr/RouteNodeHandler/main)
+  ![GitHub Release Date](https://img.shields.io/github/release-date/denv3rr/RouteNodeHandler)
+  ![GitHub commits since latest release (branch)](https://img.shields.io/github/commits-since/denv3rr/RouteNodeHandler/latest/main)
+  
+</div>
 
 <br></br>
 <br></br>
