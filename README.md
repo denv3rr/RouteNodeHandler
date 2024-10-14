@@ -1,21 +1,36 @@
+<a href="https://seperet.com">
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif">
+</a>
 <div align="center">
 
+<br></br>
+<br></br>
+<br></br>
 <div>
-    <img src="https://github.com/denv3rr/RouteNodeHandler/blob/main/assets/media/psd-dude-scrolling-text.gif">
+    <a href="https://seperet.com">
+        <img src="https://github.com/denv3rr/RouteNodeHandler/blob/main/assets/media/psd-dude-scrolling-text.gif">
+    </a>
 </div>
 
+<a href="https://seperet.com">
+    <img src="https://user-images.githubusercontent.com/74038190/240815616-7b282ec6-fcc3-4600-90a7-2c3140549f58.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjg4NTg3NDcsIm5iZiI6MTcyODg1ODQ0NywicGF0aCI6Ii83NDAzODE5MC8yNDA4MTU2MTYtN2IyODJlYzYtZmNjMy00NjAwLTkwYTctMmMzMTQwNTQ5ZjU4LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDEzVDIyMjcyN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ1MTE3OTlhNDc4YTMzMzRhMWE0ZGQyMjNiODNiZDA4MThhYzMzMDYxZmVhYTZjMTVmMTJhNTZiZGQyOGFlMGEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Hq1QjjSKzEA3qxQJYsrG3hNzdSAMVtiOexmhl-DszI4" width="120" height="120">
+</a>
+<a href="https://seperet.com">
+    <img src="https://images.squarespace-cdn.com/content/v1/612e9679ca3ada2f6398ebb3/c05732db-3886-411e-8985-1745b6bc638a/IMG_3139-ezgif.com-crop.gif?format=1500w" alt="seperet.com spinning logo gif" width="120" height="120"/>
+</a>
+    <br></br>
+</a>
 
-<img src="https://user-images.githubusercontent.com/74038190/240815616-7b282ec6-fcc3-4600-90a7-2c3140549f58.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjg4NTg3NDcsIm5iZiI6MTcyODg1ODQ0NywicGF0aCI6Ii83NDAzODE5MC8yNDA4MTU2MTYtN2IyODJlYzYtZmNjMy00NjAwLTkwYTctMmMzMTQwNTQ5ZjU4LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDEzVDIyMjcyN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ1MTE3OTlhNDc4YTMzMzRhMWE0ZGQyMjNiODNiZDA4MThhYzMzMDYxZmVhYTZjMTVmMTJhNTZiZGQyOGFlMGEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Hq1QjjSKzEA3qxQJYsrG3hNzdSAMVtiOexmhl-DszI4" width="120" height="120">
-<img src="https://images.squarespace-cdn.com/content/v1/612e9679ca3ada2f6398ebb3/c05732db-3886-411e-8985-1745b6bc638a/IMG_3139-ezgif.com-crop.gif?format=1500w" alt="seperet.com spinning logo gif" width="120" height="120"/>
-
-By Denver Clark || [Seperet](https://seperet.com)
+<br></br>
+<br></br>
+<br></br>
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif">
 </div>
 
 ##
 
--  Keep track of entity data (3D) while they search for a location.
+-  Keep track of entity data (3D coordinates, neighbors, etc.) while they search for a location.
     -  Currently supporting entities such as:
         - NPCs
         - Vehicles
@@ -25,18 +40,13 @@ By Denver Clark || [Seperet](https://seperet.com)
         - A*
         - Dijkstra
 
-
-
-##
-<div align="center">
-    <img src="https://i.imgur.com/vC71luv.gif" width="300" height="300"/>
-    <div>
-        Example of the A* algorithm in use in a Python program.
-    </div>
+<br></br>
+- ***Example*** of the A* algorithm in use in a Python program.
+- <br></br><img src="https://i.imgur.com/vC71luv.gif" width="300" height="300"/>
 </div>
-
-##
-
+<br></br>
+<br></br>
+<br></br>
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif">
 
 
@@ -52,7 +62,11 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 (See `versions.md` for version history.)
 
-
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif">
 
 
 ## Compiling
@@ -77,7 +91,11 @@ By Denver Clark || [Seperet](https://seperet.com)
 
 4. Run the `.exe` file.
 
-
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif">
 
 
 ## Issues
@@ -85,12 +103,20 @@ By Denver Clark || [Seperet](https://seperet.com)
 🚧 If you have any problems with anything, submit an issue to let me know.
 
 <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif">
-
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif">
 
 ## Contributing
 
 Contributions are welcome. Please fork this repository and create a pull request with your added changes.
-
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif">
 
 
 
@@ -98,8 +124,10 @@ Contributions are welcome. Please fork this repository and create a pull request
 
 - seperet.com || [Seperet](https://seperet.com)
 - Dijkstra, A*, and Topological Sort || [CS106B Lecture 27. Dijkstra, A*, and Topological Sort](https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1242/lectures/27-graph-algorithms/)
-
-
+<br></br>
+<br></br>
+<br></br>
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif">
 
 
 ## Notes
@@ -115,14 +143,28 @@ Contributions are welcome. Please fork this repository and create a pull request
 5. Multithreading-like Output: The logs may seem to jump between entities because multiple entities are processed sequentially in each simulation step. This can give the appearance of multithreading but is a result of each entity attempting pathfinding one after the other. This will be added eventually.
 
 6. Goal Reached: At the end, if a path is successfully found, it reconstructs and prints the path ("Goal node reached").
+<br></br>
+<br></br>
+<br></br>
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif">
 
 
-
+## License
+[License](https://github.com/denv3rr/RouteNodeHandler/blob/main/LICENSE")
+<br></br>
+<br></br>
+<br></br>
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif">
 
 ##
 
 <div align="center">
-<img src="https://images.squarespace-cdn.com/content/v1/612e9679ca3ada2f6398ebb3/5c5d2752-5b10-4535-9591-acff011443fa/3dgifmaker21328.gif?format=1500w" width="300" height="300"/>
-
-[Seperet](https://seperet.com)
+    <a href="https://seperet.com">
+        <img src="https://images.squarespace-cdn.com/content/v1/612e9679ca3ada2f6398ebb3/5c5d2752-5b10-4535-9591-acff011443fa/3dgifmaker21328.gif?format=1500w" width="300" height="300"/>
+        seperet.com
+    </a>
 </div>
+<br></br>
+<br></br>
+<br></br>
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif">
