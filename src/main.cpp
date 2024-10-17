@@ -27,21 +27,31 @@ int main()
     int nodeCount; // Set the node count
     int gridSize;  // Specify the size of the grid for nodes (cubed)
 
-    std::cout << "Set the grid size (node count) for this simulation.\n\n";
-    std::cout << "Grid size: ";
-    std::cin >> gridSize;
-    nodeCount = gridSize; // Set node count equal to grid size for simplicity
-    std::cout << "\n\n";
+    std::cout << "Set the grid size (node count) value for this simulation.\n"
+              << "This 'gridSize' variable represents one of the three dimensional values of your 3D cube grid.\n"
+              << "Ex: (gridSize * gridSize * gridSize) is used to create your 3D grid.\n\n"
+              << "Grid size: ";
 
-    // Make sure node and grid count are at least 5 in order to build a functional grid
+    // Input validation for gridSize
+    while (!(std::cin >> gridSize))
+    {
+        std::cerr << "\033[31mError: Invalid input. Please enter a numeric value for grid size.\033[0m\n";
+        std::cin.clear();                                                   // Clear the error flag
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore invalid input
+        std::cout << "Grid size: ";
+    }
+
+    nodeCount = gridSize;
+
+    // Ensure gridSize and nodeCount are at least 5
     if (nodeCount < 5 || gridSize < 5)
     {
-        std::cerr << "\033[31mError: The node count and grid size must both be at least 5\nin order to build a sufficient grid.\033[0m\n";
+        std::cerr << "\033[31mError: The node count and grid size must both be at least 5\n"
+                  << "in order to build a sufficient grid.\033[0m\n";
         std::cout << "Your node count is set to: " << nodeCount << "\n";
         std::cout << "Your grid size is set to: " << gridSize << "\n";
-        std::cout << "Re-run or refer to \033[32m'main.cpp'\033[0m (in \033[32m'src'\033[0m) to set these values manually.\n\n";
-        std::cout << "\033[31mQuitting...\033[0m\n\n";
-
+        std::cout << "Re-run or refer to \033[32m'main.cpp'\033[0m (in \033[32m'src'\033[0m) to set these values manually.\n\n"
+                  << "\033[31mQuitting...\033[0m\n\n";
         return -1;
     }
 
