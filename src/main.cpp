@@ -1,20 +1,4 @@
-/* *************************************************
- * main.cpp
- * Purpose: Main entry point for the Node Route Simulation
- ************************************************* */
-
-// Local
 #include "../include/main.h"
-#include "../include/Node.h"
-#include "../include/NodeManager.h"
-#include "../include/TrafficManager.h"
-#include "../include/ThreadManager.h"
-#include "../include/simulation.h"
-#include "../include/functions.h"
-
-// Standard
-#include <iostream>
-#include <iomanip> // For std::setprecision
 
 int main()
 {
@@ -25,26 +9,24 @@ int main()
     std::cout << "\033[32mVisit the repo at: github.com/denv3rr/RouteNodeHandler\033[0m\n\n\n";
 
     NodeManager nodeManager;
-    int nodeCount; // Set the node count
-    int gridSize;  // Specify the size of the grid for nodes (cubed)
+    int nodeCount;
+    int gridSize;
 
     std::cout << "Set the grid size (node count) value for this simulation.\n"
               << "This 'gridSize' variable represents one of the three dimensional values of your 3D cube grid.\n"
               << "Ex: (gridSize * gridSize * gridSize) is used to create your 3D grid.\n\n"
               << "Grid size: ";
 
-    // Input validation for gridSize
     while (!(std::cin >> gridSize))
     {
         std::cerr << "\033[31mError: Invalid input. Please enter a numeric value for grid size.\033[0m\n";
-        std::cin.clear();                                                   // Clear the error flag
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore invalid input
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Grid size: ";
     }
 
     nodeCount = gridSize;
 
-    // Ensure gridSize and nodeCount are at least 5
     if (nodeCount < 5 || gridSize < 5)
     {
         std::cerr << "\033[31mError: The node count and grid size must both be at least 5\n"
@@ -57,33 +39,32 @@ int main()
     }
 
     std::cout << "\n\n\033[32mStarting program...\033[0m\n\n";
-    auto start = std::chrono::high_resolution_clock::now(); // Start program timer now
+    auto start = std::chrono::high_resolution_clock::now();
 
     std::cout << "\033[32mCreating nodes...\033[0m\n\n";
-    std::srand(static_cast<unsigned>(std::time(0))); // Seed randomness for node positions
-    nodeManager.createNodes(1.0f, gridSize);         // Initialize the specified number of nodes
-    nodeManager.printNodes();                        // Optional: Print nodes for debugging
+    std::srand(static_cast<unsigned>(std::time(0)));
+    nodeManager.createNodes(1.0f, gridSize);
+    nodeManager.printNodes();
 
     std::cout << "\033[32m\nNodes created successfully.\033[0m\n\n";
 
     TrafficManager trafficManager;
-    std::vector<NPC> npcs;         // Store NPCs
-    std::vector<Vehicle> vehicles; // Store Vehicles
+    std::vector<NPC> npcs;
+    std::vector<Vehicle> vehicles;
 
-    int npcCount = 10;     // Number of NPCs to initialize
-    int vehicleCount = 10; // Number of Vehicles to initialize
+    int npcCount = 10;
+    int vehicleCount = 10;
 
     initializeNPCs(trafficManager, nodeManager.getNodes(), npcs, npcCount);
     initializeVehicles(trafficManager, nodeManager.getNodes(), vehicles, vehicleCount);
 
-    PathfindingManager pathfindingManager(nodeManager); // Declaration of pathfinding manager
+    PathfindingManager pathfindingManager(nodeManager);
     int choice;
     if (choice == 1)
         pathfindingManager.setAlgorithm(std::make_shared<AStarPathfinder>());
     else
         pathfindingManager.setAlgorithm(std::make_shared<DijkstraPathfinder>());
 
-    // Call the thread manager to run the simulation with multithreading
     runMultithreadedSimulation(trafficManager, pathfindingManager, npcs, vehicles, nodeManager, npcCount, vehicleCount);
 
     std::cout << "\n*************************\n\n";

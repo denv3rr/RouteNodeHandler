@@ -9,5 +9,6 @@
 #include "ThreadManager.h"
 #include <vector>
 #include <unistd.h>
+#include <iostream>
 
 #endif // MAIN_H
