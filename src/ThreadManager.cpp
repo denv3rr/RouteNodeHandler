@@ -39,11 +39,11 @@ void printMessagesFromQueue()
 }
 
 // Simulated progress bar movement
-void showProgressBars(const std::vector<ProgressBar> &bars)
+void showProgressBars(const std::vector<ProgressBar> &bars, std::mutex &progressMutex)
 {
-    std::lock_guard<std::mutex> lock(consoleMutex);
-    // Clear the screen before printing the bars
-    std::cout << "\033[2J\033[H"; // Clear screen and move cursor to top
+    std::lock_guard<std::mutex> lock(progressMutex);
+    // Move cursor up to overwrite previous bars, keeping only one set of progress bars
+    std::cout << "\033[H"; // Moves cursor to the top of the screen (instead of clearing)
     for (const auto &bar : bars)
     {
         std::cout << "\033[34m" << bar.entityType << " " << bar.entityId << ": [";
@@ -65,14 +65,13 @@ void showProgressBars(const std::vector<ProgressBar> &bars)
 // Entity movement and pathfinding simulation
 void entityThreadFunction(TrafficManager &trafficManager, PathfindingManager &pathfindingManager,
                           std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode,
-                          ProgressBar &progressBar, std::atomic<int> &activeEntities)
+                          ProgressBar &progressBar, std::atomic<int> &activeEntities, std::mutex &progressMutex)
 {
     float progress = 0.0f;
     while (progress <= 1.0f)
     {
         {
-            // Lock only during progress update
-            std::lock_guard<std::mutex> lock(consoleMutex);
+            std::lock_guard<std::mutex> lock(progressMutex); // Lock for progress update
             progressBar.progress = progress;
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(50)); // Smooth progress update
@@ -81,15 +80,15 @@ void entityThreadFunction(TrafficManager &trafficManager, PathfindingManager &pa
 
     // Finalize the progress bar
     {
-        std::lock_guard<std::mutex> lock(consoleMutex);
+        std::lock_guard<std::mutex> lock(progressMutex);
         progressBar.progress = 1.0f;
     }
 
-    // Perform pathfinding
+    // Perform pathfinding (logs are stored but not printed during simulation)
     std::vector<Node *> path = pathfindingManager.findPath(startNode, goalNode, progressBar.entityType, progressBar.entityId);
     bool success = !path.empty();
 
-    // Add result to message queue for logging
+    // Add result to message queue for logging (not printed immediately)
     addMessageToQueue(progressBar.entityType + " " + std::to_string(progressBar.entityId) +
                       (success ? ": Path found!" : ": No path found."));
 
@@ -97,15 +96,15 @@ void entityThreadFunction(TrafficManager &trafficManager, PathfindingManager &pa
 }
 
 // Periodically update the progress bars
-void updateProgressBars(const std::vector<ProgressBar> &bars, std::atomic<int> &activeEntities)
+void updateProgressBars(const std::vector<ProgressBar> &bars, std::atomic<int> &activeEntities, std::mutex &progressMutex)
 {
     while (activeEntities > 0)
     {
-        showProgressBars(bars);
+        showProgressBars(bars, progressMutex);
         std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Update frequency
     }
     // Final update of the bars
-    showProgressBars(bars);
+    showProgressBars(bars, progressMutex);
     barCompletionFlag = true; // Notify that bars are done
 }
 
@@ -138,6 +137,7 @@ void runMultithreadedSimulation(TrafficManager &trafficManager, PathfindingManag
                                 std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles,
                                 NodeManager &nodeManager, int npcCount, int vehicleCount, std::atomic<bool> &nodesReady)
 {
+    std::mutex progressMutex; // Synchronization for progress bars
     std::vector<std::thread> threads;
     std::atomic<int> activeEntities(npcCount + vehicleCount);
     std::vector<ProgressBar> progressBars;
@@ -160,52 +160,21 @@ void runMultithreadedSimulation(TrafficManager &trafficManager, PathfindingManag
 
     // Thread to show progress bars
     std::thread progressBarThread([&]()
-                                  {
-                                      while (activeEntities > 0)
-                                      {
-                                          showProgressBars(progressBars); // Show progress for all entities
-                                          std::this_thread::sleep_for(std::chrono::milliseconds(100));
-                                      }
-                                      showProgressBars(progressBars); // Ensure all bars hit 100%
-                                  });
+                                  { updateProgressBars(progressBars, activeEntities, progressMutex); });
 
     // Launch threads for each NPC and Vehicle to run the simulation and store logs
     for (int i = 0; i < npcCount; ++i)
     {
         threads.emplace_back([&, i]
-                             {
-            try {
-                std::vector<Node*> path = pathfindingManager.findPath(
-                    npcs[i].getCurrentNode(), 
-                    nodeManager.getGoalNode(), 
-                    "NPC", 
-                    npcs[i].getId());
-                std::string logMessage = "NPC " + std::to_string(npcs[i].getId()) + 
-                                         (path.empty() ? ": No path found." : ": Path found.");
-                storeLog(logMessage);
-            } catch (const std::exception &e) {
-                storeLog("NPC " + std::to_string(npcs[i].getId()) + ": Exception during pathfinding.");
-            }
-            --activeEntities; });
+                             { entityThreadFunction(trafficManager, pathfindingManager, npcs[i].getCurrentNode(),
+                                                    nodeManager.getGoalNode(), progressBars[i], activeEntities, progressMutex); });
     }
 
     for (int i = 0; i < vehicleCount; ++i)
     {
         threads.emplace_back([&, i]
-                             {
-            try {
-                std::vector<Node*> path = pathfindingManager.findPath(
-                    vehicles[i].getCurrentNode(), 
-                    nodeManager.getGoalNode(), 
-                    "Vehicle", 
-                    vehicles[i].getId());
-                std::string logMessage = "Vehicle " + std::to_string(vehicles[i].getId()) +
-                                         (path.empty() ? ": No path found." : ": Path found.");
-                storeLog(logMessage);
-            } catch (const std::exception &e) {
-                storeLog("Vehicle " + std::to_string(vehicles[i].getId()) + ": Exception during pathfinding.");
-            }
-            --activeEntities; });
+                             { entityThreadFunction(trafficManager, pathfindingManager, vehicles[i].getCurrentNode(),
+                                                    nodeManager.getGoalNode(), progressBars[npcCount + i], activeEntities, progressMutex); });
     }
 
     // Wait for all threads to finish
@@ -217,7 +186,7 @@ void runMultithreadedSimulation(TrafficManager &trafficManager, PathfindingManag
     // Ensure progress bars hit 100% before stopping the thread
     progressBarThread.join();
 
-    // Prompt user to print logs
+    // Prompt user to print logs once
     std::cout << "Progress bars completed. Would you like to print the output logs? (y/n): ";
     char userInput;
     std::cin >> userInput;
