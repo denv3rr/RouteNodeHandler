@@ -1,62 +1,64 @@
 #include "../include/InitializationManager.h"
 #include <iostream>
-#include <thread> // For std::this_thread::sleep_for
-#include <chrono> // For std::chrono::milliseconds
+#include <thread>  // For std::this_thread::sleep_for
+#include <chrono>  // For std::chrono::milliseconds
+#include <iomanip> // For std::setprecision
 
-// Function to display a progress bar
-void printProgressBar(float progress, int width = 50)
+// Function to show progress for each entity (NPC or Vehicle)
+void showProgress(const std::string &entityType, int id, bool pathFound)
 {
-    std::cout << "[";
-    int pos = width * progress;
-    for (int i = 0; i < width; ++i)
+    std::string bar = "[";
+    for (int i = 0; i <= 50; i++)
     {
-        if (i < pos)
-            std::cout << "=";
-        else if (i == pos)
-            std::cout << ">";
-        else
-            std::cout << " ";
+        bar += "=";
+        std::this_thread::sleep_for(std::chrono::milliseconds(20)); // Simulate work
+        std::cout << "\r" << bar << "] " << std::setw(3) << (i * 2) << "%";
+        std::cout.flush();
     }
-    std::cout << "] " << int(progress * 100.0) << " %\r";
-    std::cout.flush();
+    std::cout << "\n";
+
+    // Show color-coded result
+    if (pathFound)
+    {
+        std::cout << "\033[32m" << entityType << " " << id << ": Path found!\033[0m\n";
+    }
+    else
+    {
+        std::cout << "\033[31m" << entityType << " " << id << ": No path found.\033[0m\n";
+    }
+}
+
+// Displays the status of the entity after a pathfinding attempt
+void displayEntityStatus(const std::string &entityType, int entityId, bool success, const std::string &status)
+{
+    if (success)
+    {
+        std::cout << "\033[32m" << entityType << " " << entityId << ": " << status << " Path found!\033[0m\n";
+    }
+    else
+    {
+        std::cout << "\033[31m" << entityType << " " << entityId << ": " << status << " No path found.\033[0m\n";
+    }
 }
 
 void initializeNPCs(TrafficManager &trafficManager, const std::vector<std::shared_ptr<Node>> &nodes, std::vector<NPC> &npcs, int numNPCs)
 {
     for (int i = 0; i < numNPCs; ++i)
     {
-        // Create NPCs with id and starting node
         int randomNodeIndex = std::rand() % nodes.size();
-        NPC npc(i, nodes[randomNodeIndex].get());
-        npcs.push_back(npc);
+        NPC npc(i, nodes[randomNodeIndex]); // Pass the shared_ptr directly
         trafficManager.addEntity(std::make_shared<NPC>(npc));
-
-        // Update progress bar
-        float progress = (float)(i + 1) / numNPCs;
-        printProgressBar(progress);
-
-        // Simulate workload
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        npcs.push_back(npc);
     }
-    std::cout << std::endl; // Move to next line after progress bar completes
 }
 
 void initializeVehicles(TrafficManager &trafficManager, const std::vector<std::shared_ptr<Node>> &nodes, std::vector<Vehicle> &vehicles, int numVehicles)
 {
     for (int i = 0; i < numVehicles; ++i)
     {
-        // Create Vehicles with id and starting node
         int randomNodeIndex = std::rand() % nodes.size();
-        Vehicle vehicle(i, nodes[randomNodeIndex].get());
-        vehicles.push_back(vehicle);
+        Vehicle vehicle(i, nodes[randomNodeIndex]); // Pass the shared_ptr directly
         trafficManager.addEntity(std::make_shared<Vehicle>(vehicle));
-
-        // Update progress bar
-        float progress = (float)(i + 1) / numVehicles;
-        printProgressBar(progress);
-
-        // Simulate workload
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        vehicles.push_back(vehicle);
     }
-    std::cout << std::endl; // Move to next line after progress bar completes
 }

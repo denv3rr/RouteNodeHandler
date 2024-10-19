@@ -1,7 +1,7 @@
 #include "../include/Vehicle.h"
 #include <iostream>
 
-Vehicle::Vehicle(int id, Node *startNode) : Entity(id, startNode) {}
+Vehicle::Vehicle(int id, std::shared_ptr<Node> startNode) : Entity(id, startNode) {}
 
 // Implement virtual destructor
 Vehicle::~Vehicle() {}
@@ -11,8 +11,8 @@ void Vehicle::move()
 {
     if (!path.empty())
     {
-        currentNode = path.front(); // Move to the next node
-        path.erase(path.begin());   // Remove the first node from path
+        currentNode = std::shared_ptr<Node>(path.front()); // Move to the next node
+        path.erase(path.begin());                          // Remove the first node from path
         std::cout << "Vehicle " << id << " moved to Node ID: " << currentNode->getId() << "\n";
     }
 }

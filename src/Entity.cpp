@@ -1,7 +1,7 @@
 #include "../include/Entity.h"
 
 // Constructor
-Entity::Entity(int id, Node *startNode) : id(id), currentNode(startNode) {}
+Entity::Entity(int id, std::shared_ptr<Node> startNode) : id(id), currentNode(startNode) {}
 
 // Virtual destructor
 Entity::~Entity() {}
@@ -12,7 +12,7 @@ int Entity::getId() const
     return id;
 }
 
-Node *Entity::getCurrentNode() const
+std::shared_ptr<Node> Entity::getCurrentNode() const
 {
     return currentNode;
 }

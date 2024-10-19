@@ -1,7 +1,7 @@
 #include "../include/NPC.h"
 #include <iostream>
 
-NPC::NPC(int id, Node *startNode) : Entity(id, startNode) {}
+NPC::NPC(int id, std::shared_ptr<Node> startNode) : Entity(id, startNode) {}
 
 // Implement virtual destructor
 NPC::~NPC() {}
@@ -11,8 +11,8 @@ void NPC::move()
 {
     if (!path.empty())
     {
-        currentNode = path.front(); // Move to the next node
-        path.erase(path.begin());   // Remove the first node from path
+        currentNode = std::shared_ptr<Node>(path.front()); // Move to the next node
+        path.erase(path.begin());                          // Remove the first node from path
         std::cout << "NPC " << id << " moved to Node ID: " << currentNode->getId() << "\n";
     }
 }

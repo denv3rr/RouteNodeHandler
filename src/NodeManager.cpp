@@ -82,6 +82,7 @@ void NodeManager::createNodes(float spacing, int gridSize)
         }
     }
 
+    goalNode = nodes.back(); // Set goalNode to the last node in the grid
     std::cout << "\033[32mFinished creating all nodes and neighbors.\033[0m" << std::endl;
 }
 
@@ -110,6 +111,11 @@ void NodeManager::printNodes() const
 std::vector<std::shared_ptr<Node>> &NodeManager::getNodes()
 {
     return nodes;
+}
+std::shared_ptr<Node> NodeManager::getGoalNode()
+{
+    // Assuming goalNode is already set somewhere in your logic
+    return goalNode; // Return the goal node, assuming it's a class member variable
 }
 
 // Find path function using A* pathfinding algorithm

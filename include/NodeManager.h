@@ -13,7 +13,8 @@ class NodeManager
 private:
     std::vector<std::shared_ptr<Node>> nodes;
     std::map<int, std::vector<std::shared_ptr<Node>>> subnodes; // Map node ID to its subnodes
-    std::unique_ptr<AStarPathfinder> pathfinder;                // Pathfinding logic
+    std::unique_ptr<AStarPathfinder> pathfinder;
+    std::shared_ptr<Node> goalNode;
 
     int getIndex(int x, int y, int z, int gridSize);
 
@@ -29,6 +30,7 @@ public:
     // Getter for nodes and subnodes
     std::vector<std::shared_ptr<Node>> &getNodes();
     std::vector<std::shared_ptr<Node>> getSubnodes(int parentNodeID);
+    std::shared_ptr<Node> getGoalNode();
 
     // Pathfinding function
     std::vector<Node *> findPath(std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode);
