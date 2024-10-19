@@ -8,6 +8,7 @@
 #include "../include/Node.h"
 #include "../include/NodeManager.h"
 #include "../include/TrafficManager.h"
+#include "../include/ThreadManager.h"
 #include "../include/simulation.h"
 #include "../include/functions.h"
 
@@ -82,21 +83,8 @@ int main()
     else
         pathfindingManager.setAlgorithm(std::make_shared<DijkstraPathfinder>());
 
-    simulateTraffic(trafficManager, npcs, vehicles, nodeManager, pathfindingManager);
-
-    // Initialization of Start and End nodes
-    std::shared_ptr<Node> startNode = nodeManager.getNodes()[0];
-    std::shared_ptr<Node> goalNode = nodeManager.getNodes()[99];
-
-    std::cout << "\033[32mFinding path from Node " << startNode->getId() << " to Node " << goalNode->getId() << "...\033[0m\n";
-
-    std::vector<Node *> path = nodeManager.findPath(startNode, goalNode);
-
-    std::cout << "\nPath from Node " << startNode->getId() << " to Node " << goalNode->getId() << ":\n";
-    for (Node *node : path)
-    {
-        std::cout << "Node ID: " << node->getId() << " at (" << node->getX() << ", " << node->getY() << ", " << node->getZ() << ")\n";
-    }
+    // Call the thread manager to run the simulation with multithreading
+    runMultithreadedSimulation(trafficManager, pathfindingManager, npcs, vehicles, nodeManager, npcCount, vehicleCount);
 
     std::cout << "\n*************************\n\n";
     std::cout << "\033[32mProgram finished." << std::endl;

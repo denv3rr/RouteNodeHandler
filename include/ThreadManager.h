@@ -4,6 +4,8 @@
 #include "Node.h"
 #include "TrafficManager.h"
 #include "PathfindingManager.h"
+#include "NPC.h"
+#include "Vehicle.h"
 #include <thread>
 #include <mutex>
 #include <vector>
