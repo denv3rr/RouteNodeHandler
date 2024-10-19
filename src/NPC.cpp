@@ -1,4 +1,4 @@
-#include "../include/NPC.h"
+#include "NPC.h"
 #include <iostream>
 
 NPC::NPC(int id, std::shared_ptr<Node> startNode) : Entity(id, startNode) {}

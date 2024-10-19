@@ -1,4 +1,4 @@
-#include "../include/main.h"
+#include "main.h"
 
 int main()
 {
@@ -14,6 +14,7 @@ int main()
     std::vector<NPC> npcs;
     std::vector<Vehicle> vehicles;
     PathfindingManager pathfindingManager(nodeManager);
+    pathfindingManager.setAlgorithm(std::make_shared<AStarPathfinder>());
 
     // Prompt for user input
     int gridSize;
@@ -54,6 +55,20 @@ int main()
     {
         std::cerr << "\033[31mProgram terminated due to task failure.\033[0m\n";
         return -1;
+    }
+
+    // After simulation completes, ask for user input
+    char userChoice;
+    std::cout << "\nWould you like to print the output logs? (y/n): ";
+    std::cin >> userChoice;
+
+    if (userChoice == 'y' || userChoice == 'Y')
+    {
+        pathfindingManager.printPathfindingResults();
+    }
+    else
+    {
+        std::cout << "Returning to the main menu...\n";
     }
 
     // Footer and clocks

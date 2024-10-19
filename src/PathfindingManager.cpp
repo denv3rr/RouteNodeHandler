@@ -1,5 +1,5 @@
-#include "../include/PathfindingManager.h"
-#include "../include/Node.h"
+#include "PathfindingManager.h"
+#include "Node.h"
 #include <iostream>
 #include <queue>
 #include <mutex>

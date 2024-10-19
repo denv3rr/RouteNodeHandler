@@ -1,11 +1,11 @@
-#include "../include/functions.h"
-#include "../include/NPC.h"                   // For NPC class
-#include "../include/Vehicle.h"               // For Vehicle class
-#include "../include/InitializationManager.h" // For initializeNPCs, initializeVehicles
-#include "../include/ThreadManager.h"         // For runMultithreadedSimulation
-#include "../include/TrafficManager.h"
-#include "../include/NodeManager.h"
-#include "../include/PathfindingManager.h"
+#include "functions.h"
+#include "NPC.h"                   // For NPC class
+#include "Vehicle.h"               // For Vehicle class
+#include "InitializationManager.h" // For initializeNPCs, initializeVehicles
+#include "ThreadManager.h"         // For runMultithreadedSimulation
+#include "TrafficManager.h"
+#include "NodeManager.h"
+#include "PathfindingManager.h"
 #include <queue>
 #include <chrono>
 #include <ctime>
@@ -32,7 +32,7 @@ bool generateNodes(NodeManager &nodeManager, int gridSize)
 {
   std::cout << "\033[32mStarting node generation...\033[0m\n";
   nodeManager.createNodes(1.0f, gridSize);
-  std::cout << "\033[32mNodes created successfully.\033[0m\n";
+  std::cout << "\033[32m\nNodes created successfully.\033[0m\n\n";
   return true;
 }
 
@@ -50,7 +50,7 @@ bool initializeEntities(TrafficManager &trafficManager, NodeManager &nodeManager
 void runSimulation(TrafficManager &trafficManager, PathfindingManager &pathfindingManager,
                    std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles, NodeManager &nodeManager)
 {
-  std::cout << "\033[32mRunning pathfinding simulation...\033[0m\n";
+  std::cout << "\033[32m\nRunning pathfinding simulation...\033[0m\n\n\n";
 
   std::atomic<bool> nodesReady(true);
 

@@ -1,5 +1,5 @@
-#include "../include/TrafficManager.h"
-#include "../include/Entity.h" // Include the base Entity class
+#include "TrafficManager.h"
+#include "Entity.h" // Include the base Entity class
 #include <iostream>
 
 // Add a generic Entity to the manager

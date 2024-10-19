@@ -1,4 +1,4 @@
-#include "../include/Entity.h"
+#include "Entity.h"
 
 // Constructor
 Entity::Entity(int id, std::shared_ptr<Node> startNode) : id(id), currentNode(startNode) {}

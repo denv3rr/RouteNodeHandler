@@ -1,4 +1,4 @@
-#include "../include/Node.h"
+#include "Node.h"
 
 // Constructor
 Node::Node(int nodeId, int xCoord, int yCoord, int zCoord) : id(nodeId), x(xCoord), y(yCoord), z(zCoord) {}

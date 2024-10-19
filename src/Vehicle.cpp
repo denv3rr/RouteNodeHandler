@@ -1,4 +1,4 @@
-#include "../include/Vehicle.h"
+#include "Vehicle.h"
 #include <iostream>
 
 Vehicle::Vehicle(int id, std::shared_ptr<Node> startNode) : Entity(id, startNode) {}

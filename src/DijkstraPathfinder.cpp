@@ -1,4 +1,4 @@
-#include "../include/DijkstraPathfinder.h"
+#include "DijkstraPathfinder.h"
 #include <cmath>
 #include <algorithm> // Using std::reverse
 #include <queue>

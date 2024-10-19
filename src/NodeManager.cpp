@@ -1,5 +1,5 @@
-#include "../include/NodeManager.h"
-#include "../include/Node.h"
+#include "NodeManager.h"
+#include "Node.h"
 #include "AStarPathfinder.h" // Include AStarPathfinder
 #include <iostream>
 #include <cmath> // For std::sqrt
@@ -42,40 +42,39 @@ void NodeManager::createNodes(float spacing, int gridSize)
                 if (x > 0)
                 {
                     int neighborIndex = getIndex(x - 1, y, z, gridSize);
-                    std::cout << "Adding \033[32m-x\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m\n";
+                    // std::cout << "Adding \033[32m-x\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m\n";
                     node->addNeighbor(nodes[neighborIndex]);
                 }
                 if (x < gridSize - 1)
                 {
                     int neighborIndex = getIndex(x + 1, y, z, gridSize);
-                    std::cout << "Adding \033[32m+x\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m\n";
+                    // std::cout << "Adding \033[32m+x\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m\n";
                     node->addNeighbor(nodes[neighborIndex]);
                 }
 
                 if (y > 0)
                 {
                     int neighborIndex = getIndex(x, y - 1, z, gridSize);
-                    std::cout << "Adding \033[32m-y\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m\n";
+                    // std::cout << "Adding \033[32m-y\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m\n";
                     node->addNeighbor(nodes[neighborIndex]);
                 }
                 if (y < gridSize - 1)
                 {
                     int neighborIndex = getIndex(x, y + 1, z, gridSize);
-                    std::cout << "Adding \033[32m+y\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m\n";
+                    // std::cout << "Adding \033[32m+y\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m\n";
                     node->addNeighbor(nodes[neighborIndex]);
                 }
 
                 if (z > 0)
                 {
                     int neighborIndex = getIndex(x, y, z - 1, gridSize);
-                    std::cout << "Adding \033[32m-z\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m\n";
-                    ;
+                    // std::cout << "Adding \033[32m-z\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m\n";
                     node->addNeighbor(nodes[neighborIndex]);
                 }
                 if (z < gridSize - 1)
                 {
                     int neighborIndex = getIndex(x, y, z + 1, gridSize);
-                    std::cout << "Adding \033[32m+z\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m\n";
+                    // std::cout << "Adding \033[32m+z\033[0m neighbor to Node \033[32m" << node->getId() << "\033[0m, Neighbor Index: \033[32m" << neighborIndex << "\033[0m\n";
                     node->addNeighbor(nodes[neighborIndex]);
                 }
             }
