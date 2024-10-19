@@ -21,6 +21,6 @@ void displayEntityStatus(const std::string &entityType, int entityId, bool succe
 void showProgressBar(const ProgressBar &bar, int position);
 void clearProgressBar(int position);
 void entityThreadFunction(TrafficManager &trafficManager, PathfindingManager &pathfindingManager, std::shared_ptr<Node> startNode, std::shared_ptr<Node> goalNode, ProgressBar &progressBar, int position);
-void runMultithreadedSimulation(TrafficManager &trafficManager, PathfindingManager &pathfindingManager, std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles, NodeManager &nodeManager, int npcCount, int vehicleCount);
+void runMultithreadedSimulation(TrafficManager &trafficManager, PathfindingManager &pathfindingManager, std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles, NodeManager &nodeManager, int npcCount, int vehicleCount, std::atomic<bool> &nodesReady);
 
 #endif // THREAD_MANAGER_H

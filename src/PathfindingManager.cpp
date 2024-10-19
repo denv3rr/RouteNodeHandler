@@ -1,6 +1,22 @@
 #include "../include/PathfindingManager.h"
 #include "../include/Node.h"
 #include <iostream>
+#include <queue>
+#include <mutex>
+
+extern std::queue<std::string> messageQueue;
+extern std::mutex messageMutex;
+
+void PathfindingManager::printPathfindingResults()
+{
+    std::lock_guard<std::mutex> lock(messageMutex);
+
+    while (!messageQueue.empty())
+    {
+        std::cout << messageQueue.front() << std::endl;
+        messageQueue.pop();
+    }
+}
 
 // Check if the node is blocked or unavailable
 bool PathfindingManager::isNodeBlocked(const std::shared_ptr<Node> &node) const

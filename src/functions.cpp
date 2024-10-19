@@ -1,4 +1,12 @@
 #include "../include/functions.h"
+#include "../include/NPC.h"                   // For NPC class
+#include "../include/Vehicle.h"               // For Vehicle class
+#include "../include/InitializationManager.h" // For initializeNPCs, initializeVehicles
+#include "../include/ThreadManager.h"         // For runMultithreadedSimulation
+#include "../include/TrafficManager.h"
+#include "../include/NodeManager.h"
+#include "../include/PathfindingManager.h"
+#include <queue>
 #include <chrono>
 #include <ctime>
 #include <iomanip>
@@ -18,6 +26,58 @@ void printCurrentTime()
   auto now = std::chrono::system_clock::now();
   std::time_t now_time = std::chrono::system_clock::to_time_t(now);
   std::cout << std::put_time(std::localtime(&now_time), "%Y-%m-%d %H:%M:%S\n");
+}
+
+bool generateNodes(NodeManager &nodeManager, int gridSize)
+{
+  std::cout << "\033[32mStarting node generation...\033[0m\n";
+  nodeManager.createNodes(1.0f, gridSize);
+  std::cout << "\033[32mNodes created successfully.\033[0m\n";
+  return true;
+}
+
+bool initializeEntities(TrafficManager &trafficManager, NodeManager &nodeManager,
+                        std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles)
+{
+  int npcCount = 10, vehicleCount = 10;
+  std::cout << "\033[32mInitializing NPCs and Vehicles...\033[0m\n";
+  initializeNPCs(trafficManager, nodeManager.getNodes(), npcs, npcCount);
+  initializeVehicles(trafficManager, nodeManager.getNodes(), vehicles, vehicleCount);
+  std::cout << "\033[32mEntities initialized successfully.\033[0m\n";
+  return true;
+}
+
+void runSimulation(TrafficManager &trafficManager, PathfindingManager &pathfindingManager,
+                   std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles, NodeManager &nodeManager)
+{
+  std::cout << "\033[32mRunning pathfinding simulation...\033[0m\n";
+
+  std::atomic<bool> nodesReady(true);
+
+  try
+  {
+    runMultithreadedSimulation(trafficManager, pathfindingManager, npcs, vehicles, nodeManager, 3, 3, nodesReady);
+  }
+  catch (const std::exception &e)
+  {
+    std::cerr << "Exception in simulation: " << e.what() << std::endl;
+    // Handle the exception appropriately, but no return statement is needed here.
+  }
+}
+
+bool executeTaskQueue(std::queue<std::function<bool()>> &taskQueue)
+{
+  while (!taskQueue.empty())
+  {
+    auto task = taskQueue.front();
+    taskQueue.pop();
+    if (!task())
+    {
+      std::cerr << "\033[31mError: Task failed. Quitting...\033[0m\n";
+      return false;
+    }
+  }
+  return true;
 }
 
 // Function to print the logo with specified colors and scrolling effect

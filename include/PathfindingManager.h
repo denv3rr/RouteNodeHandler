@@ -13,6 +13,8 @@ private:
     NodeManager &nodeManager;
 
 public:
+    void printPathfindingResults();
+
     // Constructor to initialize with NodeManager
     PathfindingManager(NodeManager &nodeMgr) : nodeManager(nodeMgr) {}
 
