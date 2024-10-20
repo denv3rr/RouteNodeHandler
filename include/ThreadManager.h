@@ -9,6 +9,7 @@
 #include <thread>
 #include <mutex>
 #include <vector>
+#include <queue>
 
 struct ProgressBar
 {
@@ -16,6 +17,9 @@ struct ProgressBar
     int entityId;
     float progress;
 };
+
+extern std::queue<std::string> messageQueue;
+extern std::mutex messageMutex;
 
 void displayEntityStatus(const std::string &entityType, int entityId, bool success, const std::string &status);
 void showProgressBar(const ProgressBar &bar, int position);

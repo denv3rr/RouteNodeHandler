@@ -1,8 +1,8 @@
 #include "functions.h"
-#include "NPC.h"                   // For NPC class
-#include "Vehicle.h"               // For Vehicle class
-#include "InitializationManager.h" // For initializeNPCs, initializeVehicles
-#include "ThreadManager.h"         // For runMultithreadedSimulation
+#include "NPC.h"
+#include "Vehicle.h"
+#include "InitializationManager.h"
+#include "ThreadManager.h"
 #include "TrafficManager.h"
 #include "NodeManager.h"
 #include "PathfindingManager.h"
@@ -12,7 +12,7 @@
 #include <iomanip>
 #include <iostream>
 
-// Print the execution time since start
+// Print execution time
 void printExecutionTime(const std::chrono::high_resolution_clock::time_point &start)
 {
   auto end = std::chrono::high_resolution_clock::now();
@@ -20,7 +20,7 @@ void printExecutionTime(const std::chrono::high_resolution_clock::time_point &st
   std::cout << "Execution time: " << duration << " ms (" << duration / 1000 << " sec)\n";
 }
 
-// Print the current local time
+// Print the current time
 void printCurrentTime()
 {
   auto now = std::chrono::system_clock::now();
@@ -28,6 +28,7 @@ void printCurrentTime()
   std::cout << std::put_time(std::localtime(&now_time), "%Y-%m-%d %H:%M:%S\n");
 }
 
+// Generate nodes and log the process
 bool generateNodes(NodeManager &nodeManager, int gridSize)
 {
   std::cout << "\033[32mStarting node generation...\033[0m\n";
@@ -36,35 +37,36 @@ bool generateNodes(NodeManager &nodeManager, int gridSize)
   return true;
 }
 
+// Initialize NPCs and Vehicles
 bool initializeEntities(TrafficManager &trafficManager, NodeManager &nodeManager,
-                        std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles)
+                        std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles,
+                        int npcCount, int vehicleCount)
 {
-  int npcCount = 10, vehicleCount = 10;
-  std::cout << "\033[32mInitializing NPCs and Vehicles...\033[0m\n";
+  std::cout << "\033[32mInitializing " << npcCount << " NPCs and " << vehicleCount << " Vehicles...\033[0m\n";
   initializeNPCs(trafficManager, nodeManager.getNodes(), npcs, npcCount);
   initializeVehicles(trafficManager, nodeManager.getNodes(), vehicles, vehicleCount);
   std::cout << "\033[32mEntities initialized successfully.\033[0m\n";
   return true;
 }
 
+// Run simulation and display progress bars
 void runSimulation(TrafficManager &trafficManager, PathfindingManager &pathfindingManager,
                    std::vector<NPC> &npcs, std::vector<Vehicle> &vehicles, NodeManager &nodeManager)
 {
-  std::cout << "\033[32m\nRunning pathfinding simulation...\033[0m\n\n\n";
-
+  std::cout << "\033[32m\nRunning pathfinding simulation...\033[0m\n";
   std::atomic<bool> nodesReady(true);
 
   try
   {
-    runMultithreadedSimulation(trafficManager, pathfindingManager, npcs, vehicles, nodeManager, 3, 3, nodesReady);
+    runMultithreadedSimulation(trafficManager, pathfindingManager, npcs, vehicles, nodeManager, npcs.size(), vehicles.size(), nodesReady);
   }
   catch (const std::exception &e)
   {
-    std::cerr << "Exception in simulation: " << e.what() << std::endl;
-    // Handle the exception appropriately, but no return statement is needed here.
+    std::cerr << "Exception in simulation: " << e.what() << "\n";
   }
 }
 
+// Execute task queue
 bool executeTaskQueue(std::queue<std::function<bool()>> &taskQueue)
 {
   while (!taskQueue.empty())
@@ -80,45 +82,32 @@ bool executeTaskQueue(std::queue<std::function<bool()>> &taskQueue)
   return true;
 }
 
-// Function to print the logo with specified colors and scrolling effect
+// Log printing functions
+void printNodeCreationLogs() { std::cout << "Node creation logs...\n"; }
+void printNeighborCreationLogs() { std::cout << "Neighbor creation logs...\n"; }
+void printPathfindingLogs() { std::cout << "Pathfinding logs...\n"; }
+void printFinalLog() { std::cout << "Final log...\n"; }
+
+// Colored logo printing
 void coloredSeperetLogoScrolling(int colorCode1, int colorCode2)
 {
-  // First part of the logo
   std::string logoPart1 = R"(
  __   ____  ___   ____  ___   ____ _____ 
 ( (` | |_  | |_) | |_  | |_) | |_   | |  )";
-
-  // Second part of the logo
   std::string logoPart2 = R"(_)_) |_|__ |_|   |_|__ |_| \ |_|__  |_|  
-    
 )";
 
-  // Set color for first part
-  std::cout << "\033[" << colorCode1 << "m"; // Start color 1
-
-  // Print first part character by character
+  std::cout << "\033[" << colorCode1 << "m";
   for (char c : logoPart1)
   {
     std::cout << c << std::flush;
-    std::this_thread::sleep_for(std::chrono::milliseconds(0)); // Adjust delay as needed
+    std::this_thread::sleep_for(std::chrono::milliseconds(0));
   }
-
-  // Reset color
-  std::cout << "\033[0m"; // End color 1
-
-  // Newline before second part
-  std::cout << "\n";
-
-  // Set color for second part
-  std::cout << "\033[" << colorCode2 << "m"; // Start color 2
-
-  // Print second part character by character
+  std::cout << "\033[0m\n\033[" << colorCode2 << "m";
   for (char c : logoPart2)
   {
     std::cout << c << std::flush;
-    std::this_thread::sleep_for(std::chrono::milliseconds(0)); // Adjust delay as needed
+    std::this_thread::sleep_for(std::chrono::milliseconds(0));
   }
-
-  // Reset color
-  std::cout << "\033[0m"; // End color 2
+  std::cout << "\033[0m\n";
 }

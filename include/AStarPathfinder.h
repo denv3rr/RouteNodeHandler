@@ -6,6 +6,12 @@
 #include <unordered_map>
 #include <memory>
 #include <vector>
+#include <mutex>
+#include <cmath>
+#include <algorithm>
+#include <iostream>
+#include <limits>
+#include <queue>
 
 class AStarPathfinder : public IPathfindingAlgorithm
 {

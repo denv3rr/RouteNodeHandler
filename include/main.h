@@ -6,6 +6,7 @@
 #include "TrafficManager.h"
 #include "PathfindingManager.h"
 #include "InitializationManager.h"
+#include "AStarPathfinder.h"
 #include "ThreadManager.h"
 #include <vector>
 #include <queue>
