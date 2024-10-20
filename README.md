@@ -21,10 +21,12 @@
     <br></br>
 <div align="center">
   
+  
+  ![GitHub top language](https://img.shields.io/github/languages/top/denv3rr/RouteNodeHandler)
   ![GitHub Created At](https://img.shields.io/github/created-at/denv3rr/RouteNodeHandler)
   ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/denv3rr/RouteNodeHandler/main)
-  ![GitHub Release Date](https://img.shields.io/github/release-date/denv3rr/RouteNodeHandler)
-  ![GitHub commits since latest release (branch)](https://img.shields.io/github/commits-since/denv3rr/RouteNodeHandler/latest/main)
+  ![GitHub License](https://img.shields.io/github/license/denv3rr/RouteNodeHandler)
+  ![GitHub branch status](https://img.shields.io/github/checks-status/denv3rr/RouteNodeHandler/main)
   
 </div>
 
