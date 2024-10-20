@@ -61,7 +61,7 @@ void entityThreadFunction(TrafficManager &trafficManager, PathfindingManager &pa
     activeEntities.fetch_sub(1, std::memory_order_relaxed);
 }
 
-// Progress bar update loop to show each entity's progress one at a time
+// Sequentially update progress bars without overlapping, completing each before moving on to the next
 void updateProgressBars(std::vector<ProgressBar> &bars)
 {
     for (auto &bar : bars)
@@ -101,7 +101,7 @@ void runMultithreadedSimulation(TrafficManager &trafficManager, PathfindingManag
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 
-    // Launch threads for each NPC
+    // Launch threads for each NPC and Vehicle
     for (int i = 0; i < npcCount; ++i)
     {
         threads.emplace_back([&, i]()
@@ -111,7 +111,6 @@ void runMultithreadedSimulation(TrafficManager &trafficManager, PathfindingManag
                                  nodeManager.getGoalNode(), progressBars[i]); });
     }
 
-    // Launch threads for each Vehicle
     for (int i = 0; i < vehicleCount; ++i)
     {
         threads.emplace_back([&, i]()
