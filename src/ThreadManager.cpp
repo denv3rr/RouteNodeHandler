@@ -1,4 +1,5 @@
 #include "ThreadManager.h"
+#include "MessageManager.h" // Included for messageQueue and messageMutex
 #include <iostream>
 #include <mutex>
 #include <thread>

@@ -1,4 +1,5 @@
 #include "PathfindingManager.h"
+#include "MessageManager.h" // Included for messageQueue and messageMutex
 #include "Node.h"
 #include <iostream>
 #include <queue>
